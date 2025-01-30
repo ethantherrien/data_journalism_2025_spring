@@ -33,3 +33,10 @@ setwd("~/jour472/data_journalism_2024_fall")
 install.packages("tidyverse")
 library(tidyverse)
 ```
+
+
+```{r}
+#print takes an input and writes it in the terminal
+print("Hello World")
+```
+
