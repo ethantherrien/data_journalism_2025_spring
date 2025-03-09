@@ -1,0 +1,116 @@
+---
+title: "lab_04"
+author: "Derek Willis"
+date: "2024-09-19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## About this lab
+
+To complete this lab, you need to: \* run existing code as directed (look for **Task**). \* modify existing code as directed (look for **Task**). \* write code in empty codeblocks provided to answer questions included (look for **Q**). \* write out the answer in the form of a complete sentence in the space given (look for **A**).
+
+When you are finished, commit changes and push to your personal GitHub repo, then submit the URL to this document on ELMS.
+
+## Load libraries and establish settings
+
+You'll need to load three packages for this: the tidyverse, lubridate and janitor.
+
+**Task** load these three packages.
+
+```{r}
+# Turn off scientific notation
+options(scipen=999)
+
+# Load the tidyverse. If you have not installed the tidyverse already, remove the # from the next line and run it first.  
+# install.packages('tidyverse')
+library(tidyverse)
+library(janitor)
+library(lubridate)
+
+```
+
+For this lab, we want to investigate spending by the two leading Senate candidates in Maryland during this election, Angela Alsobrooks and Larry Hogan. Our goal is to try and standardize the purpose of the expenditures so that we can compare the two campaigns. We have the data, but it's messy - purpose descriptions are spelled differently and capitalized differently - and we need to clean it up. We'll use a combination of RStudio and OpenRefine to do that.
+
+The basic process here is to start in RStudio, export data so that we can use OpenRefine to clean it up, and then bring it back into RStudio to finish our analysis.
+
+## Load Data
+
+You'll need to load one data set, a CSV file of campaign expenditures located in the data folder called "md_senate_expenses.csv"
+
+**Task** Create a codeblock below, then read the data in and assign it to an appropriate variable name. You'll want to make sure that any date columns are actually date datatypes.
+
+```{r}
+# Load the Maryland expenditures data table
+campaign_expenditures <- read_csv("data/md_senate_expenses.csv")
+```
+
+## Answer questions
+
+**Q1.** You've been assigned to compare the spending priorities of the two campaigns, but they describe their spending differently using the `purpose` column. Using OpenRefine, create a project using the original CSV file, make a copy of the `purpose` column called `purpose_clean` and then standardize it, focusing on the purposes that appear most often or have the largest total amounts. You can transform the data as you want - making all records the same case, for example, to help. The goal is to be able to group together as many similar purpose values, so you can choose to call all transportation-related expenses the same thing.
+
+How do you know when you're done? It's a judgment call, but you should be close to 100 unique values for `purpose_clean`, and maybe even below that number.
+
+Then, when you are done standardizing `purpose_clean`, export it as a new CSV file to your data folder, *giving it a different name* and read it back into RStudio as a new dataframe.
+
+Then, using that `purpose_clean` column, write code to find the largest amounts of spending on categories by both campaigns.
+
+**A1.** Advertising is by far the number one cause of spending by both the Alsobrooks and Hogan Campaigns. After that, salary and list acquisition are number 2 and number 3 for Alsobrooks while staffing and printing are number 2 and 3 for Hogan. Fundraising is number 4 for Hogan.
+
+Also, the code I used to import the new csv file was:
+
+cleaned_senate_expenditures <- read.csv("data/cleaned_senate_expenditures.csv")
+
+And yes, I changed the name. It has "cleaned" in it to differentiate from the original dataset.
+
+```{r}
+cleaned_senate_expenditures |>
+  group_by(candidate, purpose_clean) |>
+  summarise(total_amount=sum(amount)) |>
+  arrange(desc(total_amount))
+```
+
+**Q2.** Let's do some research on the top purposes from A1. Feel free to search the Web to understand those terms better if need be, and then write a description comparing and contrasting the two campaigns' largest categories of spending.
+
+**A2.** Advertising was far and away the number one spending category for both candidates. It wasn't even close. Whether that be media advertising or other forms of advertising, this was the clear number one. After that, Alsobrooks spent a lot on salary while Hogan spent a lot on staffing. Realistically, this may be the same thing. I perhaps could have cleaned it better in OpenRefine. Then, Alsobrooks spent a LOT of money on List Acquisition, which from what I can see, it's the process of gathering and building lists of potential customers to reach out to. This makes sense considering how many calls and emails I got from her campaign during the election cycle. Hogan didn't do this as much, but he did spend a lot on fundraising, which could be considered to be similar. Alsobrooks had her fair share of fundraising expenses. Hogan also printed... a lot. 
+
+**Q3.** Pick one of the top categories for each campaign and write code that shows how that spending has changed over time, if at all. You'll need to use lubridate for this. Write a couple of sentences describing that pattern.
+
+**A3.** Spending habits for both Hogan and Alsobrooks in regards to Media Advertising and Ads changed significantly over time. For Alsobrooks, ad spending was minimal (In the 4 digit range) until about mid-February when it skyrocketed into 6 digits before skyrocketing again into the millions by early April. For Hogan, this trend was somewhat similar, but he didn't really start advertising until early March and his expenditures didn't reach the millions until mid May. Within the dates provided, Hogan's cumulative advertisement spending peaked at about $2.2 million while Alsobrooks' peaked at about $3.6 million.
+
+I used ChatGPT to get the "between" portion of the filter function and for the cumulative sum function. I asked it "how do I filter in between two dates using lubridate in R" and "how can I total up a cumulative amount over time in R Tidyverse."
+
+```{r}
+cleaned_senate_expenditures |>
+  filter(between(date, ymd("2023-05-08"), ymd("2024-06-30")),
+         purpose_clean %in% c("Media Advertising", "Ads")) |>
+  group_by(candidate, date, purpose_clean) |>
+  summarise(amount) |>
+  group_by(candidate) |>
+  mutate(amount = cumsum(amount))
+```
+
+**Q4.** Which committee has the larger payroll or salary spending so far? How many unique recipients of payroll/staff spending are there for each candidate?
+
+**A4.** Alsobrooks has the larger payroll/salary spending so far with about $822014. She has 23 unique recipients of payroll spending, while Hogan has only 8.
+
+This question confused the hell out of me. I could not, for the life of me, find which term in the data dictated Hogan's salary spending. I filtered through both the original dataset and the one I cleaned in OpenRefine almost 10 times each, clicking through every single "purpose" that looked like it may possibly have something to do with salary expenditures and looking for first and last names to indicate human recipients. I literally could not find anything outside of these vague "expense reimbursements" that Hogan had with some unique names attached to them. I also found "staffing services," but there were no names attached to them so it's not like they were unique recipients. So, Hogan's end is likely wrong. But it wasn't for lack of effort. I even uploaded both the original and cleaned datasets to ChatGPT and asked the AI to find terms related to Hogan's salary/payroll expenditure, and then I clicked through all the ones it provided me. Nothing, really. However, I'm pretty sure Alsobrooks' end should be accurate. Her salary expenditures were clearly marked under "Salary." It made it easy. 
+
+I was on this question for two hours. I did try, a lot. This is what I got. I hope it's close.
+
+```{r}
+cleaned_senate_expenditures |>
+  filter(purpose_clean %in% c("Salary", "Expense Reimbursement", "Staffing")) |>
+  group_by(candidate) |>
+  summarise(
+    total_salary = sum(amount),  
+    unique_recipients = n_distinct (first_name, last_name)) |>
+  arrange(desc(total_salary))
+```
+
+**Q5** What's the most interesting story idea you've found in this data?
+
+**A5** The most interesting story I've found were list acquisitions. Angela Alsobrooks had a LOT of money dumped into these. Upon further research, Google tells me that list acquisitions involve obtaining contact lists for potential voters or donors so that you have a list of people to contact and reach out to. With Alsobrooks having over $500,000 pumped into this, it begs the question: why didn't Hogan? And it makes sense. The Alsobrooks campaign contacted me so many times last year. From calls, to random emails and texts, it happened frequently. But off the top of my head, I don't remember the Hogan campaign contacting me a single time. As we know, Larry Hogan lost the Maryland Senate Election in November. Maybe this contributed to it? It would appear Hogan prioritized media outreach to direct contact. It would also appear that Alsobrooks was all over the phones and emails contacting quite a lot of people --- maybe this increased turnout for her. Doing a story on why Hogan didn't follow suit would be interesting, because there is certainly a huge and notable discrepancy between the two campaigns in that area of expenditures. 
