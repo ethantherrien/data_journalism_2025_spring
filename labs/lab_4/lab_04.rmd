@@ -81,6 +81,8 @@ cleaned_senate_expenditures |>
 
 **A3.** Spending habits for both Hogan and Alsobrooks in regards to Media Advertising and Ads changed significantly over time. For Alsobrooks, ad spending was minimal (In the 4 digit range) until about mid-February when it skyrocketed into 6 digits before skyrocketing again into the millions by early April. For Hogan, this trend was somewhat similar, but he didn't really start advertising until early March and his expenditures didn't reach the millions until mid May. Within the dates provided, Hogan's cumulative advertisement spending peaked at about $2.2 million while Alsobrooks' peaked at about $3.6 million.
 
+Realistically, I should have merged the clusters of "Media Advertising" and "Ads" in OpenRefine. I noticed it a bit too late. Live and learn -- but my mistake.
+
 I used ChatGPT to get the "between" portion of the filter function and for the cumulative sum function. I asked it "how do I filter in between two dates using lubridate in R" and "how can I total up a cumulative amount over time in R Tidyverse."
 
 ```{r}
