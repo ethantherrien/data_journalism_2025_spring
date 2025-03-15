@@ -1,0 +1,75 @@
+---
+title: "Reverse Engineering Project"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*.
+
+```{r}
+nonvoters_data <- read.csv("C:/Users/ethan/Downloads/Reverse Engineering Milestone 2/nonvoters_data.csv")
+```
+
+```{r}
+nonvoters_data |>
+  group_by(Q2_1) |>
+  summarise(
+    american_importance = n())
+```
+```{r}
+nonvoters_data |>
+  group_by(Q2_2)|>
+  summarise(
+    american_importance = n())
+```
+```{r}
+nonvoters_data |>
+  group_by(Q2_3)|>
+  summarise(
+    american_importance = n())
+```
+```{r}
+nonvoters_data |>
+  group_by(Q2_4)|>
+  summarise(
+    american_importance = n())
+```
+```{r}
+nonvoters_data |>
+  group_by(Q2_5)|>
+  summarise(
+    american_importance = n())
+```
+```{r}
+nonvoters_data |>
+  group_by(Q2_6)|>
+  summarise(
+    american_importance = n())
+```
+```{r}
+nonvoters_data |>
+  group_by(Q2_7)|>
+  summarise(
+    american_importance = n())
+```
+```{r}
+nonvoters_data |>
+  group_by(Q2_8)|>
+  summarise(
+    american_importance = n())
+```
+```{r}
+nonvoters_data |>
+  group_by(Q2_9) |>
+  summarise(
+    american_importance = n())
+```
+```{r}
+nonvoters_data |>
+  group_by(Q2_10)|>
+  summarise(
+    american_importance = n())
+```
+
+For these 10 blocks of code, we counted the number of times each "importance" answer was answered for each question. For example, Q2_10 corresponds to the original question of "How important do you think protesting if you believe government actions are wrong is to being a good American?" The numbers 1-4 correspond to importance, with 1 being very important, 2 being somewhat important, 3 being not so important and 4 being not at all important. So for CQ_10, the number 1854 means that 1854 people responded "very important" to "How important do you think protesting if you believe government actions are wrong is to being a good American?" This is the same logic for every single row in every single one of these code blocks.
