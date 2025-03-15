@@ -1,0 +1,85 @@
+---
+title: "lab_05"
+author: "derek willis"
+date: "2024-09-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load libraries and establish settings
+
+```{r}
+library(tidyverse)
+```
+
+## Getting Started
+
+This week we'll be combining and joining data to make it more useful and to ask some questions about it. This week, we'll revisit our new Maryland voters data and try to join it with contributions to the Harris campaign from Maryland donors made via ActBlue. Can we find new voters who are not registered Democrats who gave to Harris after she became a presidential candidate on July 21? What, if anything, can we say about those people?
+
+We'll be doing something similar to what Ence Morse did for [this Washington Post story](https://www.washingtonpost.com/politics/2024/09/24/kamala-harris-younger-donors/?pwapi_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZWFzb24iOiJnaWZ0IiwibmJmIjoxNzI3MzIzMjAwLCJpc3MiOiJzdWJzY3JpcHRpb25zIiwiZXhwIjoxNzI4NzA1NTk5LCJpYXQiOjE3MjczMjMyMDAsImp0aSI6ImIwYWMxNTk4LWMwMDgtNDE5Ny04MjAyLWVmMWNjZWFmYWZiMiIsInVybCI6Imh0dHBzOi8vd3d3Lndhc2hpbmd0b25wb3N0LmNvbS9wb2xpdGljcy8yMDI0LzA5LzI0L2thbWFsYS1oYXJyaXMteW91bmdlci1kb25vcnMvIn0.3-s0tBkMV7Y9DD21CBsKMlaliGlOKT2egCO-UFT735Y), just on a smaller scale.
+
+First, load two CSV contribution files in the `data` folder, one each for donations made in July and August, and then combine them into a single dataframe.
+
+```{r}
+july_csv <- read.csv("data/july_harris.csv")
+august_csv <- read.csv("data/august_harris.csv")
+
+joined_harris_data <- rbind(july_csv, august_csv)
+```
+
+Next, let's read in the new voters (people who registered in 2024):
+
+```{r}
+new_voters <- read.csv("data/new_voters.csv")
+```
+
+Next join the Harris donations to the voter data. Remember, people's names are common, __so you'll want to use name columns and address information__. You'll need to figure out which columns to use from both dataframes. The new_voters data has both a single Address column and various parts of the address, such as HouseNumber. Make a plan for picking your join columns - try out some combinations - and save the results to a new dataframe.
+
+```{r}
+library(dplyr)
+
+joined_harris_voter_data <- joined_harris_data |>
+  left_join(new_voters, by = c("first_name" = "FirstName",
+                               "last_name" = "LastName",
+                               "address_one" = "StreetName",
+                               "address_two" = "HouseNumber"))
+```
+
+## Answer questions
+
+Q1. Explain why you used the columns you did to make the join, and why that result is better than other ways you tried. Are there any problems with the join you made, such as the possibility of false positives?
+
+A1. I used the first and last names as the primary method of identification. I then used street name and house number for my address identification because I thought this was probably the only useful information. I thought about using zip code, but if two people have the same address... they also have the same zip code. It wouldn't have really added anything to the data.
+
+Q2. Based on your join, how many donations to Harris have come from people who registered this year? How many unique people does that represent, and which donors have given the largest _number_ of donations since July 20? 
+
+A2. Harris has gotten over 56,000 donations from people who registered this year. The largest number of donations came from Marlene Haffner with 74 unique donations, and Bhanu Rajput with 57 unique donations.
+
+```{r}
+joined_harris_voter_data |>  
+  filter(date >= as.Date("2024-07-20")) 
+
+joined_harris_voter_data |>  
+  group_by(first_name, last_name, address_one) |>  
+  summarise(n_donations = n()) |>  
+  arrange(desc(n_donations))
+```
+
+Q3. What are the party and gender breakdowns of those donors? How many donations has Harris gotten from non-Democrats?
+
+A3. I could not for the life of me figure this question out, despite spending over an hour on it. I first tried to left_join the party and gender columns from new_voters over to joined_harris_voter_data but it just wouldn't let me, claiming there would then be more rows in the dataset than what R could handle. Very annoying. I think I have the correct code below, but it doesn't register the party and gender group_by because I was unsuccessful in joining those columns from new_voters. I asked ChatGPT several times and it gave me a bunch of vague and weird answers that just didn't work. So this is what I have.
+
+```{r}
+joined_harris_voter_data |>  
+  filter(date >= as.Date("2024-07-20")) |>  
+  group_by(Party, Gender) |>  
+  summarise(n_donations = n()) |>  
+  arrange(desc(n_donations))
+```
+
+Q4. Choose your own adventure: I want you to come up with a question you could ask of one of the dataframes we've created for this lab. It could involve just the new voters, or the donors or the joined dataframe, but it cannot be a variation of a previous question (so, for example, you can't ask, "How many Republicans have given to Harris"). First write the question and then try to answer it by writing code. If you're not sure of the exact code, try googling (or ask me for advice) but, at a minimum, describe what you think you'd have to do to answer it and what the results would look like. That can help.
+
+A4: My question would be "what areas of Maryland have contributed the largest average donation amounts?" This would give us information on which areas of Maryland have the wealthiest donors and where the bulk of campaign money is coming from for these candidates. I'm not sure of the exact code, but at a minimum, I think you would group_by the city and amount and then summarize by avg_amount to find the average of the donations. You could then draw conclusive results on which cities are contributing the largest average donations to the Harris campaign.
