@@ -1769,210 +1769,608 @@ the chunk or by placing your cursor inside it and pressing
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVRKZk1Ta2dmRDVjYmlBZ2MzVnRiV0Z5YVhObEtGeHVJQ0FnSUdGdFpYSnBZMkZ1WDJsdGNHOXlkR0Z1WTJVZ1BTQnVLQ2twWEc1Z1lHQWlmUT09IC0tPlxuXG5gYGByXG5ub252b3RlcnNfZGF0YSB8PlxuICBncm91cF9ieShRMl8xKSB8PlxuICBzdW1tYXJpc2UoXG4gICAgYW1lcmljYW5faW1wb3J0YW5jZSA9IG4oKSlcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTJfMSkgfD5cbiAgc3VtbWFyaXNlKFxuICAgIGFtZXJpY2FuX2ltcG9ydGFuY2UgPSBuKCkpXG5gYGAifQ== -->
-<pre class="r"><code>nonvoters_data |&gt;
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHViR2xpY21GeWVTaDBhV1I1ZG1WeWMyVXBYRzVnWUdBaWZRPT0gLS0+XG5cbmBgYHJcbmxpYnJhcnkodGlkeXZlcnNlKVxuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5gYGAifQ== -->
+<pre class="r"><code>library(tidyverse)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZzogcGFja2FnZSDigJhyZWFkcuKAmSB3YXMgYnVpbHQgdW5kZXIgUiB2ZXJzaW9uIDQuNC4z4pSA4pSAIEF0dGFjaGluZyBjb3JlIHRpZHl2ZXJzZSBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDIuMC4wIOKUgOKUgFxu4pyUIGRwbHlyICAgICAxLjEuNCAgICAg4pyUIHJlYWRyICAgICAyLjEuNVxu4pyUIGZvcmNhdHMgICAxLjAuMCAgICAg4pyUIHN0cmluZ3IgICAxLjUuMVxu4pyUIGdncGxvdDIgICAzLjUuMSAgICAg4pyUIHRpYmJsZSAgICAzLjIuMVxu4pyUIGx1YnJpZGF0ZSAxLjkuNCAgICAg4pyUIHRpZHlyICAgICAxLjMuMVxu4pyUIHB1cnJyICAgICAxLjAuMiAgICAg4pSA4pSAIENvbmZsaWN0cyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlX2NvbmZsaWN0cygpIOKUgOKUgFxu4pyWIGRwbHlyOjpmaWx0ZXIoKSBtYXNrcyBzdGF0czo6ZmlsdGVyKClcbuKcliBkcGx5cjo6bGFnKCkgICAgbWFza3Mgc3RhdHM6OmxhZygpXG7ihLkgVXNlIHRoZSBcdTAwMWJdODs7aHR0cDovL2NvbmZsaWN0ZWQuci1saWIub3JnL1x1MDAwN2NvbmZsaWN0ZWQgcGFja2FnZVx1MDAxYl04OztcdTAwMDcgdG8gZm9yY2UgYWxsIGNvbmZsaWN0cyB0byBiZWNvbWUgZXJyb3JzXG4ifQ== -->
+<pre><code>Warning: package ‘readr’ was built under R version 4.4.3── Attaching core tidyverse packages ───────────────────────────────────────────────────────────────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>QUESTION 1:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHViR2xpY21GeWVTaDBhV1I1ZG1WeWMyVXBYRzVjYm01dmJuWnZkR1Z5YzE5a1lYUmhJSHcrWEc0Z0lHZHliM1Z3WDJKNUtGRXlYekVwSUh3K1hHNGdJSE4xYlcxaGNtbHpaU2hjYmlBZ0lDQnVkVzFpWlhKZmIyWmZjbVZ6Y0c5dVpHVnVkSE1nUFNCdUtDa3BYRzVnWUdBaWZRPT0gLS0+XG5cbmBgYHJcbmxpYnJhcnkodGlkeXZlcnNlKVxuXG5ub252b3RlcnNfZGF0YSB8PlxuICBncm91cF9ieShRMl8xKSB8PlxuICBzdW1tYXJpc2UoXG4gICAgbnVtYmVyX29mX3Jlc3BvbmRlbnRzID0gbigpKVxuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzEpIHw+XG4gIHN1bW1hcmlzZShcbiAgICBudW1iZXJfb2ZfcmVzcG9uZGVudHMgPSBuKCkpXG5gYGAifQ== -->
+<pre class="r"><code>library(tidyverse)
+
+nonvoters_data |&gt;
   group_by(Q2_1) |&gt;
   summarise(
-    american_importance = n())</code></pre>
+    number_of_respondents = n())</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSVXpBM1JFMUNRMlJQUlRWUlNUUkZjV1ZuVkZkcFZWUlpZMEZFUlVoblVsTmtOVlo0VkV4R1NUZGphSGhuVTFaWVdVMVBZWE16UlU1d1NscDROSFJyTkRCcFVYWmlLMkU1SzJSNlpuSkxLM0ZrVVZWQlQxaEVUMGxET0ZGUmRrZzBZMFowWmtGNVFVSnJRVWRJVW1ab0sxbE9SVXRSVTBKUVVUbFZVbTQyYkdjMWJrbE5WR3B0VFVNMFJIcGlNSG81U1hZM1F5dEZhMDFEZVU0eVlXdFRkMjVCZUcxcmRDc3hiVGgxU1ZZMWFETlhaM0Y2TUdKMlFrOXBLMDFXU1c1SWQzUnVNMmh1ZUVOWkwyRktURFY2Y2t3eU1HMWxla1pUVFhsTGNsUnVhbEpRUkhaVk5EazRhR3RhZWxsM1YzUnlWVTFVUXpKdFZXbDZiSGhEVEZCamJWUk9URlk0YlZaMldIVjFNbFJtVERWWlRHRm9ZVlIzV25oSmJYcGxRemREWWtJMlJFaGhUemhxVUVwVGJXRXdNbWwyWW5CNFdsQnhlV0pzVkdKNFIyVTBWVWR0WlhwVFJEQTRZbFJ2YzJsUGFtSmtaV3RMVTFOMGFXUnRWMmd3VHk4emNHNDFTMVZOUVdkQlFTSjkgLS0+XG5cbjxkaXYgZGF0YS1wYWdlZHRhYmxlPVwiZmFsc2VcIj5cbiAgPHNjcmlwdCBkYXRhLXBhZ2VkdGFibGUtc291cmNlIHR5cGU9XCJhcHBsaWNhdGlvbi9qc29uXCI+XG57XCJjb2x1bW5zXCI6W3tcImxhYmVsXCI6W1wiUTJfMVwiXSxcIm5hbWVcIjpbMV0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX0se1wibGFiZWxcIjpbXCJhbWVyaWNhbl9pbXBvcnRhbmNlXCJdLFwibmFtZVwiOlsyXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfV0sXCJkYXRhXCI6W3tcIjFcIjpcIi0xXCIsXCIyXCI6XCIzNVwifSx7XCIxXCI6XCIxXCIsXCIyXCI6XCI0NzU4XCJ9LHtcIjFcIjpcIjJcIixcIjJcIjpcIjczOFwifSx7XCIxXCI6XCIzXCIsXCIyXCI6XCIxNDVcIn0se1wiMVwiOlwiNFwiLFwiMlwiOlwiMTYwXCJ9XSxcIm9wdGlvbnNcIjp7XCJjb2x1bW5zXCI6e1wibWluXCI6e30sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbMl19LFwicm93c1wiOntcIm1pblwiOlsxMF0sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbNV19LFwicGFnZXNcIjp7fX19XG4gIDxcL3NjcmlwdD5cbjxcL2Rpdj5cblxuPCEtLSBybmItZnJhbWUtZW5kIC0tPlxuIn0= -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRUzA3RE1CQ2RPRTVRSTRFcWVnVFdpVVRZY0FERUhnUlNkNVZ4VExGSTdjaHhnU1ZYWU1PYXMzRU5wSlp4NHRrNDBpUXZiK2E5K2R6ZnJLK3FkUVVBT1hET0lDOFFRdkg0Y0Z0ZkF5QUJrQUdIUmZoK1lORUtRU0JQUTlVUm42bGc1bklNVGptTUM0RHpiMHo5SXY3QytFa01DeU4yYWtTd25BeG1rdCsxbTh1SVY1aDNXZ3F6MGJ2Qk9pK01WSW5Id3RuM2hueENZL2FKTDV6ckwyMG1lekZTTXlLclRualJQRHZVNDk4aGtaell3V3RyVU1UQzJtVWl6bHhDTFBjbVROTFY4bVZ2WHV1MlRmTDVZTGFoYVR3WnhJbXplQzdDYkI2REhhTzhqUEpTbWEwMml2YnB4WlBxeWJsVGJ4R2U0VUdtZXpTRDA4YlRvc2lPamJkZWtLU1N0aWRtV2gwTy8zcG41S1VNQWdBQSJ9 -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSZWxWeVJGRkNRMlZLU25SSlFUQndVaXRuVTJWRk1tZEdPRkZJUlhVMlRGRlhPV2R0TW5waFdYcHZZbVJxV0hJd1JtSjRORGwwYkRoRVlVWXhUblJ0T1dKSFExTk1PUzlOT1RnelVEQXZNelpLYkM5dVFVcEJRVmw2Uld0TFZVWkpXRFUwWm1scWMwRkpaMEZwV1VSRGVqTjNPSEYxYVVwbmVWaE9ZbVJoU201TVNtazBhRWxNTlVoTlZURjNUMVV6Y0ZnMFNtWXhTRGhDU1Zsd09HOVFVVUpQWVdwM1ZWTjVlREZYTVdSSWFVSjNNa1ZxVmtOWE0yeFNTelpzT1dkSlRrUndkMjFUYmpWWWJtOXVNbnB5SzNCQ1pFNDVhR1V5Y1hwMWRXWlVkRkExWnpBemRrNTNjVEIwVUdaTldrTmplV1EyTUVWcmExVXlPRmQ2VVVKNWNHZEtaMUJoUTJSd2FXNXZMelJIZFhoMVp6TjVVMWs0TnpJNVVXUkVaSHBGYTFSMVdYZ3ZSVEJTYm5oNU9ITjZTazAwUnpkR2IxaG1jQ3ROWWpCWWJtNVNjbmMxWlVWRlNFZGxPVkk1Y1hCR05IaGpiRlp3WkVkSGRUUnNaVk13TjNvMGVYSjNMMFZtY1VzeFNIcG5ORU5CUVVFOUluMD0gLS0+XG5cbjxkaXYgZGF0YS1wYWdlZHRhYmxlPVwiZmFsc2VcIj5cbiAgPHNjcmlwdCBkYXRhLXBhZ2VkdGFibGUtc291cmNlIHR5cGU9XCJhcHBsaWNhdGlvbi9qc29uXCI+XG57XCJjb2x1bW5zXCI6W3tcImxhYmVsXCI6W1wiUTJfMVwiXSxcIm5hbWVcIjpbMV0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX0se1wibGFiZWxcIjpbXCJudW1iZXJfb2ZfcmVzcG9uZGVudHNcIl0sXCJuYW1lXCI6WzJdLFwidHlwZVwiOltcImludFwiXSxcImFsaWduXCI6W1wicmlnaHRcIl19XSxcImRhdGFcIjpbe1wiMVwiOlwiLTFcIixcIjJcIjpcIjM1XCJ9LHtcIjFcIjpcIjFcIixcIjJcIjpcIjQ3NThcIn0se1wiMVwiOlwiMlwiLFwiMlwiOlwiNzM4XCJ9LHtcIjFcIjpcIjNcIixcIjJcIjpcIjE0NVwifSx7XCIxXCI6XCI0XCIsXCIyXCI6XCIxNjBcIn1dLFwib3B0aW9uc1wiOntcImNvbHVtbnNcIjp7XCJtaW5cIjp7fSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOlsyXX0sXCJyb3dzXCI6e1wibWluXCI6WzEwXSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOls1XX0sXCJwYWdlc1wiOnt9fX1cbiAgPFwvc2NyaXB0PlxuPFwvZGl2PlxuXG48IS0tIHJuYi1mcmFtZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRelVyRFFCQ2VKSnRJQTBwUitnU2VFMmdGOFFIRXU2TFFXOWdtMnphWXpvYmRqWHIwRmJ4NDl0bDhEYUYxTnRtOWJHQ1NMOS9NOTgzUDAvMzZKbC9uQUpBQVl6RWtLVUZJWDU0Zmlqc0FJZ0FpWURDejN3OHF1aUpneVhOYmRhSm5MSmk0aElMNUhNVTF3T1UzcFg0SmYxSDhCSVlwOG9QUUJPYWp3VVN5eDFXMWRIaUJ3MkVqVkNXM2xSSzZsOWdJTkRwd21TbjVYbm9uMnpyK3BCZE45aGUycXp1dWZUdFA1ZzAzdk53cTB0UGZNWkNjeWQ2MEVra1UyOFd6UUJ5cGdKZ1BhQ2RwaW5vLzRHdXh1ZzN5U1k4NzI5UWREZHpFa1R1WXgvRTBSbnh5OHN6Sk00RzdGb1hmcCtNYjBYbm5Scnc1ZUVFSEdlOVI5cXBGNHhjbFZwZEdHdTRsZVMwN3o0eXJ3L0VmcUsxSHpnNENBQUE9In0= -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Q2_1"],"name":[1],"type":["int"],"align":["right"]},{"label":["american_importance"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"35"},{"1":"1","2":"4758"},{"1":"2","2":"738"},{"1":"3","2":"145"},{"1":"4","2":"160"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVRKZk1pbDhQbHh1SUNCemRXMXRZWEpwYzJVb1hHNGdJQ0FnWVcxbGNtbGpZVzVmYVcxd2IzSjBZVzVqWlNBOUlHNG9LU2xjYm1CZ1lDSjkgLS0+XG5cbmBgYHJcbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzIpfD5cbiAgc3VtbWFyaXNlKFxuICAgIGFtZXJpY2FuX2ltcG9ydGFuY2UgPSBuKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTJfMil8PlxuICBzdW1tYXJpc2UoXG4gICAgYW1lcmljYW5faW1wb3J0YW5jZSA9IG4oKSlcbmBgYCJ9 -->
-<pre class="r"><code>nonvoters_data |&gt;
-  group_by(Q2_2)|&gt;
-  summarise(
-    american_importance = n())</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSZVRBM1JFMUNSR05QUlRabmExVkRWa051TDBGT1ZHMXJSbm8wUVdOUlpVSXhSblJzU0VaTmMxVnFkSGxZVDBSSloySXJkVEZNU2s5MlFtUklZMnA1WlROYWJEbFFSRGx6TVhSWGJVRnZRV05QUjJWUlJuZHBhR1ZJTVRWeVR6aENhMEZFU1dkTlRXa3pSQ3RaZEVWSlVYbExkVkZrWTFwMlUzQnBOVWhCSzI1SFNqUTNaMDl2U1dOSWJVUTBWRGxOZFRBd1RVTjVVREpoYTFOM2JrRjRiV3RxS3pFeWVtSnBSbU5oWkd4elNuTTVXRFozZW1kemFsWmxTM2hqVUdFM1NWbzVVVzFRTTJsRUwzTTJjSE5XYTB3d1dYRlNiVlJXUTFNcllXUTBaRFptU2pCVGVWbFZaSFpNV1VkU1UzbE5XRk5pYVhwRFdFVTRiVUpEU2pFd2RGQjNOMjF6TWpkWVUxUjNabnBETkZWcVUzVkVNa2hGVnpFd1YxbDZWekozWXpWVFdGVldOSEZ6T1U1SE1GUjVPV1ZHVFRsUFdHWnhTemhLY2xoTmFUQnFNbHAzTW01bllVWk9iWGc0WkZsTWEyeFVVemx6VWsxdk9GQndTSGRPUVVJd05FMUJaMEZCSW4wPSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJRMl8yXCJdLFwibmFtZVwiOlsxXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfSx7XCJsYWJlbFwiOltcImFtZXJpY2FuX2ltcG9ydGFuY2VcIl0sXCJuYW1lXCI6WzJdLFwidHlwZVwiOltcImludFwiXSxcImFsaWduXCI6W1wicmlnaHRcIl19XSxcImRhdGFcIjpbe1wiMVwiOlwiLTFcIixcIjJcIjpcIjM2XCJ9LHtcIjFcIjpcIjFcIixcIjJcIjpcIjI4MTFcIn0se1wiMVwiOlwiMlwiLFwiMlwiOlwiMjA2OFwifSx7XCIxXCI6XCIzXCIsXCIyXCI6XCI2NDRcIn0se1wiMVwiOlwiNFwiLFwiMlwiOlwiMjc3XCJ9XSxcIm9wdGlvbnNcIjp7XCJjb2x1bW5zXCI6e1wibWluXCI6e30sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbMl19LFwicm93c1wiOntcIm1pblwiOlsxMF0sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbNV19LFwicGFnZXNcIjp7fX19XG4gIDxcL3NjcmlwdD5cbjxcL2Rpdj5cblxuPCEtLSBybmItZnJhbWUtZW5kIC0tPlxuIn0= -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFReTA3RE1CRGNPRTZna1VDVkNuL0FOVG1rRno0QWNRZUIxRnRsSEZNc1VqdHlYT0RJZ2IrdTFMSk92QmRIY2p5ZTNabDlQRDlzMXRXbUFvQWNPR2VRRndpaGVIMTVyTzhCa0FESWdNTWkzRCtZdEVJUXlLdVFkY1p2U3BpNUhBK25HSjQ3Z09vSWNIbUQ0VDlNdTAwTUN5UDJha1N3bkF4bWtqKzEyemJpRmNhZGxzSnM5WDZ3emdzalZlS3hjUGE3SVo5UW1QM2lEL3M2cHNWa0wwWXFSbVRWQ1MrYWQ0ZDZmSjBTeVlVZHZMWUdSU3lNWFNiaXpDWEU4bUJDSjEwdFB3N21zMjdYU1R3ZnpDNFVqU3VEMkhFVzEwV1l6VzJ3YzVTWFVWNHFzOU5HMFR5OWVGTTlPWGZxSzhKclhNaTBqMlp3Mm5nYUZObXg4ZFlMa2xUUzlzUk1vOFBwSHdOQUIwNE1BZ0FBIn0= -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Q2_2"],"name":[1],"type":["int"],"align":["right"]},{"label":["american_importance"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"36"},{"1":"1","2":"2811"},{"1":"2","2":"2068"},{"1":"3","2":"644"},{"1":"4","2":"277"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVRKZk15bDhQbHh1SUNCemRXMXRZWEpwYzJVb1hHNGdJQ0FnWVcxbGNtbGpZVzVmYVcxd2IzSjBZVzVqWlNBOUlHNG9LU2xjYm1CZ1lDSjkgLS0+XG5cbmBgYHJcbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzMpfD5cbiAgc3VtbWFyaXNlKFxuICAgIGFtZXJpY2FuX2ltcG9ydGFuY2UgPSBuKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTJfMyl8PlxuICBzdW1tYXJpc2UoXG4gICAgYW1lcmljYW5faW1wb3J0YW5jZSA9IG4oKSlcbmBgYCJ9 -->
-<pre class="r"><code>nonvoters_data |&gt;
-  group_by(Q2_3)|&gt;
-  summarise(
-    american_importance = n())</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSVXpBM1JFMUNRMlJLUlRWUlRFbEZjVGxSY0hOck1GaE1aMmROWnpscFExRjFjWFZOTkhoaFRERkpOR05HTVdoNVJrczNRMGhpWjA1VmMzTTBPRmQzWTNsbVNIcHRNMngyVUc4NU0yMTZXR1pqUVVGdloweEZZMmxvU1doc1RUbFFPVGd3ZEVGQ1NVRkhWRU52ZHk4eVNsTlZjMFZuWW5kTlYxZG1PSEJ2VTFwTEwwRjNhWFZITlVKMVF5OUJVRmRKUzFRdk5DOXJORTFUZVUxUFEyOVBkMjFCZUcxcmFqSnpkSFYxU1d4NGFETlhaM0Y2TVZsbVFrOXBLMDFXU1d4SU4yVjRTRk42Tm1oalVEWkdVQ3Q2Y2t4NU1HMWxla1pUVFZOS05VbzNlRzlrZHpjeEswUnZiR3RuY3pkbFJ6Qk9hWFpKZDJSd1YwbE5OV05SYVRaTlNtNVlVMDVtUkRKaGRESmFNV3M0VTB4M1pYaEVNR0puZVdsQ01XNWpWakpGT0RkdFRpOUNlbXhXV2xKWWVYVjVNVlZVVWxCTU1UVlZWRGcyWkdWdkwzZERhR041TjJGTlpHNUVZV1ZDYTFZeVlrd3pNV2RwVW1NeWNEWlpZVmhSTkM5UlRVUlRNVUZFUkVGSlFVRkJQVDBpZlE9PSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJRMl8zXCJdLFwibmFtZVwiOlsxXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfSx7XCJsYWJlbFwiOltcImFtZXJpY2FuX2ltcG9ydGFuY2VcIl0sXCJuYW1lXCI6WzJdLFwidHlwZVwiOltcImludFwiXSxcImFsaWduXCI6W1wicmlnaHRcIl19XSxcImRhdGFcIjpbe1wiMVwiOlwiLTFcIixcIjJcIjpcIjM2XCJ9LHtcIjFcIjpcIjFcIixcIjJcIjpcIjI3NzJcIn0se1wiMVwiOlwiMlwiLFwiMlwiOlwiMjQxOVwifSx7XCIxXCI6XCIzXCIsXCIyXCI6XCI0NDlcIn0se1wiMVwiOlwiNFwiLFwiMlwiOlwiMTYwXCJ9XSxcIm9wdGlvbnNcIjp7XCJjb2x1bW5zXCI6e1wibWluXCI6e30sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbMl19LFwicm93c1wiOntcIm1pblwiOlsxMF0sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbNV19LFwicGFnZXNcIjp7fX19XG4gIDxcL3NjcmlwdD5cbjxcL2Rpdj5cblxuPCEtLSBybmItZnJhbWUtZW5kIC0tPlxuIn0= -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRUzA3RE1CQ2RKRTVRTElFcTlRcHNrMFhMZ2dNZzlpQ1F1cXVNNHhhTDFJNGNGMWh5Rks3Q0hiZ05Vc3M0OFd3Y3lmSHptM2x2UG85M216WGZjQUFvZ0xFY2loSWhsTTlQOTgwdEFCSUFHVENvdy8ySlNVc0VnYndNV1dmOHBvU1pLL0F3aXVHNUJ1Qy9BUFdJS1QvNC9rNE1TeU1PQ29Pd21BeG1rajJzdHV1SWx4aDNXZ3F6MVlmQk9pK01WSWxIN2V4SFN6NmhjUDZGUCt6ckx5MG1lekZTTVNKNUo3eG9kdzcxK0RvbGtnczdlRzBOaXZJd2RwV0lNNWNRaTZNSm5YU05mRDJhdDJaMWs4U0x3ZXhEMGJneWlCMW5jVjJFODdtTi9CemxWWlJYeXV5MVVUUlBMMTVVVDg2ZGVvL3dDaGN5N2FNZG5EYWVCa1YyYkwzMWdpUmMycDZZYVhRNC9RTURTMUFEREFJQUFBPT0ifQ== -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Q2_3"],"name":[1],"type":["int"],"align":["right"]},{"label":["american_importance"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"36"},{"1":"1","2":"2772"},{"1":"2","2":"2419"},{"1":"3","2":"449"},{"1":"4","2":"160"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVRKZk5DbDhQbHh1SUNCemRXMXRZWEpwYzJVb1hHNGdJQ0FnWVcxbGNtbGpZVzVmYVcxd2IzSjBZVzVqWlNBOUlHNG9LU2xjYm1CZ1lDSjkgLS0+XG5cbmBgYHJcbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzQpfD5cbiAgc3VtbWFyaXNlKFxuICAgIGFtZXJpY2FuX2ltcG9ydGFuY2UgPSBuKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTJfNCl8PlxuICBzdW1tYXJpc2UoXG4gICAgYW1lcmljYW5faW1wb3J0YW5jZSA9IG4oKSlcbmBgYCJ9 -->
-<pre class="r"><code>nonvoters_data |&gt;
-  group_by(Q2_4)|&gt;
-  summarise(
-    american_importance = n())</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSZVRBM1JFMUNSR05QUlRaeFVtZEtWalpvT1hkVWR6UjBVMGgzUVRSbk5FTXdWblJzU0U1T1lWUmxNMGxqV1VWcVdEaFJVRWx5VjNORkt5OUdhMUo1VUZvelpHMUlPRGhRYlROWE1YRlJRV2RDT0RSYU5VRldRMHRHTldaSWRYUTNRVU5SUVUxMVFYZEVMMk16U21rd1VrSlFTWEZhUmpOM1IzaE5iVXh6WmtSTFdXSnVRbTFFTWtNeFF5czBXRTlPV1ZwaldVWnJXV014V1VKblRWSndUVXBJT1dGaVZ6aHFXRzFNWTJGVGJrMVdhRGszTmpkM2QxVnBWV1ZqTW1VdlIzWkpTbWhrYTFBdmNrTjJkamRUV1RkTlVrRjRXV2x6VjNWR1JqZ3JSbEZxTmpsNlNYQnVXak50ZEhKVlRWUkRNa2RWYVhwc2VFTk1SVFJ0WkU1TVYyTnVPSGxvTTNBeGJEaFVlak4xZUVNd1ltZDVhVUl4Ym1OV01rVXlaRkZIZFRCU05VZGxWMnhOYW5SMFJrMHpWR2xZWmxacldFOXlVR2xQT0hodlYwMHJNbWcyY0RReWJsRmFSV1JIYlNzNVNVVnJiR0pWWmsxUFJIRmpMM2RGUm5oM01HMUVRVWxCUVVFOVBTSjkgLS0+XG5cbjxkaXYgZGF0YS1wYWdlZHRhYmxlPVwiZmFsc2VcIj5cbiAgPHNjcmlwdCBkYXRhLXBhZ2VkdGFibGUtc291cmNlIHR5cGU9XCJhcHBsaWNhdGlvbi9qc29uXCI+XG57XCJjb2x1bW5zXCI6W3tcImxhYmVsXCI6W1wiUTJfNFwiXSxcIm5hbWVcIjpbMV0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX0se1wibGFiZWxcIjpbXCJhbWVyaWNhbl9pbXBvcnRhbmNlXCJdLFwibmFtZVwiOlsyXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfV0sXCJkYXRhXCI6W3tcIjFcIjpcIi0xXCIsXCIyXCI6XCIzNFwifSx7XCIxXCI6XCIxXCIsXCIyXCI6XCIxOTY2XCJ9LHtcIjFcIjpcIjJcIixcIjJcIjpcIjE2MjNcIn0se1wiMVwiOlwiM1wiLFwiMlwiOlwiMTMzMVwifSx7XCIxXCI6XCI0XCIsXCIyXCI6XCI4ODJcIn1dLFwib3B0aW9uc1wiOntcImNvbHVtbnNcIjp7XCJtaW5cIjp7fSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOlsyXX0sXCJyb3dzXCI6e1wibWluXCI6WzEwXSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOls1XX0sXCJwYWdlc1wiOnt9fX1cbiAgPFwvc2NyaXB0PlxuPFwvZGl2PlxuXG48IS0tIHJuYi1mcmFtZS1lbmQgLS0+XG4ifQ== -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFReTA3RE1CRGNPRTZxUmdKVjZoOXdUdzR0U0h3QTRnNEMwVnRsSE5OYVRlM0ljWUVqWDhRUElyV3NFKy9Ga1J5UFozZG1IODhQbTNXMXFRQWdCODRaNUFWQ0tGNWZIdXQ3QUNRQU11QXdEL2MzSmkwUkJQSXFaRjN3R3hNbUxzZkRLWWJuQm1EMkMxQys0WE9OWVpjWUZrWWMxWUJnTVJwTUpIOWFiVzhqWG1MY2FTbk1WaDk3Njd3d1VpVWVjMmUvR3ZJSmhka1AvckN2djdTWTdNUkF4WWlzV3VGRjgrRlFqNjl6SXBuWjNtdHJVTVRDMkdVaXpseENMRTRtZE5MV2NuOHloM3AxbDhUejN1eEMwYmd5aUIxbmNWMkUyZFFHdTBSNUdlV2xNanR0Rk0zVGlYZlZrWE9yUGlPOHhvV00rMmg2cDQyblFaRWRHbSs5SUVrbGJVZk1PRHFjL3dFRnh3MG1EQUlBQUE9PSJ9 -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Q2_4"],"name":[1],"type":["int"],"align":["right"]},{"label":["american_importance"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"34"},{"1":"1","2":"1966"},{"1":"2","2":"1623"},{"1":"3","2":"1331"},{"1":"4","2":"882"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVRKZk5TbDhQbHh1SUNCemRXMXRZWEpwYzJVb1hHNGdJQ0FnWVcxbGNtbGpZVzVmYVcxd2IzSjBZVzVqWlNBOUlHNG9LU2xjYm1CZ1lDSjkgLS0+XG5cbmBgYHJcbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzUpfD5cbiAgc3VtbWFyaXNlKFxuICAgIGFtZXJpY2FuX2ltcG9ydGFuY2UgPSBuKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTJfNSl8PlxuICBzdW1tYXJpc2UoXG4gICAgYW1lcmljYW5faW1wb3J0YW5jZSA9IG4oKSlcbmBgYCJ9 -->
-<pre class="r"><code>nonvoters_data |&gt;
-  group_by(Q2_5)|&gt;
-  summarise(
-    american_importance = n())</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSVXpBM1JFMUNRMlJQUlRWUlNUUkhTM1YxVlV0NVlVbEplRUZGVVdWNFFra3pWbGhIVFdFelZtUkNkelZNY2tSclMyaDVSR2MzUmtOaGFHdHVPWE5oVWtwdWJEVk5LeTlPTlN0c0syUldNblJMWjBSSloxaE5SMlZWUlZGcGNHWnVhQzl2VDJkQmFVRkVSR3BOTDFCbFZHbG9XVVZRU0c1MWNUQTNNR3BCVlZSc01WQjNiVXRQTkVGeWFqaEtkbkZZT0VFclJsTkJkMHhHU0hNeFJVcHBVRUpvVUVwSU5XWnliVFJCV0d4TVpHRkRiSHB5WmxjcmMwVjVhRlkwYWtkNk5YRlBTbEJ5Tkhnck5rbFllbVpYV0U1d1QyUkhSMHQ2VTBaaGRHTkxTalZ6TmxOdWRqSk5hVTlVVHprd2QxcEtlRkI2WVZwVFRFOWlSVXhOUkN0bmJtRlhkVFZRWlVOMVdIUTBiU3RpZWtocVZ6aGhWR2RhYURScGVXTkxNa2t5YW1OR1QxRldORWRsWVd4M2J6RklSbVpVY25oeGNuSnZNMHR5TTBGREwyOUpUMDA1YlhRMWNXUklSbEpaYjJaSFIxTmxhWEJLUzIxcE9IazBUMmg2TDBGVVoxRlBRa2xOUVdkQlFTSjkgLS0+XG5cbjxkaXYgZGF0YS1wYWdlZHRhYmxlPVwiZmFsc2VcIj5cbiAgPHNjcmlwdCBkYXRhLXBhZ2VkdGFibGUtc291cmNlIHR5cGU9XCJhcHBsaWNhdGlvbi9qc29uXCI+XG57XCJjb2x1bW5zXCI6W3tcImxhYmVsXCI6W1wiUTJfNVwiXSxcIm5hbWVcIjpbMV0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX0se1wibGFiZWxcIjpbXCJhbWVyaWNhbl9pbXBvcnRhbmNlXCJdLFwibmFtZVwiOlsyXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfV0sXCJkYXRhXCI6W3tcIjFcIjpcIi0xXCIsXCIyXCI6XCIyOFwifSx7XCIxXCI6XCIxXCIsXCIyXCI6XCI0NTEzXCJ9LHtcIjFcIjpcIjJcIixcIjJcIjpcIjEwMTNcIn0se1wiMVwiOlwiM1wiLFwiMlwiOlwiMTg1XCJ9LHtcIjFcIjpcIjRcIixcIjJcIjpcIjk3XCJ9XSxcIm9wdGlvbnNcIjp7XCJjb2x1bW5zXCI6e1wibWluXCI6e30sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbMl19LFwicm93c1wiOntcIm1pblwiOlsxMF0sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbNV19LFwicGFnZXNcIjp7fX19XG4gIDxcL3NjcmlwdD5cbjxcL2Rpdj5cblxuPCEtLSBybmItZnJhbWUtZW5kIC0tPlxuIn0= -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRUzA3RE1CQ2RPRTVRSTRHS3V1VUt5YUlJeEFFUWV4QkkzVlhHTWEzVmRCdzVMckRrS2h5RGc3RkNhaGtuOXNhUkpubDVNKy9ONStsK2RWMnRLZ0RJZ1hNR2VVRVFpcGZuaC9vT2dBaUFERGpNL1BlVGloWUVQSG51cTA3MGpBVVRsMVB3bUtPNEFyajhKdnFYOEErRlNBd0xGSHMxRUppUEJoUEpINWZybTRBWGxMZGFDbHpyZlcrc0V5aFY0akd6NXFPSlByNHgrNklYemZXWE5wT2RHR0t6U0ZhdGNLSjVzNlNudjJNaU9UTzkwd1pKeFB6YVpTTE9iRUxNRCtnbmFXdTVQZUN1WHQ0bStiekhqVzhhVGdaaDRpeWNLMkkyamNGT1FWNEdlYWx3bzFIRmZUcnhxcnJvM0tyM0FDL29JT005bXQ1cWRIRlJZb2ZHR1NlaXBKS21pOHk0T2h6L0FUZ1FPQklNQWdBQSJ9 -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Q2_5"],"name":[1],"type":["int"],"align":["right"]},{"label":["american_importance"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"28"},{"1":"1","2":"4513"},{"1":"2","2":"1013"},{"1":"3","2":"185"},{"1":"4","2":"97"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVRKZk5pbDhQbHh1SUNCemRXMXRZWEpwYzJVb1hHNGdJQ0FnWVcxbGNtbGpZVzVmYVcxd2IzSjBZVzVqWlNBOUlHNG9LU2xjYm1CZ1lDSjkgLS0+XG5cbmBgYHJcbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzYpfD5cbiAgc3VtbWFyaXNlKFxuICAgIGFtZXJpY2FuX2ltcG9ydGFuY2UgPSBuKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTJfNil8PlxuICBzdW1tYXJpc2UoXG4gICAgYW1lcmljYW5faW1wb3J0YW5jZSA9IG4oKSlcbmBgYCJ9 -->
-<pre class="r"><code>nonvoters_data |&gt;
-  group_by(Q2_6)|&gt;
-  summarise(
-    american_importance = n())</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSVXpBM1JFMUNRMlJQUlRWUloydERWbVZuUWs5clEzbExRa0ozUVhOUlpVSXhSakZzU0U1T1lYQklZbXQxVFVOVFFUTkJXVGR2WmxWTmF6UTRSekJrZVM5UWVHMHpjSFpRTUM4ek5uVnNOMWhCU2tGRU5YZDZlVUZwUlZWTU9EaFFlbEl3UVVWblFWcGpTMnBETDFsV1NsTjNVMEoyUVdoYVNpOTViV2hLYmt3NFdFTkxOR0pyUTA5UU9VSXJTWFZvU0dGYVZXbFhSbWg0UmpaT1EwSmhWSGRWZW5sNE9WaHRTblZKYkhod01sZDNiWG93Wm5KRVQwTjVUbFkwYkVVMUt6bHRVMVI1YWsxMmRrZElabVl5YkhoWFVYWlNhWEJIV2s0d1NrdzViek5vTTNBNFNGSlFTbTFTTWpoMFoxcEdURWw0WkVwMVRFMUtZMVJwV1VWSmJsaFRUak5DTDFCbGNrYzJWR1ZFTmxsaVUyZGhWbmRoZURSNWVYVnBla05pTWpKRGJrdERLMnAyUmxKdGNUUXlhV1ZZY25oeGJuQjVOM1JTU0doS1pUUnJSMnRtTjJWRE1EaFVVVzl6YlZCeWNsSmphM0ZoV0hScFdteEhhQ3ROTHpGVU1DOXVVWGREUVVGQlBTSjkgLS0+XG5cbjxkaXYgZGF0YS1wYWdlZHRhYmxlPVwiZmFsc2VcIj5cbiAgPHNjcmlwdCBkYXRhLXBhZ2VkdGFibGUtc291cmNlIHR5cGU9XCJhcHBsaWNhdGlvbi9qc29uXCI+XG57XCJjb2x1bW5zXCI6W3tcImxhYmVsXCI6W1wiUTJfNlwiXSxcIm5hbWVcIjpbMV0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX0se1wibGFiZWxcIjpbXCJhbWVyaWNhbl9pbXBvcnRhbmNlXCJdLFwibmFtZVwiOlsyXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfV0sXCJkYXRhXCI6W3tcIjFcIjpcIi0xXCIsXCIyXCI6XCIzMVwifSx7XCIxXCI6XCIxXCIsXCIyXCI6XCIyOTU2XCJ9LHtcIjFcIjpcIjJcIixcIjJcIjpcIjE0NTZcIn0se1wiMVwiOlwiM1wiLFwiMlwiOlwiODcyXCJ9LHtcIjFcIjpcIjRcIixcIjJcIjpcIjUyMVwifV0sXCJvcHRpb25zXCI6e1wiY29sdW1uc1wiOntcIm1pblwiOnt9LFwibWF4XCI6WzEwXSxcInRvdGFsXCI6WzJdfSxcInJvd3NcIjp7XCJtaW5cIjpbMTBdLFwibWF4XCI6WzEwXSxcInRvdGFsXCI6WzVdfSxcInBhZ2VzXCI6e319fVxuICA8XC9zY3JpcHQ+XG48XC9kaXY+XG5cbjwhLS0gcm5iLWZyYW1lLWVuZCAtLT5cbiJ9 -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRUzA3RE1CQ2RPRTVRZ2tDVmVnQk9rQ3lLQkJ3QXNRZUIxRjFsSE5OYXBIYmt1TUNTQTNBWTdvZlVNazQ4RzBkeS9QeG0zcHZQMC8zNnVsN1hBSkFENXd6eUFpRVVMODhQelIwQUVnQVpjS2pDL1lWSlN3U0J2QWhaSi95bWhKbkw4WENLNGJrQ09QOUIrSXVoSGFaVWlXRmh4RjZOQ0JhVHdVenl4OVhtSnVJbHhwMld3bXowZnJET0N5TlY0bEU1KzltU1R5ak12dkdIZmYybHhXUXZSaXBHWk4wSkw5bzNoM3A4SFJQSm1SMjh0Z1pGTEl4ZEp1TE1KY1RpWUVJblhTTjNCL1Blckc2VGVENlliU2dhVndheDR5eXVpekNiMjJDbktDK2p2RlJtcTQyaWVYcnhxbnB5N3RSSGhKZTRrR2tmN2VDMDhUUW9zbVByclJja3FhWHRpWmxHaCtNLzFUMC9uUXdDQUFBPSJ9 -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Q2_6"],"name":[1],"type":["int"],"align":["right"]},{"label":["american_importance"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"31"},{"1":"1","2":"2956"},{"1":"2","2":"1456"},{"1":"3","2":"872"},{"1":"4","2":"521"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVRKZk55bDhQbHh1SUNCemRXMXRZWEpwYzJVb1hHNGdJQ0FnWVcxbGNtbGpZVzVmYVcxd2IzSjBZVzVqWlNBOUlHNG9LU2xjYm1CZ1lDSjkgLS0+XG5cbmBgYHJcbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzcpfD5cbiAgc3VtbWFyaXNlKFxuICAgIGFtZXJpY2FuX2ltcG9ydGFuY2UgPSBuKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTJfNyl8PlxuICBzdW1tYXJpc2UoXG4gICAgYW1lcmljYW5faW1wb3J0YW5jZSA9IG4oKSlcbmBgYCJ9 -->
-<pre class="r"><code>nonvoters_data |&gt;
-  group_by(Q2_7)|&gt;
-  summarise(
-    american_importance = n())</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSVXpBM1JFMUNRMlJQUlRWUlNURkdWalpxVmtsR2RUSnBVRkZDYVVSM1MzQjFPRzgwY0d4cGEyUjFVelIzU2tsVVkxRnRWMGhCYlhCYVduZzBUbTgzYXl0UWJrNTJSR1ZtYURsMlpIVjBjRlpCU2tGRU5YZDZlVUZwUlZWVU5Ea3pPVkpaUVVOWlFVMVBUWHBETDFsc1NsTjNVMEoyUVRWYVJpOTZSMmhKYmt3NFdFTkxOR0pyUW0xTVkwbDJla2hzUmprNEwybFhSbWg0UmtWT1EwSmhhbmRWVkhrck9WWXJSUzlGVXpRd05VeFpabUkyTWtaMmJtaGFSWEU0V21jMUt6bEhVVlI1YWsxMmRrTklabVl5YkhoWFVXNUNhWEJIV2s1VlMwdzFiMWhvTTNBNGJsSlFTbXhsTWpsMFoxcEdURWw0WkVwMVRFMUtZMVJwV2tWSmJtSlRNV1pVSzJGMFdHMHlWR1ZPTm1KUmVXZGhWbmRoZURSNWVYVnBla05pTW0xRFdFdERLMnAyUmxSdGIwa3lhV1ZVY25oeVJIQjVZblJXTjJoSVRtTjVUR2xRY0c1bVlXVkNiMVV5WVVoNE1XZDFVMVpPU2pKNFNYbHFkeTlyWmtSVlZDdGhVWGREUVVGQlBTSjkgLS0+XG5cbjxkaXYgZGF0YS1wYWdlZHRhYmxlPVwiZmFsc2VcIj5cbiAgPHNjcmlwdCBkYXRhLXBhZ2VkdGFibGUtc291cmNlIHR5cGU9XCJhcHBsaWNhdGlvbi9qc29uXCI+XG57XCJjb2x1bW5zXCI6W3tcImxhYmVsXCI6W1wiUTJfN1wiXSxcIm5hbWVcIjpbMV0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX0se1wibGFiZWxcIjpbXCJhbWVyaWNhbl9pbXBvcnRhbmNlXCJdLFwibmFtZVwiOlsyXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfV0sXCJkYXRhXCI6W3tcIjFcIjpcIi0xXCIsXCIyXCI6XCI0NFwifSx7XCIxXCI6XCIxXCIsXCIyXCI6XCIzNjg0XCJ9LHtcIjFcIjpcIjJcIixcIjJcIjpcIjE0NTRcIn0se1wiMVwiOlwiM1wiLFwiMlwiOlwiNDU5XCJ9LHtcIjFcIjpcIjRcIixcIjJcIjpcIjE5NVwifV0sXCJvcHRpb25zXCI6e1wiY29sdW1uc1wiOntcIm1pblwiOnt9LFwibWF4XCI6WzEwXSxcInRvdGFsXCI6WzJdfSxcInJvd3NcIjp7XCJtaW5cIjpbMTBdLFwibWF4XCI6WzEwXSxcInRvdGFsXCI6WzVdfSxcInBhZ2VzXCI6e319fVxuICA8XC9zY3JpcHQ+XG48XC9kaXY+XG5cbjwhLS0gcm5iLWZyYW1lLWVuZCAtLT5cbiJ9 -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRUzA3RE1CQ2RPRTVRSTFGVjZqVklGdTJpUFFCaUR3S3B1OG80cGxpa2R1UzR3SklUY1FtV0hBbXBaWng0Tm83aytQbk52RGVmaDl2ZHV0cFZBSkFENXd6eUFpRVVUNDkzOVJZQUNZQU1PTXpDL1lsSlN3U0J2QTVaRi96R2hJbkw4WENLNGJrQm1MY0l2ekhsRjk4L2lXRmh4RkVOQ0JhandVVHkrOVYrRS9FUzQwNUxZZmI2MkZ2bmhaRXE4Wmc1KzlHUVR5ak12dkNIZmYybHhXUW5CaXBHWk5VS0w1b1hoM3A4blJQSmxlMjl0Z1pGTEl4ZEp1TE1KY1RpWkVJbmJTMWZUK2F0WG0yVGVONmJReWdhVndheDR5eXVpekNiMm1DWEtDK2p2RlRtb0kyaWVUcnhyRHB5YnRWN2hITmN5TGlQcG5mYWVCb1UyYUh4MWd1U1ZOSjJ4SXlqdy9rZkRVVCthUXdDQUFBPSJ9 -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Q2_7"],"name":[1],"type":["int"],"align":["right"]},{"label":["american_importance"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"44"},{"1":"1","2":"3684"},{"1":"2","2":"1454"},{"1":"3","2":"459"},{"1":"4","2":"195"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVRKZk9DbDhQbHh1SUNCemRXMXRZWEpwYzJVb1hHNGdJQ0FnWVcxbGNtbGpZVzVmYVcxd2IzSjBZVzVqWlNBOUlHNG9LU2xjYm1CZ1lDSjkgLS0+XG5cbmBgYHJcbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzgpfD5cbiAgc3VtbWFyaXNlKFxuICAgIGFtZXJpY2FuX2ltcG9ydGFuY2UgPSBuKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTJfOCl8PlxuICBzdW1tYXJpc2UoXG4gICAgYW1lcmljYW5faW1wb3J0YW5jZSA9IG4oKSlcbmBgYCJ9 -->
-<pre class="r"><code>nonvoters_data |&gt;
-  group_by(Q2_8)|&gt;
-  summarise(
-    american_importance = n())</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSVUZVdlJFMUNRemxQUlRaeFVtZEtWalp6V1M5WlJXbEhjM0JSWkUxaVIwRlJUM0JYZFZrMGNFWnhhMlJQVXpSM09HaDJORWN2ZUVWd1NscDZOR3h6WTNsbVNIcDFNM1oyVUhBM2RVNXFabFp3WjB0QlNFUm9ibXRDWTBsdldHZzFkbkV2V0VGRlowRmFUVUpvU0hVMGRsUkdiMmxEVDFKR2VVUnlhazU1V2sxWVNUWklWWGQ2VUVaalNtWm5UbXRRY0d4NmFpdDVSWGhNU1hjMGNVRklRbGxxVTFsVFVEWTBNbkUwYWxodFRHTmhVMjVOVm1nNU5qWTNkM2RWYVZWbFl6SmpMMGN2U1Vwb1pHc3pMM0pEZG5ZM1UxazNUVkpCZUZscGMxZDFSa1k0SzNCUmFqWTVWRWx3YmxvemJYUnlWVTFVUXpKSFZXbDZiSGhEVEVrMGJXUk9URmM0ZFRGdk0zVjJWbUpTVEZCbE4wMVFVbVZRUzBsSVlXTjRXRlZTV214TllqZENlbXhhV2xOWWVYVjVNVlZVVWxCS00yRnhTU3RrVjJaVlVqUnBVWE5hT1RsSU1GUm9kRkJuZVVrM1RrNDFObEZhU2tzeWJ6WlpZMWhSTkM5UlQzZ3lTRVJXUkVGSlFVRkJQVDBpZlE9PSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJRMl84XCJdLFwibmFtZVwiOlsxXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfSx7XCJsYWJlbFwiOltcImFtZXJpY2FuX2ltcG9ydGFuY2VcIl0sXCJuYW1lXCI6WzJdLFwidHlwZVwiOltcImludFwiXSxcImFsaWduXCI6W1wicmlnaHRcIl19XSxcImRhdGFcIjpbe1wiMVwiOlwiLTFcIixcIjJcIjpcIjI2XCJ9LHtcIjFcIjpcIjFcIixcIjJcIjpcIjM0OTlcIn0se1wiMVwiOlwiMlwiLFwiMlwiOlwiMTkzOFwifSx7XCIxXCI6XCIzXCIsXCIyXCI6XCIyOTdcIn0se1wiMVwiOlwiNFwiLFwiMlwiOlwiNzZcIn1dLFwib3B0aW9uc1wiOntcImNvbHVtbnNcIjp7XCJtaW5cIjp7fSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOlsyXX0sXCJyb3dzXCI6e1wibWluXCI6WzEwXSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOls1XX0sXCJwYWdlc1wiOnt9fX1cbiAgPFwvc2NyaXB0PlxuPFwvZGl2PlxuXG48IS0tIHJuYi1mcmFtZS1lbmQgLS0+XG4ifQ== -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRUFUvRE1CQzlPRTZxUmdKVjZzWS9ZRWlHc3BRZE1iR0FRT3BXdVk0cEZxa2RPUzR3OGh2NEcveEVwSlp6NGxzY3lmSHp1M3Z2UHA3dU5qZlZwZ0tBSERobmtCY0lvWGg1dnEvWEFFZ0FaTUJoSHU0dlRGb2lDT1JGeURyak55Wk1YSTZIVXd6UEZjSmZnTmtQcGx6ait5RXhMSXc0cUFIQllqU1lTUDY0MnE0alhtTGNhU25NVmg5NjY3d3dVaVVlYzJjL0cvSUpoZGszL3JDdnY3U1k3TVJBeFlpc1d1RkY4K3BRajY5VElwblozbXRyVU1UQzJHVWl6bHhDTEk0bWROTFc4dTFvM3V2VmJSTFBlN01QUmVQS0lIYWN4WFVSWmxNYjdCemxaWlNYeXV5MVVUUlBKM2FxSStkV2ZVUjRpUXNaOTlIMFRodFBneUk3Tk41NlFaSksybzZZY1hRNC9RT3gySERWREFJQUFBPT0ifQ== -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Q2_8"],"name":[1],"type":["int"],"align":["right"]},{"label":["american_importance"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"26"},{"1":"1","2":"3499"},{"1":"2","2":"1938"},{"1":"3","2":"297"},{"1":"4","2":"76"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVRKZk9Ta2dmRDVjYmlBZ2MzVnRiV0Z5YVhObEtGeHVJQ0FnSUdGdFpYSnBZMkZ1WDJsdGNHOXlkR0Z1WTJVZ1BTQnVLQ2twWEc1Z1lHQWlmUT09IC0tPlxuXG5gYGByXG5ub252b3RlcnNfZGF0YSB8PlxuICBncm91cF9ieShRMl85KSB8PlxuICBzdW1tYXJpc2UoXG4gICAgYW1lcmljYW5faW1wb3J0YW5jZSA9IG4oKSlcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTJfOSkgfD5cbiAgc3VtbWFyaXNlKFxuICAgIGFtZXJpY2FuX2ltcG9ydGFuY2UgPSBuKCkpXG5gYGAifQ== -->
-<pre class="r"><code>nonvoters_data |&gt;
-  group_by(Q2_9) |&gt;
-  summarise(
-    american_importance = n())</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSZVRBM1JFMUNSR05QUlRWUlRGbEZjVlptZDBKS05sSkZhVVkzWjJweWFVUlJUM0YwVFc4M1lsSnhWSEo1U0VkQ1NTOHZRM1l2UWxSVFF6TnllRXcwTkRCcFlWUXlXak5hZUM5UVJHRnBiRmRCWjBKNU5FcDRRbGhvUTBVMGRsaHNjMkp2UkVsQlNXZEJkelI2THk4eWFXOW5WVUpVTlRjM2NXaE5PVms0U0VVMVVsRTROV2xwZFVGTlVYWXdWRGhWTVRCU1pFcHZXVVo1Y2pCbFEwMTRTR2MwYm10VU4yWnlLelJCV0d4TVpYUnJjbWgxT1RjeWVGUnhURk5wWTJaTmJYTTROaXQyYWtjM1NuUmxUazVrWmpKcmVERmpiMnBPU1dscllUWlhVemx6WVZOdWRqSk5hVTlVVHpsaGR6SlRhVkJ0TVhrd1UyTXlXVk5aU0RsQ1VEQnNVbkZrT0VRellXNXRWRFZRVFdWME56VndUMEp0UldsaVRuZHliMnBhVGtGWk4wSllhMW8xUzFoSFlsbHpOamQwVUVwT09URkdOVEJhTDBKSWFFSkNlRzUyVldabE1sSlNZMWhLV0dGdmJsaEZlVk52VVhsWVYxUkhNV1ZJTkVSNlpVRnVlbmROUVdkQlFTSjkgLS0+XG5cbjxkaXYgZGF0YS1wYWdlZHRhYmxlPVwiZmFsc2VcIj5cbiAgPHNjcmlwdCBkYXRhLXBhZ2VkdGFibGUtc291cmNlIHR5cGU9XCJhcHBsaWNhdGlvbi9qc29uXCI+XG57XCJjb2x1bW5zXCI6W3tcImxhYmVsXCI6W1wiUTJfOVwiXSxcIm5hbWVcIjpbMV0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX0se1wibGFiZWxcIjpbXCJhbWVyaWNhbl9pbXBvcnRhbmNlXCJdLFwibmFtZVwiOlsyXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfV0sXCJkYXRhXCI6W3tcIjFcIjpcIi0xXCIsXCIyXCI6XCIzNlwifSx7XCIxXCI6XCIxXCIsXCIyXCI6XCIyNzU4XCJ9LHtcIjFcIjpcIjJcIixcIjJcIjpcIjkzMVwifSx7XCIxXCI6XCIzXCIsXCIyXCI6XCI4MTBcIn0se1wiMVwiOlwiNFwiLFwiMlwiOlwiMTMwMVwifV0sXCJvcHRpb25zXCI6e1wiY29sdW1uc1wiOntcIm1pblwiOnt9LFwibWF4XCI6WzEwXSxcInRvdGFsXCI6WzJdfSxcInJvd3NcIjp7XCJtaW5cIjpbMTBdLFwibWF4XCI6WzEwXSxcInRvdGFsXCI6WzVdfSxcInBhZ2VzXCI6e319fVxuICA8XC9zY3JpcHQ+XG48XC9kaXY+XG5cbjwhLS0gcm5iLWZyYW1lLWVuZCAtLT5cbiJ9 -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFReTA3RE1CRGNPRTVRTFlFcVZmd0JKNlJFaUY3Z2pyaURRT3F0TW83YlJxVHJ5SEdCSS8vQ3YvQlRTQzNyeEw0NDBpYVQyWjNaeC9QRGFpbFdBZ0J5NEp4QlhoQ0U0dlhsc2JvRElBSWdBdzR6Ly8yaW9nVUJUNTc3cWhNOVk4SEU1UlE4NWlpdUFNUXYwVDhVMTBSZEpvWUZ5cjBlQ014SGc0bmtUN2ZyKzRBWGxMZXRrcmh1OTcyeFRxTFNpY2ZNbXM4Nit2akc3SnRlTk5kZjJreDFjb2pOSWlrYTZXUzlzYVNudjJNaU9UTzlhdzJTaVBtMXkwU2MyWVNZSDlCUDBsUnFkOEQzYW5tVDVQTWV0NzVwT0JtRWliTndyb2paTkFZN0JYa1o1S1hHYllzNjd0UEpOOTFGNTBaL0JIaEJCeG52VWZlMlJSY1hKWGFvblhFeVNvUXlYV1RHMWVINER6ZUFuendNQWdBQSJ9 -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Q2_9"],"name":[1],"type":["int"],"align":["right"]},{"label":["american_importance"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"36"},{"1":"1","2":"2758"},{"1":"2","2":"931"},{"1":"3","2":"810"},{"1":"4","2":"1301"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVRKZk1UQXBmRDVjYmlBZ2MzVnRiV0Z5YVhObEtGeHVJQ0FnSUdGdFpYSnBZMkZ1WDJsdGNHOXlkR0Z1WTJVZ1BTQnVLQ2twWEc1Z1lHQWlmUT09IC0tPlxuXG5gYGByXG5ub252b3RlcnNfZGF0YSB8PlxuICBncm91cF9ieShRMl8xMCl8PlxuICBzdW1tYXJpc2UoXG4gICAgYW1lcmljYW5faW1wb3J0YW5jZSA9IG4oKSlcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTJfMTApfD5cbiAgc3VtbWFyaXNlKFxuICAgIGFtZXJpY2FuX2ltcG9ydGFuY2UgPSBuKCkpXG5gYGAifQ== -->
-<pre class="r"><code>nonvoters_data |&gt;
-  group_by(Q2_10)|&gt;
-  summarise(
-    american_importance = n())</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSZVRBM1JFMUNSR05QU1RoeGExVkRWaXRuZFVsWGVVcExUSEIzTkVsbE5HZHJTSEZ5YWtkT1Uya3pVV1JQVXpWM05VVm1OVVZ4VTFka1YzQm1ZazF1TW1WRWVYcHlLMlZJVkZaMGRFdG5Ra2xKWTNOWmNFUnNRbmxHT1daSWRYTTNRVU5KUVVWemFXZGtVR016YVZaWlJVaElibWhXUTJSaGN5dEVUWEJpVTNvNFJXWTNSMjFDZUVReFFtVkZaREpVTjBSalMyMURVR1o1Tkc1QlkyYzNaM2xoWm1JM1puSkhVREZaYTAxRmNIY3pTM0k1Y1VremJFdEhVVlZ3UkZRMmNYZHRRbGhIWWpKUmQyTldPV2hrYmtWM1QyWlJjbHBCVm1neU0zWklhek0xUzJaWVRXSkpjemxIYVZaU2FrbDRNVE5qVW0xU1RWUkZZM05FZFd0eE5sZDFkMDhyUmtjelltWlRabXAwYVRkd1NEVnRORU4wVHk5TWQwTmFkV041TWsxdVlrTXlPSFpLVUZsTFdtVm9ialJIT1hsRFNrVTNLMlZ1YUVwUk1XdHVhMk42UjI5Vk1rNUZjbk14Um1oMFpXSkNWVkZuSzBKdFZuVklOSG9yU1RkcGIxVkVVVWxCUVVFOVBTSjkgLS0+XG5cbjxkaXYgZGF0YS1wYWdlZHRhYmxlPVwiZmFsc2VcIj5cbiAgPHNjcmlwdCBkYXRhLXBhZ2VkdGFibGUtc291cmNlIHR5cGU9XCJhcHBsaWNhdGlvbi9qc29uXCI+XG57XCJjb2x1bW5zXCI6W3tcImxhYmVsXCI6W1wiUTJfMTBcIl0sXCJuYW1lXCI6WzFdLFwidHlwZVwiOltcImludFwiXSxcImFsaWduXCI6W1wicmlnaHRcIl19LHtcImxhYmVsXCI6W1wiYW1lcmljYW5faW1wb3J0YW5jZVwiXSxcIm5hbWVcIjpbMl0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX1dLFwiZGF0YVwiOlt7XCIxXCI6XCItMVwiLFwiMlwiOlwiMzhcIn0se1wiMVwiOlwiMVwiLFwiMlwiOlwiMTg1NFwifSx7XCIxXCI6XCIyXCIsXCIyXCI6XCIyMzQwXCJ9LHtcIjFcIjpcIjNcIixcIjJcIjpcIjExMjdcIn0se1wiMVwiOlwiNFwiLFwiMlwiOlwiNDc3XCJ9XSxcIm9wdGlvbnNcIjp7XCJjb2x1bW5zXCI6e1wibWluXCI6e30sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbMl19LFwicm93c1wiOntcIm1pblwiOlsxMF0sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbNV19LFwicGFnZXNcIjp7fX19XG4gIDxcL3NjcmlwdD5cbjxcL2Rpdj5cblxuPCEtLSBybmItZnJhbWUtZW5kIC0tPlxuIn0= -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFReTA3RE1CRGNPSThxa1VDVitndUlXeUpLTHB3NEllNGdrSHFyakdOU2kzUWRPUzV3NUVmNUVxU1dkV3BmYk1uMmVEeXpyK2VIVFZ0dEtnQklJY3NZcERsQnlGOWZIdXM3QUNJQUVzaWdkUGMzaVZZRUhIbmhWQ2RhcytETXBiU3o4RWY3R21CeEQxQmVFZDJUN0RjS21DUGZ5NG5BY2c3Z3lhZmI3ZnJHUDFZa01FcHczS3I5cUkzbEtHUVVwRFQ2cXdtQlhHYjJRd2NWOWhkbkV3T2ZRclpBVmgyM3ZIazM1S2ZYTWJJczlHaVZSakl4MTNjUm1STVRFY3NEdWtxNld1d08rRkczYmZTZmp0aTdwSDVtNEN0Ty9Md0NadWN5Mk1uYkMyOHZKUFlLWmVobjRHOXlDSkU3K2VuaEpRMWtua2N6R29VMk5FcnMxRmh0ZWJCVVFnK0JtVnVINHorSTdpb1VEUUlBQUE9PSJ9 -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Q2_10"],"name":[1],"type":["int"],"align":["right"]},{"label":["american_importance"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"38"},{"1":"1","2":"1854"},{"1":"2","2":"2340"},{"1":"3","2":"1127"},{"1":"4","2":"477"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+{"columns":[{"label":["Q2_1"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"35"},{"1":"1","2":"4758"},{"1":"2","2":"738"},{"1":"3","2":"145"},{"1":"4","2":"160"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
   </script>
 </div>
 <!-- rnb-frame-end -->
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>For these 10 blocks of code, we counted the number of times each
-“importance” answer was answered for each question. For example, Q2_10
-corresponds to the original question of “How important do you think
-protesting if you believe government actions are wrong is to being a
-good American?” The numbers 1-4 correspond to importance, with 1 being
-very important, 2 being somewhat important, 3 being not so important and
-4 being not at all important. So for CQ_10, the number 1854 means that
-1854 people responded “very important” to “How important do you think
-protesting if you believe government actions are wrong is to being a
-good American?” This is the same logic for every single row in every
-single one of these code blocks.</p>
+<p>This question is: “In your view, how important is voting in elections
+in being a good American?” The results of this code means 4758 answered
+“very important”, 738 answered “somewhat important,” 145 answered “not
+so important” and 160 answered “not at all important.”</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHViR2xpY21GeWVTaDBhV1I1ZG1WeWMyVXBYRzVjYm01dmJuWnZkR1Z5YzE5a1lYUmhJSHcrWEc0Z0lHZHliM1Z3WDJKNUtGRXlYeklwZkQ1Y2JpQWdjM1Z0YldGeWFYTmxLRnh1SUNBZ0lHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjeUE5SUc0b0tTbGNibUJnWUNKOSAtLT5cblxuYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzIpfD5cbiAgc3VtbWFyaXNlKFxuICAgIG51bWJlcl9vZl9yZXNwb25kZW50cyA9IG4oKSlcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzIpfD5cbiAgc3VtbWFyaXNlKFxuICAgIG51bWJlcl9vZl9yZXNwb25kZW50cyA9IG4oKSlcbmBgYCJ9 -->
+<pre class="r"><code>library(tidyverse)
+
+nonvoters_data |&gt;
+  group_by(Q2_2)|&gt;
+  summarise(
+    number_of_respondents = n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSZVRBM1JFMUNSR05LUlRabmJHdERWbTlJTDBGT1ZHMUZRVE4zUVRSbk5FTnhZbVpKVkdSM01tRnljVTlJUVdNMFkzVkRka3MzVjNORkwzWnBVMGszU0hONmRYcHFMMlZZT1ZOT1ptTjNRa2xuVEVWWmEzQlJaM0JLT0daeUwydDZRVUpGUVVWVVFsa3lVSFZJYTNVMFNWZFFURWRhYkROdmJYaEtiVXh4U0VSbVNYcFBRWGRCTDBGV2VtWlZMMmxRTUd4aFFsbFpjbWxMUVdORGVUaHNaMHAwYkdKWFdsVlBjak5CT0dKeFUzVXhUR0pUWTNWblZrNW9URTVGVEdkemRGQnZkWFpLVFhSSVppOVRhbnB2TjJobFdIRlVaM2tyYmtOa05VazBkMjkwY0hJd09VUnZTR3RwZGxadE1WbG9hVmRKTjJWQ1lVbEplREJSZVhoR2RFb3dNV1UzTUdNNE5VOVdWRVZGT1RZelRtMXBZbTF1WjA5dk4yTjNhbmxQTlhwaWFXazFUbTVVY0RWS00weFZieTlVZVdReVRXcFBUM3BtZVhrNFJtSlhjMmt3YWpaTVdFeFNieTlMVEVaRVdWcFJVbGh6U25JeFdHeHRSMmd6VHk4d2VFd3pkM05QUVdkQlFTSjkgLS0+XG5cbjxkaXYgZGF0YS1wYWdlZHRhYmxlPVwiZmFsc2VcIj5cbiAgPHNjcmlwdCBkYXRhLXBhZ2VkdGFibGUtc291cmNlIHR5cGU9XCJhcHBsaWNhdGlvbi9qc29uXCI+XG57XCJjb2x1bW5zXCI6W3tcImxhYmVsXCI6W1wiUTJfMlwiXSxcIm5hbWVcIjpbMV0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX0se1wibGFiZWxcIjpbXCJudW1iZXJfb2ZfcmVzcG9uZGVudHNcIl0sXCJuYW1lXCI6WzJdLFwidHlwZVwiOltcImludFwiXSxcImFsaWduXCI6W1wicmlnaHRcIl19XSxcImRhdGFcIjpbe1wiMVwiOlwiLTFcIixcIjJcIjpcIjM2XCJ9LHtcIjFcIjpcIjFcIixcIjJcIjpcIjI4MTFcIn0se1wiMVwiOlwiMlwiLFwiMlwiOlwiMjA2OFwifSx7XCIxXCI6XCIzXCIsXCIyXCI6XCI2NDRcIn0se1wiMVwiOlwiNFwiLFwiMlwiOlwiMjc3XCJ9XSxcIm9wdGlvbnNcIjp7XCJjb2x1bW5zXCI6e1wibWluXCI6e30sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbMl19LFwicm93c1wiOntcIm1pblwiOlsxMF0sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbNV19LFwicGFnZXNcIjp7fX19XG4gIDxcL3NjcmlwdD5cbjxcL2Rpdj5cblxuPCEtLSBybmItZnJhbWUtZW5kIC0tPlxuIn0= -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFReTA3RE1CRGNKRTZnbGtDVm9IL0FOVG1FQTN3QTRnNENxYmZJVGR3MmFycU9IQWM0Y3VDdks3V3NFL3ZpU0k3SHN6dXpqL2VYOVNOZmN3QklnTEVZa3BRZ3BKOGZyL2t6QUJFQUVUQlkyUHVIa3U0SVdQTEdabDNvbXhKbUxxSERmSXpPQXdBL0FWemZVL2lQMGxhQllZcmlLQWNDeThsZ0p0bGJXWlVPcjNBOGJxU3UxTGJTY3VnVk5oTE5FTGdzdFBvdXZKTXRIZi9TanpvN2hlWHFUZ3krbkNkNUk0d290cHIwOURvSGtpdlZtMVloaVdJN2VCYUlJeDBReXhGdEowMWU3MGM4NU9WVEVFOTYzTm1pYm1uZ09vN2N3anlPNXpiaWk1Tm5UcDVKM0xVby9UeWQyTWpPT3pmeXk4RmJXc2kwajZMWExSby9LTEZEWVpRUlhzSnIxWGxtR2gzTy8weEwzd3NPQWdBQSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q2_2"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"36"},{"1":"1","2":"2811"},{"1":"2","2":"2068"},{"1":"3","2":"644"},{"1":"4","2":"277"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “In your view, how important is serving on a jury
+in being a good American?” The results of this code means 2811 answered
+“very important”, 2068 answered “somewhat important,” 644 answered “not
+so important” and 277 answered “not at all important.”</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHViR2xpY21GeWVTaDBhV1I1ZG1WeWMyVXBYRzVjYm01dmJuWnZkR1Z5YzE5a1lYUmhJSHcrWEc0Z0lHZHliM1Z3WDJKNUtGRXlYek1wZkQ1Y2JpQWdjM1Z0YldGeWFYTmxLRnh1SUNBZ0lHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjeUE5SUc0b0tTbGNibUJnWUNKOSAtLT5cblxuYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzMpfD5cbiAgc3VtbWFyaXNlKFxuICAgIG51bWJlcl9vZl9yZXNwb25kZW50cyA9IG4oKSlcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzMpfD5cbiAgc3VtbWFyaXNlKFxuICAgIG51bWJlcl9vZl9yZXNwb25kZW50cyA9IG4oKSlcbmBgYCJ9 -->
+<pre class="r"><code>library(tidyverse)
+
+nonvoters_data |&gt;
+  group_by(Q2_3)|&gt;
+  summarise(
+    number_of_respondents = n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSVXpBM1JFMUNRMlJLUlRWUlNXOUZjVWxYTjFGaVlrcHZUbm94UVhoU05FVlZibVZTYlRkbmJHRnFjVTlpUVdSWlkyaFRkWGRvTWpSRVZreE1UMHhGTTJwMVZEUXJZekk0VGpVdmJqZFhOV1EzUVc5QlUwbERlRWRLUzFWSlMxTjJURFF2YkVKdlFVbG5RV2RaTlZCaUszQkxVamRCY0dFNGRGWnNXQ3R4WVVWdFZYWnZUVUlyYW5OM1VXOW1aMFo1VkZOckx6bFFORTlFUmxCcldqQkdRbGRGZDBkTk9HMWxWblpZWVRSUlkyTjZNM1ZvWVc1dGIyeGtRMFI0Um1Gbk1GbEdUSEoxVWtnMVdqRnpObVpwVEdaMFZGcFlNV2wxTm1KdU1qVlVlRnAwVG5wM05uRkNTVlEyT1V4SlRHMVNaeXRyYTJ0cGFUSm5NbVZDVDBaSlFuTlNhbEprZEV0WGVtUjFTWEF6U3pGRFpVeEtaMFZrWWpGRE1FNVlUV1ZTVnpWcVNEaGtlRWRtU0ZoNWVrMXJlbWRqWTA5b1dpdHVOVE4yVW1VclpGZDJSSFEwVW5kMVdqbHNSVTV4YTFCcVFubFdWMVl3V1dFM2FWWkdTVE4yVUZSTFVFUTFVamhFVURZeFRVUm5TVUZCUVQwOUluMD0gLS0+XG5cbjxkaXYgZGF0YS1wYWdlZHRhYmxlPVwiZmFsc2VcIj5cbiAgPHNjcmlwdCBkYXRhLXBhZ2VkdGFibGUtc291cmNlIHR5cGU9XCJhcHBsaWNhdGlvbi9qc29uXCI+XG57XCJjb2x1bW5zXCI6W3tcImxhYmVsXCI6W1wiUTJfM1wiXSxcIm5hbWVcIjpbMV0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX0se1wibGFiZWxcIjpbXCJudW1iZXJfb2ZfcmVzcG9uZGVudHNcIl0sXCJuYW1lXCI6WzJdLFwidHlwZVwiOltcImludFwiXSxcImFsaWduXCI6W1wicmlnaHRcIl19XSxcImRhdGFcIjpbe1wiMVwiOlwiLTFcIixcIjJcIjpcIjM2XCJ9LHtcIjFcIjpcIjFcIixcIjJcIjpcIjI3NzJcIn0se1wiMVwiOlwiMlwiLFwiMlwiOlwiMjQxOVwifSx7XCIxXCI6XCIzXCIsXCIyXCI6XCI0NDlcIn0se1wiMVwiOlwiNFwiLFwiMlwiOlwiMTYwXCJ9XSxcIm9wdGlvbnNcIjp7XCJjb2x1bW5zXCI6e1wibWluXCI6e30sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbMl19LFwicm93c1wiOntcIm1pblwiOlsxMF0sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbNV19LFwicGFnZXNcIjp7fX19XG4gIDxcL3NjcmlwdD5cbjxcL2Rpdj5cblxuPCEtLSBybmItZnJhbWUtZW5kIC0tPlxuIn0= -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRUzA3RE1CQ2RKRTVRSW9FcUlXN1FiYkpvTnoxQXhSNEVVbmVSbTdnbGFqcU9iQWRZY2hTdXdoMjREVkxMT0xFM2p1VDQrYzI4TjUvbjdXNWQ3QW9BU0lDeEdKS1VJS1N2TDQvbEJvQUlnQWdZNVBiK3BLUjdBcGE4dFZsWCtxYUVtVXZvTUIranN3UW9mZ0Z5VFNrLzlQNE9ERlBrWjBGQldFd0dNOG1lVnZYYTRRY2N6M3VoYW5tb2xkQ0R4RmFnMFlGTHJ1Ukg1WjFzNmZpTGZ0VFpYMWl1NmJuMjVUeFp0Tnp3NnFCSVQ2OUxJTG1SZytra2tpaTJnMmVCT0ZJQnNSalJkdEtXemR1SXAzSzFDZUxKZ0VkYjFDME5YTWVSVzVqSDhkeEdmSFh5ek1remdjY09oWituNTN2UmUrZFd2RHQ0Und1WjlsRU5xa1BqQnlWV1YwWWE3aVZGSTN2UFRLUEQ1UjhEUDYxTURnSUFBQT09In0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q2_3"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"36"},{"1":"1","2":"2772"},{"1":"2","2":"2419"},{"1":"3","2":"449"},{"1":"4","2":"160"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “In your view, how important is following what
+happens in government and politics in being a good American?” The
+results of this code means 2772 answered “very important”, 2419 answered
+“somewhat important,” 449 answered “not so important” and 160 answered
+“not at all important.”</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHViR2xpY21GeWVTaDBhV1I1ZG1WeWMyVXBYRzVjYm01dmJuWnZkR1Z5YzE5a1lYUmhJSHcrWEc0Z0lHZHliM1Z3WDJKNUtGRXlYelFwZkQ1Y2JpQWdjM1Z0YldGeWFYTmxLRnh1SUNBZ0lHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjeUE5SUc0b0tTbGNibUJnWUNKOSAtLT5cblxuYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzQpfD5cbiAgc3VtbWFyaXNlKFxuICAgIG51bWJlcl9vZl9yZXNwb25kZW50cyA9IG4oKSlcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzQpfD5cbiAgc3VtbWFyaXNlKFxuICAgIG51bWJlcl9vZl9yZXNwb25kZW50cyA9IG4oKSlcbmBgYCJ9 -->
+<pre class="r"><code>library(tidyverse)
+
+nonvoters_data |&gt;
+  group_by(Q2_4)|&gt;
+  summarise(
+    number_of_respondents = n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSZVRBM1JFMUNSR05QUlRaeFVtZEtWbEYyZDBFNUsxUlJZMjlCTnpSbk5FTXdWblpyU20wMlNsTk9aVkkzVVVKSWRtOW5abEpIY0ZwS0wySkdhMUo1VUZvelpHMUlPRGhRTWpBeWVFeFJRV2RDWXpSYWNFSnNRbmxHTldaSWMzTTNRVU5KUVVWMVEzZGtVR016U2xZd1VtTlBVMFo1ZW5KVVRubFlUVmhGY1Vob2VHbGtSelJFUmt3d1JDdFNjemhPYUZoV2EyMUxSVFJUYTA1blRsSnVUVXBJT1dFeE4yTmxXQ3RPTkRORmJHUnhNekowY0ZKclZYUm9TM1JwVm5sWFYyNHhWbmRqYlZaYWFpOHdiemczS3pSdVNrNU1NSGR2UmpocGFVWldXbFZsTURFMlpYQXdhWGxWU1U1MGJFNUpTWFZaUjNwNVRuaHZhVTVwVG1GTWNuQkRNbUk1ZUVVdmVYWldPVVpGT0VoUVRHbHBabTF1WjA4d056aDNaMHB0WTNoMmN6ZFBWelZzSzJOVFJIZ3pTMDFGT0haa2NrbFFlbkV6T0RsUVExTkdha3gwYjNod01HaDZXVTFUY1hsd2NreEphVk5KY0VjNVdVZGFVbTltVkZCM1FVbHNiVUZQUVdkQlFTSjkgLS0+XG5cbjxkaXYgZGF0YS1wYWdlZHRhYmxlPVwiZmFsc2VcIj5cbiAgPHNjcmlwdCBkYXRhLXBhZ2VkdGFibGUtc291cmNlIHR5cGU9XCJhcHBsaWNhdGlvbi9qc29uXCI+XG57XCJjb2x1bW5zXCI6W3tcImxhYmVsXCI6W1wiUTJfNFwiXSxcIm5hbWVcIjpbMV0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX0se1wibGFiZWxcIjpbXCJudW1iZXJfb2ZfcmVzcG9uZGVudHNcIl0sXCJuYW1lXCI6WzJdLFwidHlwZVwiOltcImludFwiXSxcImFsaWduXCI6W1wicmlnaHRcIl19XSxcImRhdGFcIjpbe1wiMVwiOlwiLTFcIixcIjJcIjpcIjM0XCJ9LHtcIjFcIjpcIjFcIixcIjJcIjpcIjE5NjZcIn0se1wiMVwiOlwiMlwiLFwiMlwiOlwiMTYyM1wifSx7XCIxXCI6XCIzXCIsXCIyXCI6XCIxMzMxXCJ9LHtcIjFcIjpcIjRcIixcIjJcIjpcIjg4MlwifV0sXCJvcHRpb25zXCI6e1wiY29sdW1uc1wiOntcIm1pblwiOnt9LFwibWF4XCI6WzEwXSxcInRvdGFsXCI6WzJdfSxcInJvd3NcIjp7XCJtaW5cIjpbMTBdLFwibWF4XCI6WzEwXSxcInRvdGFsXCI6WzVdfSxcInBhZ2VzXCI6e319fVxuICA8XC9zY3JpcHQ+XG48XC9kaXY+XG5cbjwhLS0gcm5iLWZyYW1lLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFReTA3RE1CRGNPRTZxUmdKVlF2d0E5K1RRY29BNzRnNEMwVnZrSm02SlNOZVI3UUJIdm9nZlJHcFpKL2JGa1J5UFozZG1IODhQMjAyeExRQWdCYzRacEJsQnlGNWZIc3M3QUNJQUV1Q3dkUGMzSlYwUmNPU0Z5enJUTnlYTVhFcUhoeGlkRzRERkwwRCtSczhOaFhWa21LRTRTa05nTlJuTUpIOWExN2NlWCtONDNFbGRxMzJ0cFJrVXRoS3RpVnlXV24xVndjbVZaai8wbzg3KzRuSk5MMHdvRjhpaUZWWlVlMDE2ZXAwaXlVSU50bE5JSXVZR3p5TnhvaU5pTmFMcnBDMmI5eEUveXZWOUZFOEhQTGlpZm1uZ08wNzh3Z0ptY3h2czdPVzVsK2NTRHgzS01FOHZkcklQenEzODlQQ1NGakx0b3hwMGh6WU1TcXlwckxJaVNJcEc5WUdaUm9mVFB3QUlsbUFPQWdBQSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q2_4"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"34"},{"1":"1","2":"1966"},{"1":"2","2":"1623"},{"1":"3","2":"1331"},{"1":"4","2":"882"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “In your view, how important is displaying the
+American flag in being a good American?” The results of this code means
+1966 answered “very important”, 1623 answered “somewhat important,” 1331
+answered “not so important” and 882 answered “not at all important.”</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHViR2xpY21GeWVTaDBhV1I1ZG1WeWMyVXBYRzVjYm01dmJuWnZkR1Z5YzE5a1lYUmhJSHcrWEc0Z0lHZHliM1Z3WDJKNUtGRXlYelVwZkQ1Y2JpQWdjM1Z0YldGeWFYTmxLRnh1SUNBZ0lHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjeUE5SUc0b0tTbGNibUJnWUNKOSAtLT5cblxuYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzUpfD5cbiAgc3VtbWFyaXNlKFxuICAgIG51bWJlcl9vZl9yZXNwb25kZW50cyA9IG4oKSlcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzUpfD5cbiAgc3VtbWFyaXNlKFxuICAgIG51bWJlcl9vZl9yZXNwb25kZW50cyA9IG4oKSlcbmBgYCJ9 -->
+<pre class="r"><code>library(tidyverse)
+
+nonvoters_data |&gt;
+  group_by(Q2_5)|&gt;
+  summarise(
+    number_of_respondents = n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSZWxWeVJVMUNRMlZ3Yld4c1F6aHhTMlZRVFZaWGMxSkdPRUZJUlhVMlMzZDBOVXAwY3pKMWVFOTViRXB4YURVNVJsSXZSRUl2VFdzM1JIQndhekJ6U3pBemVqVk5kRGd6VURBdk16WXhWM2hNWjBGblFtTTBXbkJDYkVKNVJqWmxTRGh2TjBGRFNVRkZkVU4zWTA5amJrcFdNRkZqVDFOd2VYcHlVMDU1V0UxWVJYSkNkM2gyUmtaalJEVk9PVWN2YUVnNGIxSkhVMWx2WkdoTVVUSkJOVWRqZDJ0bU4zbHdZbm95SzNoSVJ5OXJZbkJYTWpGd1RFMTVhSE5LVm05VWRWTjVNQ3R4YVVOcmVYWk9kblZvU0c1bU0wWTFXbkJsYlVaQmRXdEZWWEp5UzJreWJYWlNNRTh3VTFORmVsaFpWR2xIU20xQ2N6aHFPRk5LYW05cWJHbExObFIwYlhobFVqTjNjbFk1WmxKbGVuSm5lbWhZTVZOM1VHWmpaVWxZUm1wRFlqSXlRa2hNT0NzNVVFcGxORFl4UTBkbFdIRjRhMWd4ZDJKMVZ6ZG9NbVV3YTBkclpqRmhRVGQwUjBaUldXc3hiR3hTVmtKVmFsTnhSRGgzTUU5b2VpdEJZVUpyT0VoalQwRm5RVUVpZlE9PSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJRMl81XCJdLFwibmFtZVwiOlsxXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfSx7XCJsYWJlbFwiOltcIm51bWJlcl9vZl9yZXNwb25kZW50c1wiXSxcIm5hbWVcIjpbMl0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX1dLFwiZGF0YVwiOlt7XCIxXCI6XCItMVwiLFwiMlwiOlwiMjhcIn0se1wiMVwiOlwiMVwiLFwiMlwiOlwiNDUxM1wifSx7XCIxXCI6XCIyXCIsXCIyXCI6XCIxMDEzXCJ9LHtcIjFcIjpcIjNcIixcIjJcIjpcIjE4NVwifSx7XCIxXCI6XCI0XCIsXCIyXCI6XCI5N1wifV0sXCJvcHRpb25zXCI6e1wiY29sdW1uc1wiOntcIm1pblwiOnt9LFwibWF4XCI6WzEwXSxcInRvdGFsXCI6WzJdfSxcInJvd3NcIjp7XCJtaW5cIjpbMTBdLFwibWF4XCI6WzEwXSxcInRvdGFsXCI6WzVdfSxcInBhZ2VzXCI6e319fVxuICA8XC9zY3JpcHQ+XG48XC9kaXY+XG5cbjwhLS0gcm5iLWZyYW1lLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRelVyRU1CQ2VwbWxsQzhxS2VQTVZXc1JGOEFIRXU2S3d0NUp0czJ1eE95bEpxaDU5RlIvREIvTWs3RHBwazBzSzAzejVNdDgzUDAvMzYxV3hMZ0FnQmM0WnBCbEJ5RjZlSDhvN0FDSUFFdUN3Y09jbkpWMFFjT1NweXpyU055WE1YRXJCd3h2RkZjRDVOOUcvaEg4b1JHU1lvZGhMUTJBNUdjd2tmN3lwYnoyK3hIRy9rYnBXMjFwTE15aHNKVm9UdVN5MCtxaUNreXZOdnVoSG5mM0Y1WnBlbUZBdWtFVXJyS2kybXZSME8wU1NFelhZVGlHSm1CczhqOFNKam9qbGlLNlR0bXhlUjN3clY5ZlJlenJnemhYMVN3UGZjZUlYRmpDYjIyQkhMOCs5UEplNDYxQ0dlWHF4a1gxd2J1VzdoMmUwa0drZjFhQTd0R0ZRWWsxbGxSVkJValNxRDh3ME9oeitBYUJrOEhjT0FnQUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q2_5"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"28"},{"1":"1","2":"4513"},{"1":"2","2":"1013"},{"1":"3","2":"185"},{"1":"4","2":"97"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “In your view, how important is participating in
+the U.S. Census every ten years in being a good American?” The results
+of this code means 4513 answered “very important”, 1013 answered
+“somewhat important,” 185 answered “not so important” and 97 answered
+“not at all important.”</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHViR2xpY21GeWVTaDBhV1I1ZG1WeWMyVXBYRzVjYm01dmJuWnZkR1Z5YzE5a1lYUmhJSHcrWEc0Z0lHZHliM1Z3WDJKNUtGRXlYellwZkQ1Y2JpQWdjM1Z0YldGeWFYTmxLRnh1SUNBZ0lHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjeUE5SUc0b0tTbGNibUJnWUNKOSAtLT5cblxuYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzYpfD5cbiAgc3VtbWFyaXNlKFxuICAgIG51bWJlcl9vZl9yZXNwb25kZW50cyA9IG4oKSlcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzYpfD5cbiAgc3VtbWFyaXNlKFxuICAgIG51bWJlcl9vZl9yZXNwb25kZW50cyA9IG4oKSlcbmBgYCJ9 -->
+<pre class="r"><code>library(tidyverse)
+
+nonvoters_data |&gt;
+  group_by(Q2_6)|&gt;
+  summarise(
+    number_of_respondents = n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSTTFWeVJFMUNVU3RpWkU1TFN6aHdRWFpRV1VwWGJrRkVPRkZJUldVd1ZtaGtlVlp5Y3pZeWMwOTViRXB4YkRjMlFVUTJUVGQ1WkhOdWNsUktWRkZ3Y0hadWVtNW1UaTgxWlZneFlYSTBjREZCVVVGS1RVSmFSR3RvUzBVNVVETjBkVmgzUlVsQlNXZEJaMkUxZG1JNGJ6WlpZVUZLWVRsek1YQnRLMHRYU0cxRmFuSk5lQ3RxWTBGV2VpdEZVSGxzTUVvMVV6aHpRWGRTV0RSVmJYTkNhVTF3YUVvNWNrdHpTSGg1SzNobVJ6UkZZWEZYTWpGdlNsQlZhSE5DVW05a2RVOVNTMlpzWW1WNVdtRlBkaXRzU0c1bU1rWTFXbkZsWVRFdlQyc3dXRXhFWVNzeWFYWlVNRTluVjFORGVtMVpWR2xMU2xscWREUkdiMmRxUmxKRFRFVlhNRzVpWkc1elVucDVWWEV2YzJkdVozazBjekJZWkRCelFqRklURzFHWlZKNlVHSmpVbTVLT0N0alVFSlBORFl4UkRSbFdIRXJSV0l4TTJKelYwaG5PV1V3YTBkclpqRmhRVFpPU0RWUldXNVdiSEJQUm1WVmFsTjVPVGgzTUU5d2VpdEJZVUpCYTBWalQwRm5RVUVpZlE9PSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJRMl82XCJdLFwibmFtZVwiOlsxXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfSx7XCJsYWJlbFwiOltcIm51bWJlcl9vZl9yZXNwb25kZW50c1wiXSxcIm5hbWVcIjpbMl0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX1dLFwiZGF0YVwiOlt7XCIxXCI6XCItMVwiLFwiMlwiOlwiMzFcIn0se1wiMVwiOlwiMVwiLFwiMlwiOlwiMjk1NlwifSx7XCIxXCI6XCIyXCIsXCIyXCI6XCIxNDU2XCJ9LHtcIjFcIjpcIjNcIixcIjJcIjpcIjg3MlwifSx7XCIxXCI6XCI0XCIsXCIyXCI6XCI1MjFcIn1dLFwib3B0aW9uc1wiOntcImNvbHVtbnNcIjp7XCJtaW5cIjp7fSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOlsyXX0sXCJyb3dzXCI6e1wibWluXCI6WzEwXSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOls1XX0sXCJwYWdlc1wiOnt9fX1cbiAgPFwvc2NyaXB0PlxuPFwvZGl2PlxuXG48IS0tIHJuYi1mcmFtZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRM1VyRE1CUStiZE5LSzhwQXZQWUpXbkFEOFFIRWUwVmhkeVZyczYyc095bEpxbDc2QUQ2TTd5ZHNuclRKVFFwcHZuem5mTi81ZVgxYXI0cDFBUUFKTUJaRGtoS0U5UDN0dVh3RUlBSWdBZ2E1dmI4bzZZYUFKYTlzMXBtK0tXSG1FanJNeCtqY0FWeitFUHlsMEo1UzhzQXdSWDRVbXNCaU1waEo5cktzSHh5K3hmRzRFYXFXMjFvSlBVaHNCUm9kdU9SS2ZsYmV5WmFPditsSG5mMkY1WnFlYTEvT2swWExEYSsyaXZUME9nV1NDem1ZVGlLSllqdDRGb2dqRlJDTEVXMG5iZG5zUnp5VXEvc2duZ3k0czBYZDBzQjFITG1GZVJ6UGJjUm5KOCtjUEJPNDYxRDRlWHErRWIxM2JzV0hnOWUwa0drZjFhQTZOSDVRWW5WbHBPRmVValN5OTh3ME9weitBYUJBa0VjT0FnQUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q2_6"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"31"},{"1":"1","2":"2956"},{"1":"2","2":"1456"},{"1":"3","2":"872"},{"1":"4","2":"521"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “In your view, how important is knowing the Pledge
+of Allegiance in being a good American?” The results of this code means
+2956 answered “very important”, 1456 answered “somewhat important,” 872
+answered “not so important” and 521 answered “not at all important.”</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHViR2xpY21GeWVTaDBhV1I1ZG1WeWMyVXBYRzVjYm01dmJuWnZkR1Z5YzE5a1lYUmhJSHcrWEc0Z0lHZHliM1Z3WDJKNUtGRXlYemNwZkQ1Y2JpQWdjM1Z0YldGeWFYTmxLRnh1SUNBZ0lHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjeUE5SUc0b0tTbGNibUJnWUNKOSAtLT5cblxuYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzcpfD5cbiAgc3VtbWFyaXNlKFxuICAgIG51bWJlcl9vZl9yZXNwb25kZW50cyA9IG4oKSlcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzcpfD5cbiAgc3VtbWFyaXNlKFxuICAgIG51bWJlcl9vZl9yZXNwb25kZW50cyA9IG4oKSlcbmBgYCJ9 -->
+<pre class="r"><code>library(tidyverse)
+
+nonvoters_data |&gt;
+  group_by(Q2_7)|&gt;
+  summarise(
+    number_of_respondents = n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSVXpBM1JFMUNRMlJQUlRWUlNURkdWbEYwZVVOYVRrVjFORUZEU1ZCUmFXczNhVWt6Wkd0MFJVOXZOR05DTVdoNVNXazNRbXRwVFdoMFdYZFVaVEpPVEhSd0syWTFOek0xVUU0eGRrNDRWekpCU1VGVlQwZGxVVnBuVVdobE0yd3JTMDg0UVdsQlFrbG5UVkJETTFvNFZXUkZXRUZyV21OMU5tdDRja053YVRWc1JGbFFaamRTZGtGS1lWTTBSR1ZHTDA1TU4wcDZURTFWUW5wV1VVZEJNVWRqZDJ0bU1YcFlkSGcxWmpRemFtTkxWbEJ5WmxjelZUQkhkVlZEZFRCUmRWTjVUUzl4YVVOck1IWk9kblZwWjNsMk4ybGtSVEJ1YUhCQmRXdEpWVlZXYkZJM1VUTndObTVUVEVwb1pUVjBjVFZHUlhwRVYyVlNLMHhGVWsxU2NWSkdaVXBNU25aWVJXUXZTM3BVY2paVU0zTTRkVXRTSzJGUFFYSlVkbnBCUVcxYWVrZGxlbk0xWW0xWU5YZHZVRXhoY2xGVWVXUXljV2QyVDFWeU1UZDFTMU5DVkZCUGIyVjBUMmxFV1RCVFR6RlNWMWQ0Uld0U1lVODNkMFY1ZEhjcmEyWldaRnBMWWtFMFEwRkJRVDBpZlE9PSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJRMl83XCJdLFwibmFtZVwiOlsxXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfSx7XCJsYWJlbFwiOltcIm51bWJlcl9vZl9yZXNwb25kZW50c1wiXSxcIm5hbWVcIjpbMl0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX1dLFwiZGF0YVwiOlt7XCIxXCI6XCItMVwiLFwiMlwiOlwiNDRcIn0se1wiMVwiOlwiMVwiLFwiMlwiOlwiMzY4NFwifSx7XCIxXCI6XCIyXCIsXCIyXCI6XCIxNDU0XCJ9LHtcIjFcIjpcIjNcIixcIjJcIjpcIjQ1OVwifSx7XCIxXCI6XCI0XCIsXCIyXCI6XCIxOTVcIn1dLFwib3B0aW9uc1wiOntcImNvbHVtbnNcIjp7XCJtaW5cIjp7fSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOlsyXX0sXCJyb3dzXCI6e1wibWluXCI6WzEwXSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOls1XX0sXCJwYWdlc1wiOnt9fX1cbiAgPFwvc2NyaXB0PlxuPFwvZGl2PlxuXG48IS0tIHJuYi1mcmFtZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRUzA3RE1CQ2RPRTVRSTFGVlF0eUNaTkV1NEFDSVBRaWs3aUkzZGt0RU9vNGNCMWh5SWk3QmtpTWh0WXdUZTJOTHRwK2Y1NzM1UE4xdk44VzJBSUFVT0dlUVpnUWhlM2wrS084QWlBQklnTVBDM1o4VWRFWEFrWmN1Nmt4ckNwaTVsRFlQZjdSdkFKYVM0RGVGL05MN0p6TE1VQnpWUUdBMUdjd2tmMXpYdHg1ZjQzamNLVlByZlczVTBHdVVDdTBRdVN5TS9xaUNrMHZOdnVpZ3l2N2lkRTBuaHBBdWtJVVVWbFI3UTNwNm5TTEpoZTV0cTVGRXpEV2VSK0xFUk1ScVJGZUpMSnZYRWQvS3pUcjZUM3M4dUtSK2FPQXJUdnpBQW1aekdlenM1Ym1YNXdvUExhclFUeWQycWd2T1VyMTd1S1NCVFBPb2V0T2lEWTBTTzFSV1d4RWtSYU83d0V5dHcra2ZWZFpLYkE0Q0FBQT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q2_7"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"44"},{"1":"1","2":"3684"},{"1":"2","2":"1454"},{"1":"3","2":"459"},{"1":"4","2":"195"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “In your view, how important is supporting the
+military in being a good American?” The results of this code means 3684
+answered “very important”, 1454 answered “somewhat important,” 459
+answered “not so important” and 195 answered “not at all important.”</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHViR2xpY21GeWVTaDBhV1I1ZG1WeWMyVXBYRzVjYm01dmJuWnZkR1Z5YzE5a1lYUmhJSHcrWEc0Z0lHZHliM1Z3WDJKNUtGRXlYemdwZkQ1Y2JpQWdjM1Z0YldGeWFYTmxLRnh1SUNBZ0lHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjeUE5SUc0b0tTbGNibUJnWUNKOSAtLT5cblxuYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzgpfD5cbiAgc3VtbWFyaXNlKFxuICAgIG51bWJlcl9vZl9yZXNwb25kZW50cyA9IG4oKSlcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzgpfD5cbiAgc3VtbWFyaXNlKFxuICAgIG51bWJlcl9vZl9yZXNwb25kZW50cyA9IG4oKSlcbmBgYCJ9 -->
+<pre class="r"><code>library(tidyverse)
+
+nonvoters_data |&gt;
+  group_by(Q2_8)|&gt;
+  summarise(
+    number_of_respondents = n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSVXpBM1JFMUNRMlJLUlRaeFVtZEtWbEZ0ZVRSQldYUnJNRmQ0Tm1kSmIxWkhlRUpKTTFWV2RUUndZVWxrUW5wYVJISkVhMFJHZVVSSmVVc3hha0pPTjFrd2RUSnVOUzl1ZG1ack9HSXpaRloyYzNOQ1NVRklSMWxyYUZObmNFTXJkbXAzVlVkM1FXbEJRMHBuYzB4VU0wWjNXR1JGVEVScmJGa3lOakJLYjBOYWFUWm9lbVozWmpkVWRVTjJkME5NU0hkeE5YQXZaR3BaU21kcFVIZHNUbGxFVlZwNlExSTNWM1JqWW1neU9YaFFUekpHY1hWWGFGWnJTVkJGYkhWQ1VtZGpkVk41VlM5VEt6bHJWVGhtWm1SR1FteG1Na2MyY0hWbVlYQXZUbXN6Ymt4RWVUUk5hVkJpTTA5blYxRm9RamxPU2twR1JuTkhPRGhEWTJGUlExbHFWMmx5WVZGMGJYSmpVak0wZFhGRGRqWlVRVms0TW5GU2MyRjFTVzlxVG5wRFVEUTNiVTByVDB4cmJWcE9ia0Z2T0dSRGREbFFlaTlsYVRrNE5uUXJTRVIzYldkWmVYcGhUV05XU1daSFRqQnhjMHh2TURBelJYWjVVblpoWlcxV2NVZzRlaTlVVEhWNFJFUm5TVUZCUVQwOUluMD0gLS0+XG5cbjxkaXYgZGF0YS1wYWdlZHRhYmxlPVwiZmFsc2VcIj5cbiAgPHNjcmlwdCBkYXRhLXBhZ2VkdGFibGUtc291cmNlIHR5cGU9XCJhcHBsaWNhdGlvbi9qc29uXCI+XG57XCJjb2x1bW5zXCI6W3tcImxhYmVsXCI6W1wiUTJfOFwiXSxcIm5hbWVcIjpbMV0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX0se1wibGFiZWxcIjpbXCJudW1iZXJfb2ZfcmVzcG9uZGVudHNcIl0sXCJuYW1lXCI6WzJdLFwidHlwZVwiOltcImludFwiXSxcImFsaWduXCI6W1wicmlnaHRcIl19XSxcImRhdGFcIjpbe1wiMVwiOlwiLTFcIixcIjJcIjpcIjI2XCJ9LHtcIjFcIjpcIjFcIixcIjJcIjpcIjM0OTlcIn0se1wiMVwiOlwiMlwiLFwiMlwiOlwiMTkzOFwifSx7XCIxXCI6XCIzXCIsXCIyXCI6XCIyOTdcIn0se1wiMVwiOlwiNFwiLFwiMlwiOlwiNzZcIn1dLFwib3B0aW9uc1wiOntcImNvbHVtbnNcIjp7XCJtaW5cIjp7fSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOlsyXX0sXCJyb3dzXCI6e1wibWluXCI6WzEwXSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOls1XX0sXCJwYWdlc1wiOnt9fX1cbiAgPFwvc2NyaXB0PlxuPFwvZGl2PlxuXG48IS0tIHJuYi1mcmFtZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRUzA3RE1CQ2RKRTZxUmdKVlFteTRBWXRrMFd4NmdJb1ZHeEJJM1VWdTRwYUlkQnpaRHJEa0RGeURJeUsxakJON1kwdTJuNS9udmZrOGIzZFZ2c3NCSUFIR1lraFNncEMrdmp3VUd3QWlBQ0pnc0xUM0Z3WGRFTERrbFkyNjBKb0NaaTZoemZ3ZjdUdUN2d0NMSHdxNXAvZGpZSmdpUHdsTllEVVp6Q1I3V3RjYmgyOXhQTzJGcXVXaFZrSVBFbHVCUmdjdVN5VS9TKzlrVThmZmRGQmxmMkc2cHVmYXAvTmszbkxEeTRNaVBiM09nV1FoQjlOSkpGRnNHODhDY2FRQ1lqV2lyYVF0bXJjUjM0dXFDdjZUQVk4MnFSc2F1SW9qTnpDUDQ3bU0rT0xrbVpObkFvOGRDdDlQei9laTk4NnQrSER3bWdZeXphTWNWSWZHTjBxc0xvMDAzRXZ5UnZhZW1WcUg4ei9UTHV4RERnSUFBQT09In0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q2_8"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"26"},{"1":"1","2":"3499"},{"1":"2","2":"1938"},{"1":"3","2":"297"},{"1":"4","2":"76"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “In your view, how important is respecting the
+opinion of those who disagree with you in being a good American?” The
+results of this code means 3499 answered “very important”, 1938 answered
+“somewhat important,” 297 answered “not so important” and 76 answered
+“not at all important.”</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHViR2xpY21GeWVTaDBhV1I1ZG1WeWMyVXBYRzVjYm01dmJuWnZkR1Z5YzE5a1lYUmhJSHcrWEc0Z0lHZHliM1Z3WDJKNUtGRXlYemtwSUh3K1hHNGdJSE4xYlcxaGNtbHpaU2hjYmlBZ0lDQnVkVzFpWlhKZmIyWmZjbVZ6Y0c5dVpHVnVkSE1nUFNCdUtDa3BYRzVnWUdBaWZRPT0gLS0+XG5cbmBgYHJcbmxpYnJhcnkodGlkeXZlcnNlKVxuXG5ub252b3RlcnNfZGF0YSB8PlxuICBncm91cF9ieShRMl85KSB8PlxuICBzdW1tYXJpc2UoXG4gICAgbnVtYmVyX29mX3Jlc3BvbmRlbnRzID0gbigpKVxuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzkpIHw+XG4gIHN1bW1hcmlzZShcbiAgICBudW1iZXJfb2ZfcmVzcG9uZGVudHMgPSBuKCkpXG5gYGAifQ== -->
+<pre class="r"><code>library(tidyverse)
+
+nonvoters_data |&gt;
+  group_by(Q2_9) |&gt;
+  summarise(
+    number_of_respondents = n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSZVRBM1JFMUNSR05LUlRWUlRGbEZjVzltTkVKS05sUnJVVVJ1UVVoWVJVaG5aRkppTlVOYWRXbFZhbGhyWlRCQlVpODJSbVlyUjI1clJuSlhhVmd4ZUhCSk0wZzBOVE5hZUM5UVJGcHpNRE5JUVVGNVdVTjVSa3hEWTBrclpYWk1XVE5yU0ZGQlVrRkJaM2RYTjNaNWFYQkZjME5xYW5nelYxTm1ObkJ2VTFwNWVXaFpaVXRQTkVGMVF5OVNVRGxSV0VKUE1XbG5lSHBHUVdSd1EwTjNibWMxYkd0VWVtWXhkbU5qY2toQk9XSnhWM1V4Y1RkVk1HYzRTbGR2YWxkU2VUQkxjbnA1YnpSMVpFeHdUaTh5YjNNM0t6UllUazFNUlRodlJtdHlaa05wYlhGdVUxVXJNMWw1VVRWVk5GQjBSa3BKYjJSWlRWaHJWR3BTUldKRll6QllXRk5zY3pOaWFVOHZiQ3RxV2paNmQySmpkVFpLSzJGbFFUZFVkbnBEUVdzM2JrNTBTMVJzZUdSbFdHdHFZMlI1YWtSUVRETlplV28wTkhRdlRFUjNkM1JoZVV4VFVHRjBRV1F5YWtGdmMyRmhlWGx2YjJjMFdUTnhRWHBQVGtSelpDOXpNakJXVkZFMFEwRkJRVDBpZlE9PSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJRMl85XCJdLFwibmFtZVwiOlsxXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfSx7XCJsYWJlbFwiOltcIm51bWJlcl9vZl9yZXNwb25kZW50c1wiXSxcIm5hbWVcIjpbMl0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX1dLFwiZGF0YVwiOlt7XCIxXCI6XCItMVwiLFwiMlwiOlwiMzZcIn0se1wiMVwiOlwiMVwiLFwiMlwiOlwiMjc1OFwifSx7XCIxXCI6XCIyXCIsXCIyXCI6XCI5MzFcIn0se1wiMVwiOlwiM1wiLFwiMlwiOlwiODEwXCJ9LHtcIjFcIjpcIjRcIixcIjJcIjpcIjEzMDFcIn1dLFwib3B0aW9uc1wiOntcImNvbHVtbnNcIjp7XCJtaW5cIjp7fSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOlsyXX0sXCJyb3dzXCI6e1wibWluXCI6WzEwXSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOls1XX0sXCJwYWdlc1wiOnt9fX1cbiAgPFwvc2NyaXB0PlxuPFwvZGl2PlxuXG48IS0tIHJuYi1mcmFtZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFReTA3RE1CRGNKRTVRTFlFcW9mNEJKNlRrUURuQUhYRUhnZFJiNUNadWlValhrZTBBUi82RmYrR25rRnJXaVgxeHBJM0g0NTNaeC9QRFpzMDNIQUF5WUN5RkxDY0krZXZMWTNrSFFBUkFBZ3dXN3Z5aXBFc0NqangzV1NmNnBvU1p5eWhZZUtPNEF1Qy9SUDlRWEJPMWlneHpGQWRwQ0N3bmc1bGtUemYxdmNjckhBOWJxV3UxcTdVMGc4SldvaldSeTBLcnp5bzR1ZExwTi8yb3M3KzRYTk1MRThvRmtyZkNpbXFuU1UrM1l5UTVVNFB0RkpJb2RZTVhrVGpSRWJFYzBYWFNsczNiaU8vbCtqWjZ6d2JjdTZKK2FlQTdUdnpDQWs3bk50S1RseGRlWGtqY2R5akRQTDNZeWo0NHQvTER3d3RheUxTUGF0QWQyakFvc2FheXlvb2c0WTNxQXpPTkRzZC9zMjBWVFE0Q0FBQT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q2_9"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"36"},{"1":"1","2":"2758"},{"1":"2","2":"931"},{"1":"3","2":"810"},{"1":"4","2":"1301"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “In your view, how important is believing in God in
+being a good American?” The results of this code means 2758 answered
+“very important”, 931 answered “somewhat important,” 810 answered “not
+so important” and 1301 answered “not at all important.”</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHViR2xpY21GeWVTaDBhV1I1ZG1WeWMyVXBYRzVjYm01dmJuWnZkR1Z5YzE5a1lYUmhJSHcrWEc0Z0lHZHliM1Z3WDJKNUtGRXlYekV3S1h3K1hHNGdJSE4xYlcxaGNtbHpaU2hjYmlBZ0lDQnVkVzFpWlhKZmIyWmZjbVZ6Y0c5dVpHVnVkSE1nUFNCdUtDa3BYRzVnWUdBaWZRPT0gLS0+XG5cbmBgYHJcbmxpYnJhcnkodGlkeXZlcnNlKVxuXG5ub252b3RlcnNfZGF0YSB8PlxuICBncm91cF9ieShRMl8xMCl8PlxuICBzdW1tYXJpc2UoXG4gICAgbnVtYmVyX29mX3Jlc3BvbmRlbnRzID0gbigpKVxuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5cbm5vbnZvdGVyc19kYXRhIHw+XG4gIGdyb3VwX2J5KFEyXzEwKXw+XG4gIHN1bW1hcmlzZShcbiAgICBudW1iZXJfb2ZfcmVzcG9uZGVudHMgPSBuKCkpXG5gYGAifQ== -->
+<pre class="r"><code>library(tidyverse)
+
+nonvoters_data |&gt;
+  group_by(Q2_10)|&gt;
+  summarise(
+    number_of_respondents = n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSZVRCeVJVMUNVemxVVWpsRVF6aHhRU3RCWm1seWExVmtRa1psZFhoTU0ybDNUM2hMY0hNelZWbDFaVzFLUzIwMk9VVm1PVVZ0U0VkdE1EWjVVMU5FU25samF6azFlalZsYm5waGNsbHNUVUZSUVhoS2QybENUME5WU3pabWJuTjFTSGREU1VGSloyZG5aSHBsTTNoU01GRmpRMU5hZW1KeFUwZHpUMDlJUlhnM1kxUXZNR0kwUjFkRWQwTTFSbVJGWkhoVU1rZDRhVzE1VUdSRFJURnFUMEp2TlRoMVlYUjJZamw2YWtWeFpqbFdjV2hoTjIxdmJEbERhWGhHVjJnd1dVcE5jaXRXVmpWTE5YVmlMMlJDUW5CbU1rWXJXbkZDWVRVdlVHc3dXRXhFWVRreWFYWlVNRTluVTFOb1VuaE9URFZHUlhwSVlXVkNaVXBKUW1OU2VWRnNkRXBYZW1KMlJUTTJWWEV2ZG1kUWVEWjRjekJ1WkRGTlFsWklURzFLWldONFQxcGlRMnByTW1SUGJtZHVjMlZvVXl0dU5FWjJlR1ZEWkZjdlNIQTBSR3RPV2tvMVNFNWhiMlZxVnl0VlYwWXdXbUZpYVZoR1NUQmpVRVJQTTBSdlpDOXZSa3N4VTFFNFEwRkJRVDBpZlE9PSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJRMl8xMFwiXSxcIm5hbWVcIjpbMV0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX0se1wibGFiZWxcIjpbXCJudW1iZXJfb2ZfcmVzcG9uZGVudHNcIl0sXCJuYW1lXCI6WzJdLFwidHlwZVwiOltcImludFwiXSxcImFsaWduXCI6W1wicmlnaHRcIl19XSxcImRhdGFcIjpbe1wiMVwiOlwiLTFcIixcIjJcIjpcIjM4XCJ9LHtcIjFcIjpcIjFcIixcIjJcIjpcIjE4NTRcIn0se1wiMVwiOlwiMlwiLFwiMlwiOlwiMjM0MFwifSx7XCIxXCI6XCIzXCIsXCIyXCI6XCIxMTI3XCJ9LHtcIjFcIjpcIjRcIixcIjJcIjpcIjQ3N1wifV0sXCJvcHRpb25zXCI6e1wiY29sdW1uc1wiOntcIm1pblwiOnt9LFwibWF4XCI6WzEwXSxcInRvdGFsXCI6WzJdfSxcInJvd3NcIjp7XCJtaW5cIjpbMTBdLFwibWF4XCI6WzEwXSxcInRvdGFsXCI6WzVdfSxcInBhZ2VzXCI6e319fVxuICA8XC9zY3JpcHQ+XG48XC9kaXY+XG5cbjwhLS0gcm5iLWZyYW1lLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFReTByRU1CUzlUUjlEQzhxQStBZmlya1VkQkZldXhMM2l3T3hLcHMzVVl1ZW1KS202OUVmOUVtSEdtMDZ5U1NESnljazk1ejVlbnphcllsTUFRQXhKd2lCT0NVSzZmbnN1SHdDSUFJZ2dnZHplM3hSMFFjQ1NaemJxU0dzT09IRXg3Y1QvMGI0R1dEd0M1RmRFZHhUMkd4aW15UGRDRTFqT0JvNTh1YXR2Yjl6akVxZjlWcWhhN21vbDlDaXhGV2gwWUpNcitWVjVLNXViL2RCQnBmMkYrWnFCYTUvUGswWExEYTkyaXZUME9nU1NoUnhOTDVGRXpIYWVCZUpJQmNSeVFsdEpXemJ2RTM2VXEvdmdQeDZ4czBuZDFNQlZITG1KZWN4T1piQ2prMmRPbmduc2VoUytuNEZ2eGVDZFcvSHA0RGtOWko1SE5hb2VqVytVV0YwWmFiaVhGSTBjUERPM0RvZC9vRksxU1E4Q0FBQT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q2_10"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"38"},{"1":"1","2":"1854"},{"1":"2","2":"2340"},{"1":"3","2":"1127"},{"1":"4","2":"477"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “In your view, how important is protesting if you
+believe government actions are wrong in being a good American?” The
+results of this code means 1854 answered “very important”, 2340 answered
+“somewhat important,” 1127 answered “not so important” and 477 answered
+“not at all important.”</p>
+<p>QUESTION 3:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVROZk1Ta2dmRDVjYmlBZ2MzVnRiV0Z5YVhObEtHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjejF1S0NrcFhHNWdZR0FpZlE9PSAtLT5cblxuYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTNfMSkgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTNfMSkgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGAifQ== -->
+<pre class="r"><code>nonvoters_data |&gt;
+  group_by(Q3_1) |&gt;
+  summarise(number_of_respondents=n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSZVRKeVJFMUNRbU41TkRoVFVUQjFaemxCZEhrMlRXMUhORVYyY0hWbVZHVXdhMHAxVW5KSFZuaE5VbHBIVld4MVV6QXZPWGQyTlZGSlpXNUxiR2swZVhsQ2NrNDNjM2NyV0hBNE1sWmlOMHBCVTBOSFNrZEZVWEIzVVdobVdEazNUR2cwUVdsQlEwbEpTVWRHZG1JNGJ6WmFZVUZLWVRsME1XOVhLMHRYU0cxWmFuRkthamxITlVJNGFTOUJZa3BJUTNFd2J6VlVZM2RVU2tkbWFFTmhkMjVCZUcxTmJtMXdObkpZUkdSNmFXVjBhMHhXWTJ4amNtOVJaVXB5VlVOcVFUVmxSbXR3SzJ4a04wdHNNbEV2T1hGTVR5OXpSbnBVWXlzelRHVlVTbloxWlVoc1ZIQkhaVmgxWkVGamFWVklNREJyYTBWaVQwUmFORVUwVldkSGVFaE9Sakl3YUdKT1dXTlNhbk5oTmtObFJIcG5NMmhhTVZOM1VGaGpaVkZYTldwSFlqSXlRVmhLT0N0alVFSlBORGN4UkRSbFdIRXJSbUl4TTJKelYwaG5lbVV3YTBkclpqVmhRVFpPU0RWUldXNVdjSEJQUm1WcmFtVjVPVGgzTUU5d2VpOUJaRWMxU2xaclQwRm5RVUVpZlE9PSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJRM18xXCJdLFwibmFtZVwiOlsxXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfSx7XCJsYWJlbFwiOltcIm51bWJlcl9vZl9yZXNwb25kZW50c1wiXSxcIm5hbWVcIjpbMl0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX1dLFwiZGF0YVwiOlt7XCIxXCI6XCItMVwiLFwiMlwiOlwiMzlcIn0se1wiMVwiOlwiMVwiLFwiMlwiOlwiMjY4MlwifSx7XCIxXCI6XCIyXCIsXCIyXCI6XCIxNTk0XCJ9LHtcIjFcIjpcIjNcIixcIjJcIjpcIjgwM1wifSx7XCIxXCI6XCI0XCIsXCIyXCI6XCI3MThcIn1dLFwib3B0aW9uc1wiOntcImNvbHVtbnNcIjp7XCJtaW5cIjp7fSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOlsyXX0sXCJyb3dzXCI6e1wibWluXCI6WzEwXSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOls1XX0sXCJwYWdlc1wiOnt9fX1cbiAgPFwvc2NyaXB0PlxuPFwvZGl2PlxuXG48IS0tIHJuYi1mcmFtZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFReTJyRE1CQmN5NDhTUTB1ZzlBdHk2TW1HNEV2cHVmVGUwa0p1UnJHVnhNUlpHVWx1UzAvOXd2NVFJZW5LbGk0eXlCck43c3crWHA4MlZiN0pBU0NHSkdFUXB3UWhmWDk3TGg0QWlBQ0lJSUdGdmI4bzZaYUFKYTl0MW9XK0tXSG1ZanFKajlHNUI4aS9BYkpIQ3EwbzVUY3dUSkdmaENhd25BeG1Nbm1wNnJYRGR6aWV0a0xWY2xjcm9RZUpyVUNqQTVlRmtwK2xkN0tsMlEvOXFMTy9zRnpUYyszTGVUSnZ1ZUhsVHBHZVh1ZEFjaVVIMDBra0ViT0RaNEU0VWdHeEhORjIwaGJOWWNSanNhNkNlRHpnM2haMVN3UFhjZVFXNWpHYjIyQVhKOCtjUEJPNDcxRDRlWHErRmIxM2JzV0hnemUwa0drZjVhQTZOSDVRWW5WcHBPRmVramV5OTh3ME9wei9BZEc1SlZrT0FnQUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q3_1"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"39"},{"1":"1","2":"2682"},{"1":"2","2":"1594"},{"1":"3","2":"803"},{"1":"4","2":"718"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “How much do you agree or disagree with the
+following statement? Systemic racism is a problem in the United States.”
+The results of this code means 2682 answered strongly agree, 1594
+answered somewhat agree, 803 answered somewhat disagree and 718 answered
+strongly disagree.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVROZk1pa2dmRDVjYmlBZ2MzVnRiV0Z5YVhObEtHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjejF1S0NrcFhHNWdZR0FpZlE9PSAtLT5cblxuYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTNfMikgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTNfMikgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGAifQ== -->
+<pre class="r"><code>nonvoters_data |&gt;
+  group_by(Q3_2) |&gt;
+  summarise(number_of_respondents=n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSVnpCeVJVMUNVemxVWkZCTFJrcFJRbU5TYTNRMlEyazBRVkJHWmxWYWFTOXJiV3Q2V1RkR2VsVTFTbFY0VXpsWU5HZHlZMnBqYzFKYWNuaHdhelU0Uld0d2VXTXpTRkIxTkM5R2RYWlRjbGRDVVVOcmQwUnRSRTVEVFVreVpsQlVabGhyVEZGQlVrRkJhSGRYTjNZMloyOUlUVU5xYW5neFZWVmtZVlU0UkUxd1lsSTFLMHRPT1VFMVJDOUZVSGRySzNCbWRUYzRaM2RSTjBkWWFITkNlVTF3YUVvdmNrTnhjbnA1SzNkSVJ5OXJZbkJYTWpGd1RFMTVhSE5LVm05VWRWTjVNR1Z4SzBOck1IWk9kblZwWjNsMk4ybGtSVEIyVkVWbldIbExTVlpXYkZKaVZGaHdOa2hUVEVwcFVuQnpjRFZDUlhwRVYyVlNLMHBGVWpoU2VWSkdaRXBYZWxsMlNUYzJWMnc1WmxKbWVuSm5lbWxZTVZGM1RtWmpaVWxJUm1wRFlua3lRa2hNT0NzNVVFcGxORFl4UTBkbWJuRjRhMWd4ZDJKMVYySm9NbU13YTBkclpURmhRVGQwUzBaU1dXc3hiR3hTVmtKVmFsTnhSRGg2VlU5b2VpdEJVM0JCUm0xWlQwRm5RVUVpZlE9PSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJRM18yXCJdLFwibmFtZVwiOlsxXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfSx7XCJsYWJlbFwiOltcIm51bWJlcl9vZl9yZXNwb25kZW50c1wiXSxcIm5hbWVcIjpbMl0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX1dLFwiZGF0YVwiOlt7XCIxXCI6XCItMVwiLFwiMlwiOlwiNTNcIn0se1wiMVwiOlwiMVwiLFwiMlwiOlwiMTcwOFwifSx7XCIxXCI6XCIyXCIsXCIyXCI6XCIxNDAyXCJ9LHtcIjFcIjpcIjNcIixcIjJcIjpcIjEyMzVcIn0se1wiMVwiOlwiNFwiLFwiMlwiOlwiMTQzOFwifV0sXCJvcHRpb25zXCI6e1wiY29sdW1uc1wiOntcIm1pblwiOnt9LFwibWF4XCI6WzEwXSxcInRvdGFsXCI6WzJdfSxcInJvd3NcIjp7XCJtaW5cIjpbMTBdLFwibWF4XCI6WzEwXSxcInRvdGFsXCI6WzVdfSxcInBhZ2VzXCI6e319fVxuICA8XC9zY3JpcHQ+XG48XC9kaXY+XG5cbjwhLS0gcm5iLWZyYW1lLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRVzByRU1CUzlUZFBLRkpRQmNSa3Q2Q2k0QVBGZlVaaS9rbWt6WTdGelU1SlV4UzlYNGdyY2pjc1JacnhwazU4RWtweWMzSFB1NC9GdXZTcldCUUNrd0RtRE5DTUkyZlBUZlhrTFFBUkFBaHdXN3Y2Z29ITUNqangxVVVkYVU4RE1wYlI1K0tOOUE1RC9FUHdrK3BmdTc4Z3dRN0dYaHNCeU1waEovckNxcnp5K3dIRy9rYnBXMjFwTE15aHNKVm9UdVN5MGVxK0NrMHZOdnVpZ3l2N2lkRTB2VEVnWHlLSVZWbFJiVFhwNkhTTEppUnBzcDVCRXpEV2VSK0pFUjhSeVJGZEpXell2STc2V2w5ZlJmenJnemlYMVF3TmZjZUlIRmpDYnkyQkhMOCs5UEplNDYxQ0dmbnF4a1gxd2J1V2JoMmMwa0drZTFhQTd0S0ZSWWsxbGxSVkJValNxRDh6VU9oeitBU3BBRm1ZT0FnQUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q3_2"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"53"},{"1":"1","2":"1708"},{"1":"2","2":"1402"},{"1":"3","2":"1235"},{"1":"4","2":"1438"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “How much do you agree or disagree with the
+following statement? Systemic racism in policing is a bigger problem
+than violence and vandalism in protests.” The results of this code means
+1708 answered strongly agree, 1402 answered somewhat agree, 1235
+answered somewhat disagree and 1438 answered strongly disagree.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVROZk15a2dmRDVjYmlBZ2MzVnRiV0Z5YVhObEtHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjejF1S0NrcFhHNWdZR0FpZlE9PSAtLT5cblxuYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTNfMykgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTNfMykgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGAifQ== -->
+<pre class="r"><code>nonvoters_data |&gt;
+  group_by(Q3_3) |&gt;
+  summarise(number_of_respondents=n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSTTFWeVJFMUNVU3RVWkU5UFJscFRRaXRDWjNSVFNtNDBRVTlMT1ZFeVJqTktWM1Y2VjJSaFpHeEVVakZZZG5GcmRtOUpVRWxIZVdWMFRXeE9RV3R0SzJaRWJtWmtNelF5ZWpsemVUSXlXVUZGUVZCdVJFOUxSVWxEVkhaaWVTODFSWGRCVWtGQ1JuZFhUbkkzYVRSTWRVTkdhbmw0YTFwa1lWVXdRazE0WmxRMWRqWlFPV2xPVWxCM1JIQm9jRFl2WkVvNFJIZDNWRVpUVVRSRlZuQlFRbFJRVEZoemFXOWtkbk5tZUhSS1R6WlZkblJMZVRaR1dESkZaekJSSzBONU1VOXdZMlZEWldKdGJqTlVVVnBZT1dobGJuRlVaM2NyYmxObGVsSm9hRkkzUkZod05saFZTa3BCZGxadE1WbG9hVnBvZEZCQk0wVnJVVFpKTVZscE1tdHBZWFpRTUZrNE5XY3ZjalJFTDNVNFYwTlVkWEZIUW5GNmFIbEJMMDlaZWxkWGQzRTFUMjVVY0RWTFVFeFJiMlpVSzJReVRXNVBUM3BtZVRBNFJtSkhjMmN3YWpaTVdFeFNjbVpMVEVaRVdWcFJVbGh3VEZaeGRsQk5NVVJ3WXk5blIzQk5ZV2d6UkdkSlFVRkJQVDBpZlE9PSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJRM18zXCJdLFwibmFtZVwiOlsxXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfSx7XCJsYWJlbFwiOltcIm51bWJlcl9vZl9yZXNwb25kZW50c1wiXSxcIm5hbWVcIjpbMl0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX1dLFwiZGF0YVwiOlt7XCIxXCI6XCItMVwiLFwiMlwiOlwiNTRcIn0se1wiMVwiOlwiMVwiLFwiMlwiOlwiOTkwXCJ9LHtcIjFcIjpcIjJcIixcIjJcIjpcIjE2MThcIn0se1wiMVwiOlwiM1wiLFwiMlwiOlwiMTUxOVwifSx7XCIxXCI6XCI0XCIsXCIyXCI6XCIxNjU1XCJ9XSxcIm9wdGlvbnNcIjp7XCJjb2x1bW5zXCI6e1wibWluXCI6e30sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbMl19LFwicm93c1wiOntcIm1pblwiOlsxMF0sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbNV19LFwicGFnZXNcIjp7fX19XG4gIDxcL3NjcmlwdD5cbjxcL2Rpdj5cblxuPCEtLSBybmItZnJhbWUtZW5kIC0tPlxuIn0= -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRM1VyRE1CUStUZE9PRlpTQitCZ3RTSm40QU9LOVEyRjNKV3V6V2RhZGxEUjFYdnFrdm9JUElHeWV0TWxOQWttK2ZEbmZkMzQyejlzeTIyWUFFQVBuRE9LRUlDVHZieS81RXdBUkFCRndXTnI3aTRMdUNGanl4a1pkYVUwQk14ZlQ1djZQOWlOUlB3RHBocDYvZEo4RHd3VEZTUTRFVnBQQlRQTFhzaW9kdnNmeHRKTzZVdnRLeTZGWDJFZzBRK0N5MU9wY2VDZWJtbjNUUVpYOWhlbnFUZ3crblNlelJoaFI3RFhwNlhVSkpBdlZtMVloaVpodFBBM0VrUTZJMVlpMmtpYXZQMFk4NWcvcjREL3U4V0NUdXFHQnF6aHlBL09ZeldXd3E1T25UcDVLUExRb2ZUK2QyTW5PT3pmeTA4RmJHc2cwajZMWExScmZLTEZEWVpRUlhwTFZxdlBNMURwYy9nR3BNYWgzRGdJQUFBPT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q3_3"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"54"},{"1":"1","2":"990"},{"1":"2","2":"1618"},{"1":"3","2":"1519"},{"1":"4","2":"1655"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “How much do you agree or disagree with the
+following statement? Society as a whole has become too soft and
+feminine.” The results of this code means 990 answered strongly agree,
+1618 answered somewhat agree, 1519 answered somewhat disagree and 1655
+answered strongly disagree.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVROZk5Da2dmRDVjYmlBZ2MzVnRiV0Z5YVhObEtHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjejF1S0NrcFhHNWdZR0FpZlE9PSAtLT5cblxuYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTNfNCkgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTNfNCkgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGAifQ== -->
+<pre class="r"><code>nonvoters_data |&gt;
+  group_by(Q3_4) |&gt;
+  summarise(number_of_respondents=n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSVkZWMlJVMUNRMlIwYlc1WVJGTm5URFIwTUM4d1NVdHphVVE1UVhaRGMwdGxlWFphVG5KelYzVTFUMU53VDNKU1p5OHZXVzgzUkhKd1JUQjFTMkZTTldWVVVIWjZZMlo2ZHpKaVRrNTRkMEZOYlVGemFGTjNia05RYm5KNU1rNDFSREJCUlZGQlNVMXNkVGNyYjNGU1RFRnZORGhrTVd0dUszRmhSVzFqZG05elFrTnFZM2N6UVZNMFJFWkhXVllyUzA4d00wMXplRkpJUzFGb2MwcHZUVnB3U1RseVpYUmlhalk1ZDFCSGVXeHlkRmQxTVhSSlRVTnNkVW94YTFGMVV6WXdLM0VyUkd0VGNXWm1PVXRRVHk5MVNubFVVemxOUzBKa1NUTm5iM0p4Y0RCdFVHSXlUMnRYVTJoQ2RITndTa1pJY1VKcE9HbGpZVWxxV1dwWGFUWTJVWFJ0TjJOU016aDFZblY1YVdWRVltZ3pVbVl6VTNkSVpXTXJTVlZHYmswMWRIQkRZM1pNTjNrNGEweHFkbFZKV2pWbGNrZFdabGhDZFRWWlpVaEdOMU5SWVZJdlZtOUVkVEJaVmtKcFZGZFhWa1pWU0VOSE9WVklXbWh2WkdwMkwwSlhLM2RZUkdkSlFVRkJQVDBpZlE9PSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJRM180XCJdLFwibmFtZVwiOlsxXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfSx7XCJsYWJlbFwiOltcIm51bWJlcl9vZl9yZXNwb25kZW50c1wiXSxcIm5hbWVcIjpbMl0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX1dLFwiZGF0YVwiOlt7XCIxXCI6XCItMVwiLFwiMlwiOlwiMzJcIn0se1wiMVwiOlwiMVwiLFwiMlwiOlwiMjYwNVwifSx7XCIxXCI6XCIyXCIsXCIyXCI6XCIxODAwXCJ9LHtcIjFcIjpcIjNcIixcIjJcIjpcIjkwMFwifSx7XCIxXCI6XCI0XCIsXCIyXCI6XCI0OTlcIn1dLFwib3B0aW9uc1wiOntcImNvbHVtbnNcIjp7XCJtaW5cIjp7fSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOlsyXX0sXCJyb3dzXCI6e1wibWluXCI6WzEwXSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOls1XX0sXCJwYWdlc1wiOnt9fX1cbiAgPFwvc2NyaXB0PlxuPFwvZGl2PlxuXG48IS0tIHJuYi1mcmFtZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRVFV2RU1CQ2R0bW5YRFNnTDR0MC8wSUtzaUQ5QXZDc0tleXZaTnJzV3U1T1NwT3JSZy8vWW83RHJwRTB1S2FSNWVUUHZ6Y2Z6dzJiTk54d0FNbUFzaFN3bkNQbnJ5Mk41RDBBRVFBSU1sdTcrb3FSTEFvNDhkMWtuK3FhRW1jdm9zQkNqY3czQVM0REZHWVYrS08wM01zeFJIS1Foc0pvTVpwSTlyZXRiajY5d1BHeWxydFd1MXRJTUNsdUoxa1F1UzYwK3ErRGtTcWZmOUtQTy91SnlUUzlNS0JkSTNnb3JxcDBtUGIyT2tXU2hCdHNwSkZIcUJpOGljYUlqWWpXaTY2UXRtN2NSMzh1YnV5aWVEYmgzUmYzU3dIZWMrSVVGbk01dHBDY3ZMN3k4a0xqdlVJWjVlckdWZlhCdTVZZUhGN1NRYVIvVm9EdTBZVkJpVFdXVkZVSENHOVVIWmhvZGp2L0JXK3dYRGdJQUFBPT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q3_4"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"32"},{"1":"1","2":"2605"},{"1":"2","2":"1800"},{"1":"3","2":"900"},{"1":"4","2":"499"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “How much do you agree or disagree with the
+following statement? The mainstream media is more interested in making
+money than telling the truth.” The results of this code means 2605
+answered strongly agree, 1800 answered somewhat agree, 900 answered
+somewhat disagree and 499 answered strongly disagree.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVROZk5Ta2dmRDVjYmlBZ2MzVnRiV0Z5YVhObEtHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjejF1S0NrcFhHNWdZR0FpZlE9PSAtLT5cblxuYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTNfNSkgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTNfNSkgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGAifQ== -->
+<pre class="r"><code>nonvoters_data |&gt;
+  group_by(Q3_5) |&gt;
+  summarise(number_of_respondents=n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSZVRKeVJFMUNRbU41TkRoVFVWVjFaemxDWkhsek5rZEZVR28yWnpsT04xTlJiVFZIYzFwWVZURkdhMXBUVlRVM04wRXZNbWwzY0VwV04xb3dhMVZFVTJGTVVYb3JNMmc1TW5GNk5XaG5Ua0ZEYkc1SFNVMHdTbEYyTnlzNWJIY3JRV2hCUW10RlFVZERNMlF2VlRsQk1VRlZaR1YxY1dkNmNsTnNaelZzVEdGWFptbHFXRkZKVlRsM1JEaFRVRkYyYUdFd2FYZDRla1pSVW05RGVUaHNaMHB5VDFoa1dETnVPRkV5VDJnMk0xVjBaSEpXVjNCd1FsbFRkbEp0YzJoc2IyUldXRVphZUdOaGRscEVRakZZTWtZMlpISmxiVVpEZFd0RWVWWnNhRkkzVkZSd05saFhTMHBDWkhGelNqRkRSV3BJV0dWQ1IwcEZlREJTZVhoR1pFcFhNMXBtU1hvMFYyUTBLMUpRTDNCblNIVllNVUU0VG1aTlYwcElNV3BCWWtNMlJHNWlNamc0VUVwRE5ISTFSRWRtY25CNFZtSXlkMkp0VmxKM0szWmhRMFJVVUV0d1FtUXlhRVJ2T0ZOaGVXbHZjbWR2VVROeFp5OU5NVVJ4WXk5blJqUkRSekI1UkdkSlFVRkJQVDBpZlE9PSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJRM181XCJdLFwibmFtZVwiOlsxXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfSx7XCJsYWJlbFwiOltcIm51bWJlcl9vZl9yZXNwb25kZW50c1wiXSxcIm5hbWVcIjpbMl0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX1dLFwiZGF0YVwiOlt7XCIxXCI6XCItMVwiLFwiMlwiOlwiNDVcIn0se1wiMVwiOlwiMVwiLFwiMlwiOlwiMTU5MFwifSx7XCIxXCI6XCIyXCIsXCIyXCI6XCIyNjc4XCJ9LHtcIjFcIjpcIjNcIixcIjJcIjpcIjEyMjlcIn0se1wiMVwiOlwiNFwiLFwiMlwiOlwiMjk0XCJ9XSxcIm9wdGlvbnNcIjp7XCJjb2x1bW5zXCI6e1wibWluXCI6e30sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbMl19LFwicm93c1wiOntcIm1pblwiOlsxMF0sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbNV19LFwicGFnZXNcIjp7fX19XG4gIDxcL3NjcmlwdD5cbjxcL2Rpdj5cblxuPCEtLSBybmItZnJhbWUtZW5kIC0tPlxuIn0= -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFReTJyRE1CQmN5NDhTUVV1ZzlCZHlzNkdFUGo2ZzlON1NRbTVHc1pYVTFGa1pTVTU3N0EvMml3cEpWN1owa1VEU2FMUXorM2g5MnF6NWhnTkFDbG5HSU0wSlF2Nys5bHcrQWhBQmtFQUdDM2QvVTlBMUFVZGV1cWd6clNsZzVsTGFXZmlqWFFJVTl3RDhTUFF2aGEwaXd4ekZRUm9DeThsZ0pyT1hkWDNuOFEyT2g2M1V0ZHJWV3BwQllTdlJtc2hsb2RWWEZaeGNhdlpEQjFYMkY2ZHJlbUZDdWtEeVZsaFI3VFRwNlhXS0pCZHFzSjFDRWpIWGVCR0pFeDBSeXhGZEpXM1pmSXo0V2Q0K1JQL3BnSHVYMUE4TmZNV0pIMWpBYkM2RG5iMjg4UEpDNHI1REdmcnB4VmIyd2JtVlJ3K3ZhQ0RUUEtwQmQyaERvOFNheWlvcmdvUTNxZy9NMURxYy9nRjRDRzB5RGdJQUFBPT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q3_5"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"45"},{"1":"1","2":"1590"},{"1":"2","2":"2678"},{"1":"3","2":"1229"},{"1":"4","2":"294"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “How much do you agree or disagree with the
+following statement? Traditional parties and politicians don’t care
+about people like me.” The results of this code means 1590 answered
+strongly agree, 2678 answered somewhat agree, 1229 answered somewhat
+disagree and 294 answered strongly disagree.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVROZk5pa2dmRDVjYmlBZ2MzVnRiV0Z5YVhObEtHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjejF1S0NrcFhHNWdZR0FpZlE9PSAtLT5cblxuYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTNfNikgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTNfNikgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGAifQ== -->
+<pre class="r"><code>nonvoters_data |&gt;
+  group_by(Q3_6) |&gt;
+  summarise(number_of_respondents=n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSVkZWMlJVMUNRMlJ3Ylcxc1FsZFdRaTlCVUdWUVRGTk1URTFxSzBGUVIzVkxRM2cwUzA1ck1uVXhkbk5VYTNGaGNXdG1MM1JSWkdneE1HMWlXRUpLU1RoMlNYazNPRE5JZVN0T2JXeFhPWGxCU1dsQ1kzZGFlRkZvUTFOME9XVnVXV2N4UVVKRlFVVklSRW8zWmpGUVVVNVJSa3hZZEhGdlRUWXdjRmxQV21reWRIb3ZNR0kwUmxOSU9FSnphblZwYkhoVWVVaG9aMjFMU1RWNVNVeERXVVJIWVZOUU5pdHhRalJrZG1ORWVIVndZVGRWY25SS2VUWkNWVEpGY3pCUmRVZFNZV1phV0dWNVlWcHRVRE5TVVZwWU9XaDFjbTlVWnpBdmJubGlkMUpTY0ZFM1ZGaHdObTVSVEVwb1pYQk9jVFZDUlhwRVlXVkNkVXBKUWpoU2FWSkdkRXBWT1ZOSVJWUXJTeXN6V0hkSUwyVTBkREJ1WkRCTlFsWklURzFDWldONmJVMTBhbHA1VmsxdVZIbFlkVmMxVXl0dU1EVnpXbVZsWkVjdmJuQTBRbFZPV2twd1NESmxjMWRxVnl0Vk1rdEZNSGxuWjNaNVYzWldaVmRhY1VoVk55OHpkM1p5WmtFMFEwRkJRVDBpZlE9PSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJRM182XCJdLFwibmFtZVwiOlsxXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfSx7XCJsYWJlbFwiOltcIm51bWJlcl9vZl9yZXNwb25kZW50c1wiXSxcIm5hbWVcIjpbMl0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX1dLFwiZGF0YVwiOlt7XCIxXCI6XCItMVwiLFwiMlwiOlwiMzRcIn0se1wiMVwiOlwiMVwiLFwiMlwiOlwiMTc4M1wifSx7XCIxXCI6XCIyXCIsXCIyXCI6XCIyMzQ1XCJ9LHtcIjFcIjpcIjNcIixcIjJcIjpcIjEwNzFcIn0se1wiMVwiOlwiNFwiLFwiMlwiOlwiNjAzXCJ9XSxcIm9wdGlvbnNcIjp7XCJjb2x1bW5zXCI6e1wibWluXCI6e30sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbMl19LFwicm93c1wiOntcIm1pblwiOlsxMF0sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbNV19LFwicGFnZXNcIjp7fX19XG4gIDxcL3NjcmlwdD5cbjxcL2Rpdj5cblxuPCEtLSBybmItZnJhbWUtZW5kIC0tPlxuIn0= -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRVFV2RU1CQ2RwbW1sQldWQi9BUGVQTFNMTE1qK0FQR3VLQ3g0S05rMnUxdnNUa3FhcWtmL3RRZGgxMG1iWEJKSTh2SXk3ODNIeStObWxXOXlBSWlCY3daeFFoQ1N0OWVuWWcxQUJFQUVIREo3ZjFQUU5RRkxYdHFvTTYwcFlPWmkydHovMGI0RlNIOEJzanVpbHhUeUhoZ21LSTV5SUxDWURHYVNQNitxQjRkdmNEeHVwYTdVcnRKeTZCVTJFczBRdUdSYWZaWGV5YVptUDNSUVpYOWh1cm9UZzAvbnlid1JScFE3VFhwNm5RTEpoZXBOcTVCRXpEYWVCdUpJQjhSaVJGdEpVOVNIRVQrSyszWHdIL2U0dDBuZDBNQlZITG1CZWN6bU10alp5Vk1uVHlYdVc1UytuMDVzWmVlZEcvbnA0QlVOWkpwSDJlc1dqVytVMktFMHlnZ3Z5V3ZWZVdacUhVNy8zd3ZyZkE0Q0FBQT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q3_6"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"34"},{"1":"1","2":"1783"},{"1":"2","2":"2345"},{"1":"3","2":"1071"},{"1":"4","2":"603"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “How much do you agree or disagree with the
+following statement? The way people talk needs to change with the times
+to be more sensitive to people with different backgrounds.” The results
+of this code means 1783 answered strongly agree, 2345 answered somewhat
+agree, 1071 answered somewhat disagree and 603 answered strongly
+disagree.</p>
+<p>QUESTION 4:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVRSZk1Ta2dmRDVjYmlBZ2MzVnRiV0Z5YVhObEtHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjejF1S0NrcFhHNWdZR0FpZlE9PSAtLT5cblxuYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTRfMSkgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTRfMSkgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGAifQ== -->
+<pre class="r"><code>nonvoters_data |&gt;
+  group_by(Q4_1) |&gt;
+  summarise(number_of_respondents=n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSVkZWMlJVMUNRMlJ3YUM5TVFuQlJSamhTT0VsdWJIQlpPVXRDV0VWbEwwdERjakpXWWtwMFpHazVNVXBUVmxBeE5rd3ZNVkozYVRkUE1tMVVVM2R3Y0ZoME4wMWxMMUI0T1d4NlpUaGFTVVJSUVhoS2QybENUME5WVERaMmJtNUtTSGREU1VGSloyZG5ZVmM1Wm5scWNHbHZRV3hNTW5wWGFXSTBjRmxsV21sUGIyMVFNR0pyUmpSRVkwRnBlamhMVUZaR1lVZFNhVzFMUVRWNVNVeERZVVJIV1hsbFlqSjJNV2MxWmpRemFsbFRiREp3V0dGWWJEQkRkSE5LU205b1kwWnNjVGxXTVRSS01YVmhMMlJMVUU5MmMxQjVPVmRrUjBoM05WUXZTa2RIUmtoelRrOXVjR1JSZDJ0RE9WZGlWbWxIU20xQ01EaERPRk5TUkc5cVZtbE1ZVlJLY1RndlVuWjZUVEUwT1VKUVR6VjRZalIxTm5CWlNISlBTRWxNT0RWcVRtSmlRMVJyTW1SUGJtdHVZM1I1YWpsUVNqTlplWE0wTjA0dlRFeDNWWFJoZVV4VFVHOTBZM1JIYWpodmMxVk9hR3hDUm1WM2JYWldaVmRaWVVoWk5XNXJORlJ3TlZFMFEwRkJRVDBpZlE9PSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJRNF8xXCJdLFwibmFtZVwiOlsxXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfSx7XCJsYWJlbFwiOltcIm51bWJlcl9vZl9yZXNwb25kZW50c1wiXSxcIm5hbWVcIjpbMl0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX1dLFwiZGF0YVwiOlt7XCIxXCI6XCItMVwiLFwiMlwiOlwiMzlcIn0se1wiMVwiOlwiMVwiLFwiMlwiOlwiMjU5NlwifSx7XCIxXCI6XCIyXCIsXCIyXCI6XCIyMDIzXCJ9LHtcIjFcIjpcIjNcIixcIjJcIjpcIjgzNFwifSx7XCIxXCI6XCI0XCIsXCIyXCI6XCIzNDRcIn1dLFwib3B0aW9uc1wiOntcImNvbHVtbnNcIjp7XCJtaW5cIjp7fSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOlsyXX0sXCJyb3dzXCI6e1wibWluXCI6WzEwXSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOls1XX0sXCJwYWdlc1wiOnt9fX1cbiAgPFwvc2NyaXB0PlxuPFwvZGl2PlxuXG48IS0tIHJuYi1mcmFtZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRVFV2RU1CQ2RwaC9MQnBRRjhSOElubHBZOUtCWEVlL0tDcjJWYkp0ZGk5MUpTVlAxNkwvMVJ3aTdPMm1UU3dwcFh0N01lL1B4OWx6ZThaSURRQXhKd2lCT0NVTDZ2bm5KSHdDSUFJZ2dnYVc5ZnlqcGlvQWxMMnpXaWI0cFllWmlPb21QMGJrRjREY0FpejhLUFZGYUdSaW1LQTV5SUxDYURHWXllYjJ2MWc1ZjQzallTbDJwWGFYbDBDdHNKSm9oY0ZscTlWMTRKMXVhL2RLUE92c1B5OVdkR0h3NVQvSkdHRkhzTk9ucGRRd2tDOVdiVmlHSm1CMDhDOFNSRG9qVmlMYVRKcTgvUnZ6TTE0OUJQTzV4YjR1NnBZSHJPSElMODVqTmJiQ1RrMmRPbmtuY3R5ajlQSjNZeXM0N04vTEx3VXRheUxTUG90Y3RHajhvc1VOaGxCRmV3bXZWZVdZYUhZNW5rNFRwNVE0Q0FBQT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q4_1"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"39"},{"1":"1","2":"2596"},{"1":"2","2":"2023"},{"1":"3","2":"834"},{"1":"4","2":"344"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “How much of an impact, if any, do each of the
+following have on your life? Elected officials in Washington, D.C.
+(e.g. the president, member of Congress).” The results of this code
+means 2596 answered “a significant impact,” 2023 answered “somewhat of
+an impact,” 834 answered “just a slight impact” and 344 answered “no
+impact at all.”</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVRSZk1pa2dmRDVjYmlBZ2MzVnRiV0Z5YVhObEtHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjejF1S0NrcFhHNWdZR0FpZlE9PSAtLT5cblxuYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTRfMikgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTRfMikgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGAifQ== -->
+<pre class="r"><code>nonvoters_data |&gt;
+  group_by(Q4_2) |&gt;
+  summarise(number_of_respondents=n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSV0ZWMlJFMUNVemxVWkU1TFF6aHdRUzlCTW1rd1RVdHRSQzgwUVVWV09GWkNNM055VjFwMGRIaGxObTF3UzI0Mk5sQTRWMDV0TDJFMVExZEdNalY1WXpOSVVIVjRMM1o2TldsSVpqVkJRVkZCSzJOTk5HOVJaMHBQZFZCc0swbEtaMEZwUVVORWFHczVkbmxvY0VkelEyeHllVEJYVjJZMmNHOVRXbWw1YlRSbU5rODBRbU5xZFV0Tlp6bDJjV1V3TVRoQmQxRllSMVZCTkVoR1drUkRWQzlQTW5oWGFtdzRaeXRPZUVzelYyeGtjRmRYVVRZcmQydFhhVWQzUTFoVU5uSjJNRlJ5V1RBck5sVm1aR1paV0d4eGN6ZE5abWg1Ym5OM1lsbFZVelV3TmxOdU1ubHRVVmhMYW1WMFFYQktlRTk2WjJGVFEwOWtSVUZ6VW5KVFpFNUZWamxIVUVkNlYwTXlSRGszYWtoMlV6TnhiR2RoZFRRNFozUjZSMDB5ZERoSVQxUndORFpsVTNCNE16Wk1NRGd6VW1sTGVuWjJNMDFuZGtJMk9XOUpaRTByZVd3Mk0yRlFlV2Q0UVRac1ZWVmFORk5XTm5KNmFsQlVOa2hFTmtJNVNHNXFkbmRQUVdkQlFTSjkgLS0+XG5cbjxkaXYgZGF0YS1wYWdlZHRhYmxlPVwiZmFsc2VcIj5cbiAgPHNjcmlwdCBkYXRhLXBhZ2VkdGFibGUtc291cmNlIHR5cGU9XCJhcHBsaWNhdGlvbi9qc29uXCI+XG57XCJjb2x1bW5zXCI6W3tcImxhYmVsXCI6W1wiUTRfMlwiXSxcIm5hbWVcIjpbMV0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX0se1wibGFiZWxcIjpbXCJudW1iZXJfb2ZfcmVzcG9uZGVudHNcIl0sXCJuYW1lXCI6WzJdLFwidHlwZVwiOltcImludFwiXSxcImFsaWduXCI6W1wicmlnaHRcIl19XSxcImRhdGFcIjpbe1wiMVwiOlwiLTFcIixcIjJcIjpcIjM5XCJ9LHtcIjFcIjpcIjFcIixcIjJcIjpcIjIzNDVcIn0se1wiMVwiOlwiMlwiLFwiMlwiOlwiMjMxNFwifSx7XCIxXCI6XCIzXCIsXCIyXCI6XCI4MTBcIn0se1wiMVwiOlwiNFwiLFwiMlwiOlwiMzI4XCJ9XSxcIm9wdGlvbnNcIjp7XCJjb2x1bW5zXCI6e1wibWluXCI6e30sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbMl19LFwicm93c1wiOntcIm1pblwiOlsxMF0sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbNV19LFwicGFnZXNcIjp7fX19XG4gIDxcL3NjcmlwdD5cbjxcL2Rpdj5cblxuPCEtLSBybmItZnJhbWUtZW5kIC0tPlxuIn0= -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRWFV2RE1CUzlUZE5LQzhwQS9BMmkwTUttRC80QUVWOFZCM3NyV1p0dHhlNm1wS242NlA4V05tL2E1Q1dGMjV5YzNIUHV4L3Z6NWlIZjVBQVFBK2NNNG9RZ0pPdVBsK0lKZ0FpQUNEaGs5dnlocEdzQ2xyeTBXV2Y2cG9TWml5bTRmNk80QmNqdUtNZzl2cWUwMThBd1FYR1VBNEhGWkRDVC9PMnhXamw4ZytOeEszV2xkcFdXUTYrd2tXaUd3Q1hUNnJ2MFRyWTArNlVmZGZZWGxxczdNZmh5bnN3YllVUzUwNlNuMnltUVhLamV0QXBKeE96Z2FTQ09kRUFzUnJTZE5FVjlHUEd6V0MyRDk3akh2UzNxbGdhdTQ4Z3R6R00ydDhIT1RwNDZlU3B4MzZMMDgzUmlLenZ2M01ndkI2OW9JZE0reWw2M2FQeWd4QTZsVVVaNFNWNnJ6alBUNkhENkI5SG5qdndPQWdBQSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q4_2"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"39"},{"1":"1","2":"2345"},{"1":"2","2":"2314"},{"1":"3","2":"810"},{"1":"4","2":"328"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “How much of an impact, if any, do each of the
+following have on your life? Elected officials in my state
+(e.g. governor, state representative).” The results of this code means
+2345 answered “a significant impact,” 2314 answered “somewhat of an
+impact,” 810 answered “just a slight impact” and 328 answered “no impact
+at all.”</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVRSZk15a2dmRDVjYmlBZ2MzVnRiV0Z5YVhObEtHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjejF1S0NrcFhHNWdZR0FpZlE9PSAtLT5cblxuYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTRfMykgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTRfMykgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGAifQ== -->
+<pre class="r"><code>nonvoters_data |&gt;
+  group_by(Q4_3) |&gt;
+  summarise(number_of_respondents=n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSTTFWeVJFMUNVU3RpWkU5UFJuQlRRaXRCUWpkblFtSmFkbEJCUW5oSWRrWjNaVFZMTVcxaGVqSktNbFZLUmxWMlFsSXZSbmg0VVRKVU9YSnJTbTlGYTFnM05tTTNlbk12VERRck4xUmlSWEpCUTBGQ2VHMUtTVlZ2UzFGaWJDdG1lV2RqUVVsblFXbFpTa1JpS3pSMVEySm5hRms0YzNCSFdGZG9Ua0ZVVDFnd1IySXJhaTlaUzFsTVJVWjVUeXRKTDNGSGR6TTRRWGRTV0RSVGJYTkNlVTF3YUVvNWJuaG1Zbmg1SzNobVJ6QkdObkZYYURGdlNsQlZhSE5DVW05a2RVOVNTMlpzWW1WNVlXRlBkaXR0WjNsMk4wTmtSVE5RZEZVdmJubGhUR3hvYkdOSVVsaHdObTVSVUVwUlp6WnRhekJwYVRKRVlXVkNaVXBKUW1OU2VWSkdkRXBYZWxwMlNUYzJXRFl6V0hkdWQzZzBkRVZ1WkRCTlFsWklURzFDWlZKNlVGcGpVVmhLT0N0alVFSk9ORGRHUkRSbWJuRXJSamN4TTJKelYwaG5PV013YTBkclpURmhRVFpPVERWU1dXNVdiSEJQUm1WVmFsTjVPVGg2VlU5d2VpOUJXbEp4VFdSblQwRm5RVUVpZlE9PSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJRNF8zXCJdLFwibmFtZVwiOlsxXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfSx7XCJsYWJlbFwiOltcIm51bWJlcl9vZl9yZXNwb25kZW50c1wiXSxcIm5hbWVcIjpbMl0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX1dLFwiZGF0YVwiOlt7XCIxXCI6XCItMVwiLFwiMlwiOlwiMzNcIn0se1wiMVwiOlwiMVwiLFwiMlwiOlwiMTg3N1wifSx7XCIxXCI6XCIyXCIsXCIyXCI6XCIyMzUyXCJ9LHtcIjFcIjpcIjNcIixcIjJcIjpcIjExNTVcIn0se1wiMVwiOlwiNFwiLFwiMlwiOlwiNDE5XCJ9XSxcIm9wdGlvbnNcIjp7XCJjb2x1bW5zXCI6e1wibWluXCI6e30sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbMl19LFwicm93c1wiOntcIm1pblwiOlsxMF0sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbNV19LFwicGFnZXNcIjp7fX19XG4gIDxcL3NjcmlwdD5cbjxcL2Rpdj5cblxuPCEtLSBybmItZnJhbWUtZW5kIC0tPlxuIn0= -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRM1VyRE1CUStiZE9PRnBTQitBQjdnQmJadlBBQnhIdkZ3ZTVLMW1hejJKMlVKRlV2QlIvRnh4UTJUOXJrSm9Fa1g3NmM3enMvTDQrN1RiRXJBQ0FCeG1KSVVvS1FibCtmeWdjQUlnQWlZSkRiKzR1Q2JnaFk4c3BHWFdoTkFUT1gwR2Irai9ZS1lMRUZ5TytJL3FHdzM4QXdSWDRTbXNCeU1waEo5bnhmYnh5K3hmRzBGNnFXaDFvSlBVaHNCUm9kdU9SS2ZsYmV5YWFPdittZ3l2N0NkRTNQdFUvbnlhTGxobGNIUlhwNm5RUEpRZzZtazBpaTJEYWVCZUpJQmNSeVJGdEpXelp2STc2WDYzWHdud3g0dEVuZDBNQlZITG1CZVJ6UFpjUVhKOCtjUEJONDdGRDRmbnErRjcxM2JzV0hnOWMwa0drZTFhQTZOTDVSWW5WbHBPRmVValN5OTh6VU9wei9BWlJxTWRnT0FnQUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q4_3"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"33"},{"1":"1","2":"1877"},{"1":"2","2":"2352"},{"1":"3","2":"1155"},{"1":"4","2":"419"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “How much of an impact, if any, do each of the
+following have on your life? Elected officials in my city or community
+(e.g. mayor, city council).” The results of this code means 1877
+answered “a significant impact,” 2352 answered “somewhat of an impact,”
+1155 answered “just a slight impact” and 419 answered “no impact at
+all.”</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVRSZk5Da2dmRDVjYmlBZ2MzVnRiV0Z5YVhObEtHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjejF1S0NrcFhHNWdZR0FpZlE9PSAtLT5cblxuYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTRfNCkgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTRfNCkgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGAifQ== -->
+<pre class="r"><code>nonvoters_data |&gt;
+  group_by(Q4_4) |&gt;
+  summarise(number_of_respondents=n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSVUZVdlJFMUNRemxQUlRabmExVkRWa1ZJSzBKQ1UxVkVOMUZCY2xGMWQyZHJUSEJHWW5WTFYybFFVV015VVRSM09ISXJVbGR6TmtwMlpHbFROMlZtYm1Vck9DdFljRGd5Y1RKS1ZFRkZRVXR1UkU1SlRUUkxVWFppT0Rsc0wyTkJVa0ZCYTNkSFNHZzNhRGhMZFdsTVozbEJjMWhrWVVreFFtTjRZMU53ZFVoUU9XOHpPVWgzUlU5RFpWbFFlRU1yYWxGM2VrWkJaSEJEUTNkdVp6VnVhMHdyZERZM1prVXhhbTlsZERGTVdHRXhWbkZoVVZkRmNqQmFja2xhWVVoV1pIaFhZMWhIY2pKVGQyUldPV2hsYm1FemNHaFJjbkJCUm5FeWQyOTBjSEF3ZEZCeVIwVnVUekZIUVRkb1UxSnBjblpGT0VWcFl6WkpjRmxxZFd0eVlYTjJhMWs0WWs4NFZ6QllMelpaUWpkc09WRlFSRmg2Um1sU09WbDNSM2QxWnpVeU9GQlFabmxZVDBzclVYaHVOalpqVmxjNWMwYzFiRlk0WlZoMFNrRndibXhWWnlzM1VXaHJZVXBPV2xaV1ZtZFNTakJoWnl0TlJsQnlZMUIzU0ZKRmVXRlVVVFJEUVVGQlBTSjkgLS0+XG5cbjxkaXYgZGF0YS1wYWdlZHRhYmxlPVwiZmFsc2VcIj5cbiAgPHNjcmlwdCBkYXRhLXBhZ2VkdGFibGUtc291cmNlIHR5cGU9XCJhcHBsaWNhdGlvbi9qc29uXCI+XG57XCJjb2x1bW5zXCI6W3tcImxhYmVsXCI6W1wiUTRfNFwiXSxcIm5hbWVcIjpbMV0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX0se1wibGFiZWxcIjpbXCJudW1iZXJfb2ZfcmVzcG9uZGVudHNcIl0sXCJuYW1lXCI6WzJdLFwidHlwZVwiOltcImludFwiXSxcImFsaWduXCI6W1wicmlnaHRcIl19XSxcImRhdGFcIjpbe1wiMVwiOlwiLTFcIixcIjJcIjpcIjM4XCJ9LHtcIjFcIjpcIjFcIixcIjJcIjpcIjEwOTBcIn0se1wiMVwiOlwiMlwiLFwiMlwiOlwiMjA0OFwifSx7XCIxXCI6XCIzXCIsXCIyXCI6XCIxNTkzXCJ9LHtcIjFcIjpcIjRcIixcIjJcIjpcIjEwNjdcIn1dLFwib3B0aW9uc1wiOntcImNvbHVtbnNcIjp7XCJtaW5cIjp7fSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOlsyXX0sXCJyb3dzXCI6e1wibWluXCI6WzEwXSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOls1XX0sXCJwYWdlc1wiOnt9fX1cbiAgPFwvc2NyaXB0PlxuPFwvZGl2PlxuXG48IS0tIHJuYi1mcmFtZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRUFUvRE1CQzlPRTZna1VDVkVIK0JCU1VEN1FBclF1d2drTHBGYnVLV2lQUWMyUTR3OHIrUldzNkp2ZGlTN2VmbmUrOCtYcDgycTJKVEFFQUtuRE5JTTRLUXZiODlsL2NBUkFBa3dHSGg3aDhLdWlMZ3lBc1hkYUkxQmN4Y1NwdUhQOW8zOUh3RU9DZVlQeEMralF3ekZBZHBDQ3duZzVua0wrdDY3ZkUxam9ldDFMWGExVnFhUVdFcjBacklaYUhWZHhXY1hHcjJTd2RWOWhlbmEzcGhRcnBBRnEyd290cHAwdFByR0VuTzFHQTdoU1JpcnZFOEVpYzZJcFlqdWtyYXN2a1k4Yk84VzBYLzZZQjdsOVFQRFh6RmlSOVl3R3d1ZzUyOFBQZnlYT0srUXhuNjZjVlc5c0c1bFY4ZVh0SkFwbmxVZys3UWhrYUpOWlZWVmdSSjBhZytNRlByY1B3SFJFeWFUUTRDQUFBPSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q4_4"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"38"},{"1":"1","2":"1090"},{"1":"2","2":"2048"},{"1":"3","2":"1593"},{"1":"4","2":"1067"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “How much of an impact, if any, do each of the
+following have on your life? The news media.” The results of this code
+means 1090 answered “a significant impact,” 2048 answered “somewhat of
+an impact,” 1593 answered “just a slight impact” and 1067 answered “no
+impact at all.”</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVRSZk5Ta2dmRDVjYmlBZ2MzVnRiV0Z5YVhObEtHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjejF1S0NrcFhHNWdZR0FpZlE9PSAtLT5cblxuYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTRfNSkgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTRfNSkgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGAifQ== -->
+<pre class="r"><code>nonvoters_data |&gt;
+  group_by(Q4_5) |&gt;
+  summarise(number_of_respondents=n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSVXpBM1JFMUNRMlJLUlRabmExVkRWa1ZNWTJkWFdsRnBZMUZFUlVoblVsTkdOVlZwVGpOSVltbElVV015VVRaM05VSndZMmw0TVc1UlYyOWFTaTlpUjJ4dGVTOWxWRTUyWm5NNFVIRTVkRGhzVVU1QlFXOTZSbXRMVVVWSldERTVaVk42ZFVGWlowRnBTVVJDZWxBMlprWklVa1ozU2tsWVRuVndSVnAzZVZsMVNWRjFPSG8yTms0eVZDdEJTbmd2YXpkcmJUa3lLMUZOUlZZclJVcHlRV1pGZDNkclpYaHdWMlF3TldaSk0wUlpVMDVWU21KbFZrVnljVmd5UVdjd1QzTm5lVlV2UzJvNVNteHpObVpwVEVoMWNuTk1lWGhZWkRGNk4yTndOMDFITWpVMGRWWlhhMG9yYzFsVFRUVnJZakZ4U2twSmNuUTBSbXRuYW14U1FYcEJaVEJ1VkZKR2RsSXZkM0pXWjNOQk15OVRORGcwVjJSVmMwUXhNMGhyUm5WYWVGQk1WVkp1TlhjNFl5OUtUVFJMTlVZMFpXWndLMFZhTUZCdVRXb3phREk0Y0VsWFRTdDVhRGN4WVV4NFozaExjbE41VFU0NU5VczRiSEF4Ym5oMFNHZ3JRUzlCWTFsRFprUm5TVUZCUVQwOUluMD0gLS0+XG5cbjxkaXYgZGF0YS1wYWdlZHRhYmxlPVwiZmFsc2VcIj5cbiAgPHNjcmlwdCBkYXRhLXBhZ2VkdGFibGUtc291cmNlIHR5cGU9XCJhcHBsaWNhdGlvbi9qc29uXCI+XG57XCJjb2x1bW5zXCI6W3tcImxhYmVsXCI6W1wiUTRfNVwiXSxcIm5hbWVcIjpbMV0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX0se1wibGFiZWxcIjpbXCJudW1iZXJfb2ZfcmVzcG9uZGVudHNcIl0sXCJuYW1lXCI6WzJdLFwidHlwZVwiOltcImludFwiXSxcImFsaWduXCI6W1wicmlnaHRcIl19XSxcImRhdGFcIjpbe1wiMVwiOlwiLTFcIixcIjJcIjpcIjQ0XCJ9LHtcIjFcIjpcIjFcIixcIjJcIjpcIjEyMzRcIn0se1wiMVwiOlwiMlwiLFwiMlwiOlwiMjIwMVwifSx7XCIxXCI6XCIzXCIsXCIyXCI6XCIxMzcyXCJ9LHtcIjFcIjpcIjRcIixcIjJcIjpcIjk4NVwifV0sXCJvcHRpb25zXCI6e1wiY29sdW1uc1wiOntcIm1pblwiOnt9LFwibWF4XCI6WzEwXSxcInRvdGFsXCI6WzJdfSxcInJvd3NcIjp7XCJtaW5cIjpbMTBdLFwibWF4XCI6WzEwXSxcInRvdGFsXCI6WzVdfSxcInBhZ2VzXCI6e319fVxuICA8XC9zY3JpcHQ+XG48XC9kaXY+XG5cbjwhLS0gcm5iLWZyYW1lLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRUzA3RE1CQ2RKRTZna1VDVkVMY2dXWlFpY1FERUhnUlNGNVVpTjNIYmlIUWMyUTZ3NUJwY2l4MW5RV29aSi9iR2xteS9lVE52ZnM4UHE5dDhsUU5BQW96RmtLUUVJWDE5ZVN6dUFZZ0FpSURCelA2ZkZIUkZ3SklYTnVwRVp3eVl1SVF1OHo2Nk4yVCtBSngvazdrbTkyK1FNRVYrRUpyQWZFd3drZXhwV2QwNWZJM0RZU05VSmJlVkVycVgyQWcwT3NneVUvS2o5SmxzNmZpTEh1cnNMeXhYZDF6N2NwN01HMjU0dVZXa0orc1lTTTVrYjFxSkpJcnQ0RmtnamxSQXpBZTBuVFJGdlIvd3JWZ3NBMy9TNDg0V2RVc0QxM0hrRnVaeFBMVVJuNXc4Yy9KTTRLNUY0ZWZwK0VaMFBuTWozaDI4cElXTSt5aDcxYUx4Z3hLclN5TU45NUs4bHAxbnh0SGgrQS9BY1lDZkRnSUFBQT09In0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q4_5"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"44"},{"1":"1","2":"1234"},{"1":"2","2":"2201"},{"1":"3","2":"1372"},{"1":"4","2":"985"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “How much of an impact, if any, do each of the
+following have on your life? Large financial institutions on Wall
+Street.” The results of this code means 1234 answered “a significant
+impact,” 2201 answered “somewhat of an impact,” 1372 answered “just a
+slight impact” and 985 answered “no impact at all.”</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVibTl1ZG05MFpYSnpYMlJoZEdFZ2ZENWNiaUFnWjNKdmRYQmZZbmtvVVRSZk5pa2dmRDVjYmlBZ2MzVnRiV0Z5YVhObEtHNTFiV0psY2w5dlpsOXlaWE53YjI1a1pXNTBjejF1S0NrcFhHNWdZR0FpZlE9PSAtLT5cblxuYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTRfNikgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9udm90ZXJzX2RhdGEgfD5cbiAgZ3JvdXBfYnkoUTRfNikgfD5cbiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpXG5gYGAifQ== -->
+<pre class="r"><code>nonvoters_data |&gt;
+  group_by(Q4_6) |&gt;
+  summarise(number_of_respondents=n())</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkluUmliRjlrWmlJc0luUmliQ0lzSW1SaGRHRXVabkpoYldVaVhTd2libkp2ZHlJNk5Td2libU52YkNJNk1pd2ljM1Z0YldGeWVTSTZleUpCSUhScFltSnNaU0k2V3lJMUlNT1hJRElpWFgxOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiREZSZVRBM1JFMUNSR05QUlRWTFNUUkZjVWxVTmtGRU1HZFBka2xSTkVrck5HZExkbFZYZFZsc1lrbDBTakZhUkhaQmExZ3ZhWGx3T0doMFlYaFVLeXRLU1ZScFltcHVaRzVrWlZoc1kxaFNaWEpCWjBKVE5FcDRRbTFvUjBWaVVHNDJWazQwUkVWQlIxRkJTV1UxS3pNMVVqQlVhMEpTTlRZMmNXZE5PVlU0UjFKVEsyNTNZMFZtYmtWdFJESkJNMFI1VVZCUmRteGlSRWxOUlU5NGF6UmlRVmxxU1RScmRubzFjSEkzZWl0QlRFZ3pWbkp4VjIweGNVeGpNbWR6U2xadlZHVlJlVEVyY1hwRGF6WjFUbVoxYlVZd016SkdOMlJ5WlcxR1EzVXdRVmR5WWtOcE1tMXFVekE1T0N0cmMzcFZXVVIxUmtwSFNuVTRWSGRUU25wdmFVWnBUelpUWkhGNVpWSjJlSFppZVRacVpUZFVRV0psZFhGUk9FNHZUVk5LUkhsNFowaDRVVGRsU0c1MU5XSnVSV0paWTNrM1RrOU1kR1Y1UkdONWN5OVFSSGxxVVV0Wk9IRnJSak5oVFU5cGVFcHlTMHRwZFVOd1IyaFZTRFZvY0dSa2FpOUJPSFU1ZEUxQlQwRm5RVUVpZlE9PSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJRNF82XCJdLFwibmFtZVwiOlsxXSxcInR5cGVcIjpbXCJpbnRcIl0sXCJhbGlnblwiOltcInJpZ2h0XCJdfSx7XCJsYWJlbFwiOltcIm51bWJlcl9vZl9yZXNwb25kZW50c1wiXSxcIm5hbWVcIjpbMl0sXCJ0eXBlXCI6W1wiaW50XCJdLFwiYWxpZ25cIjpbXCJyaWdodFwiXX1dLFwiZGF0YVwiOlt7XCIxXCI6XCItMVwiLFwiMlwiOlwiMzNcIn0se1wiMVwiOlwiMVwiLFwiMlwiOlwiMTk3MVwifSx7XCIxXCI6XCIyXCIsXCIyXCI6XCIyMTA2XCJ9LHtcIjFcIjpcIjNcIixcIjJcIjpcIjEyMTJcIn0se1wiMVwiOlwiNFwiLFwiMlwiOlwiNTE0XCJ9XSxcIm9wdGlvbnNcIjp7XCJjb2x1bW5zXCI6e1wibWluXCI6e30sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbMl19LFwicm93c1wiOntcIm1pblwiOlsxMF0sXCJtYXhcIjpbMTBdLFwidG90YWxcIjpbNV19LFwicGFnZXNcIjp7fX19XG4gIDxcL3NjcmlwdD5cbjxcL2Rpdj5cblxuPCEtLSBybmItZnJhbWUtZW5kIC0tPlxuIn0= -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI1IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFReTA3RE1CRGNPRTVLSTRFcUlUNkFEMGdPdklRNEkrNGdLdlVXdVlsYkl0SjFaRHZBa1gvaXlwOGh0YXhUKytKSVRpYmpuZG5kZVhsY1hSZXJBZ0JTNEp4Qm1oR0ViUG42Vk40REVBR1FBSWU1KzM1UjBUa0JSNTY2cWdNOVU4R1JTK253Y0VmbkVtRDJBM0R5UVBRdmxiRElNRU94azRiQVlqSTRrdno1cHI3eitBTEgzVnJxV20xcUxjMmdzSlZvVGVReTErcXpDazZ1TmZ1bUYwMzJGN2RyZW1GQ3UwQVdyYkNpMm1qUzA5OCtrc3pVWUR1RkpHSnU4VHdTSnpvaUZpTzZTZHF5ZVJ2eHZieTZqZTdUQWJldXFROE4vTVNKRHl4Z0h4UTdlSG51NWJuRWJZY3k3Tk9MdGV5RGN5cy9QRHlqUUtZOHFrRjNhTU9peEpyS0tpdUNwR2hVSDVocGRkai9BOHU5dE1BT0FnQUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Q4_6"],"name":[1],"type":["int"],"align":["right"]},{"label":["number_of_respondents"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"-1","2":"33"},{"1":"1","2":"1971"},{"1":"2","2":"2106"},{"1":"3","2":"1212"},{"1":"4","2":"514"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>This question is: “How much of an impact, if any, do each of the
+following have on your life? Law enforcement and the legal system.” The
+results of this code means 1971 answered “a significant impact,” 2106
+answered “somewhat of an impact,” 1212 answered “just a slight impact”
+and 514 answered “no impact at all.”</p>
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlJldmVyc2UgRW5naW5lZXJpbmcgUHJvamVjdCINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQoNClRoaXMgaXMgYW4gW1IgTWFya2Rvd25dKGh0dHA6Ly9ybWFya2Rvd24ucnN0dWRpby5jb20pIE5vdGVib29rLiBXaGVuIHlvdSBleGVjdXRlIGNvZGUgd2l0aGluIHRoZSBub3RlYm9vaywgdGhlIHJlc3VsdHMgYXBwZWFyIGJlbmVhdGggdGhlIGNvZGUuDQoNClRyeSBleGVjdXRpbmcgdGhpcyBjaHVuayBieSBjbGlja2luZyB0aGUgKlJ1biogYnV0dG9uIHdpdGhpbiB0aGUgY2h1bmsgb3IgYnkgcGxhY2luZyB5b3VyIGN1cnNvciBpbnNpZGUgaXQgYW5kIHByZXNzaW5nICpDbWQrU2hpZnQrRW50ZXIqLg0KDQpgYGB7cn0NCm5vbnZvdGVyc19kYXRhIDwtIHJlYWQuY3N2KCJDOi9Vc2Vycy9ldGhhbi9Eb3dubG9hZHMvUmV2ZXJzZSBFbmdpbmVlcmluZyBNaWxlc3RvbmUgMi9ub252b3RlcnNfZGF0YS5jc3YiKQ0KYGBgDQoNCmBgYHtyfQ0Kbm9udm90ZXJzX2RhdGEgfD4NCiAgZ3JvdXBfYnkoUTJfMSkgfD4NCiAgc3VtbWFyaXNlKA0KICAgIGFtZXJpY2FuX2ltcG9ydGFuY2UgPSBuKCkpDQpgYGANCmBgYHtyfQ0Kbm9udm90ZXJzX2RhdGEgfD4NCiAgZ3JvdXBfYnkoUTJfMil8Pg0KICBzdW1tYXJpc2UoDQogICAgYW1lcmljYW5faW1wb3J0YW5jZSA9IG4oKSkNCmBgYA0KYGBge3J9DQpub252b3RlcnNfZGF0YSB8Pg0KICBncm91cF9ieShRMl8zKXw+DQogIHN1bW1hcmlzZSgNCiAgICBhbWVyaWNhbl9pbXBvcnRhbmNlID0gbigpKQ0KYGBgDQpgYGB7cn0NCm5vbnZvdGVyc19kYXRhIHw+DQogIGdyb3VwX2J5KFEyXzQpfD4NCiAgc3VtbWFyaXNlKA0KICAgIGFtZXJpY2FuX2ltcG9ydGFuY2UgPSBuKCkpDQpgYGANCmBgYHtyfQ0Kbm9udm90ZXJzX2RhdGEgfD4NCiAgZ3JvdXBfYnkoUTJfNSl8Pg0KICBzdW1tYXJpc2UoDQogICAgYW1lcmljYW5faW1wb3J0YW5jZSA9IG4oKSkNCmBgYA0KYGBge3J9DQpub252b3RlcnNfZGF0YSB8Pg0KICBncm91cF9ieShRMl82KXw+DQogIHN1bW1hcmlzZSgNCiAgICBhbWVyaWNhbl9pbXBvcnRhbmNlID0gbigpKQ0KYGBgDQpgYGB7cn0NCm5vbnZvdGVyc19kYXRhIHw+DQogIGdyb3VwX2J5KFEyXzcpfD4NCiAgc3VtbWFyaXNlKA0KICAgIGFtZXJpY2FuX2ltcG9ydGFuY2UgPSBuKCkpDQpgYGANCmBgYHtyfQ0Kbm9udm90ZXJzX2RhdGEgfD4NCiAgZ3JvdXBfYnkoUTJfOCl8Pg0KICBzdW1tYXJpc2UoDQogICAgYW1lcmljYW5faW1wb3J0YW5jZSA9IG4oKSkNCmBgYA0KYGBge3J9DQpub252b3RlcnNfZGF0YSB8Pg0KICBncm91cF9ieShRMl85KSB8Pg0KICBzdW1tYXJpc2UoDQogICAgYW1lcmljYW5faW1wb3J0YW5jZSA9IG4oKSkNCmBgYA0KYGBge3J9DQpub252b3RlcnNfZGF0YSB8Pg0KICBncm91cF9ieShRMl8xMCl8Pg0KICBzdW1tYXJpc2UoDQogICAgYW1lcmljYW5faW1wb3J0YW5jZSA9IG4oKSkNCmBgYA0KDQpGb3IgdGhlc2UgMTAgYmxvY2tzIG9mIGNvZGUsIHdlIGNvdW50ZWQgdGhlIG51bWJlciBvZiB0aW1lcyBlYWNoICJpbXBvcnRhbmNlIiBhbnN3ZXIgd2FzIGFuc3dlcmVkIGZvciBlYWNoIHF1ZXN0aW9uLiBGb3IgZXhhbXBsZSwgUTJfMTAgY29ycmVzcG9uZHMgdG8gdGhlIG9yaWdpbmFsIHF1ZXN0aW9uIG9mICJIb3cgaW1wb3J0YW50IGRvIHlvdSB0aGluayBwcm90ZXN0aW5nIGlmIHlvdSBiZWxpZXZlIGdvdmVybm1lbnQgYWN0aW9ucyBhcmUgd3JvbmcgaXMgdG8gYmVpbmcgYSBnb29kIEFtZXJpY2FuPyIgVGhlIG51bWJlcnMgMS00IGNvcnJlc3BvbmQgdG8gaW1wb3J0YW5jZSwgd2l0aCAxIGJlaW5nIHZlcnkgaW1wb3J0YW50LCAyIGJlaW5nIHNvbWV3aGF0IGltcG9ydGFudCwgMyBiZWluZyBub3Qgc28gaW1wb3J0YW50IGFuZCA0IGJlaW5nIG5vdCBhdCBhbGwgaW1wb3J0YW50LiBTbyBmb3IgQ1FfMTAsIHRoZSBudW1iZXIgMTg1NCBtZWFucyB0aGF0IDE4NTQgcGVvcGxlIHJlc3BvbmRlZCAidmVyeSBpbXBvcnRhbnQiIHRvICJIb3cgaW1wb3J0YW50IGRvIHlvdSB0aGluayBwcm90ZXN0aW5nIGlmIHlvdSBiZWxpZXZlIGdvdmVybm1lbnQgYWN0aW9ucyBhcmUgd3JvbmcgaXMgdG8gYmVpbmcgYSBnb29kIEFtZXJpY2FuPyIgVGhpcyBpcyB0aGUgc2FtZSBsb2dpYyBmb3IgZXZlcnkgc2luZ2xlIHJvdyBpbiBldmVyeSBzaW5nbGUgb25lIG9mIHRoZXNlIGNvZGUgYmxvY2tzLg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlJldmVyc2UgRW5naW5lZXJpbmcgUHJvamVjdCINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQoNClRoaXMgaXMgYW4gW1IgTWFya2Rvd25dKGh0dHA6Ly9ybWFya2Rvd24ucnN0dWRpby5jb20pIE5vdGVib29rLiBXaGVuIHlvdSBleGVjdXRlIGNvZGUgd2l0aGluIHRoZSBub3RlYm9vaywgdGhlIHJlc3VsdHMgYXBwZWFyIGJlbmVhdGggdGhlIGNvZGUuDQoNClRyeSBleGVjdXRpbmcgdGhpcyBjaHVuayBieSBjbGlja2luZyB0aGUgKlJ1biogYnV0dG9uIHdpdGhpbiB0aGUgY2h1bmsgb3IgYnkgcGxhY2luZyB5b3VyIGN1cnNvciBpbnNpZGUgaXQgYW5kIHByZXNzaW5nICpDbWQrU2hpZnQrRW50ZXIqLg0KDQpgYGB7cn0NCm5vbnZvdGVyc19kYXRhIDwtIHJlYWQuY3N2KCJDOi9Vc2Vycy9ldGhhbi9Eb3dubG9hZHMvUmV2ZXJzZSBFbmdpbmVlcmluZyBNaWxlc3RvbmUgMi9ub252b3RlcnNfZGF0YS5jc3YiKQ0KYGBgDQoNCmBgYHtyfQ0KbGlicmFyeSh0aWR5dmVyc2UpDQpgYGANClFVRVNUSU9OIDE6DQoNCmBgYHtyfQ0KbGlicmFyeSh0aWR5dmVyc2UpDQoNCm5vbnZvdGVyc19kYXRhIHw+DQogIGdyb3VwX2J5KFEyXzEpIHw+DQogIHN1bW1hcmlzZSgNCiAgICBudW1iZXJfb2ZfcmVzcG9uZGVudHMgPSBuKCkpDQpgYGANClRoaXMgcXVlc3Rpb24gaXM6ICJJbiB5b3VyIHZpZXcsIGhvdyBpbXBvcnRhbnQgaXMgdm90aW5nIGluIGVsZWN0aW9ucyBpbiBiZWluZyBhIGdvb2QgQW1lcmljYW4/IiBUaGUgcmVzdWx0cyBvZiB0aGlzIGNvZGUgbWVhbnMgNDc1OCBhbnN3ZXJlZCAidmVyeSBpbXBvcnRhbnQiLCA3MzggYW5zd2VyZWQgInNvbWV3aGF0IGltcG9ydGFudCwiIDE0NSBhbnN3ZXJlZCAibm90IHNvIGltcG9ydGFudCIgYW5kIDE2MCBhbnN3ZXJlZCAibm90IGF0IGFsbCBpbXBvcnRhbnQuIg0KDQpgYGB7cn0NCmxpYnJhcnkodGlkeXZlcnNlKQ0KDQpub252b3RlcnNfZGF0YSB8Pg0KICBncm91cF9ieShRMl8yKXw+DQogIHN1bW1hcmlzZSgNCiAgICBudW1iZXJfb2ZfcmVzcG9uZGVudHMgPSBuKCkpDQpgYGANClRoaXMgcXVlc3Rpb24gaXM6ICJJbiB5b3VyIHZpZXcsIGhvdyBpbXBvcnRhbnQgaXMgc2VydmluZyBvbiBhIGp1cnkgaW4gYmVpbmcgYSBnb29kIEFtZXJpY2FuPyIgVGhlIHJlc3VsdHMgb2YgdGhpcyBjb2RlIG1lYW5zIDI4MTEgYW5zd2VyZWQgInZlcnkgaW1wb3J0YW50IiwgMjA2OCBhbnN3ZXJlZCAic29tZXdoYXQgaW1wb3J0YW50LCIgNjQ0IGFuc3dlcmVkICJub3Qgc28gaW1wb3J0YW50IiBhbmQgMjc3IGFuc3dlcmVkICJub3QgYXQgYWxsIGltcG9ydGFudC4iDQoNCmBgYHtyfQ0KbGlicmFyeSh0aWR5dmVyc2UpDQoNCm5vbnZvdGVyc19kYXRhIHw+DQogIGdyb3VwX2J5KFEyXzMpfD4NCiAgc3VtbWFyaXNlKA0KICAgIG51bWJlcl9vZl9yZXNwb25kZW50cyA9IG4oKSkNCmBgYA0KVGhpcyBxdWVzdGlvbiBpczogIkluIHlvdXIgdmlldywgaG93IGltcG9ydGFudCBpcyBmb2xsb3dpbmcgd2hhdCBoYXBwZW5zIGluIGdvdmVybm1lbnQgYW5kIHBvbGl0aWNzIGluIGJlaW5nIGEgZ29vZCBBbWVyaWNhbj8iIFRoZSByZXN1bHRzIG9mIHRoaXMgY29kZSBtZWFucyAyNzcyIGFuc3dlcmVkICJ2ZXJ5IGltcG9ydGFudCIsIDI0MTkgYW5zd2VyZWQgInNvbWV3aGF0IGltcG9ydGFudCwiIDQ0OSBhbnN3ZXJlZCAibm90IHNvIGltcG9ydGFudCIgYW5kIDE2MCAgYW5zd2VyZWQgIm5vdCBhdCBhbGwgaW1wb3J0YW50LiINCg0KYGBge3J9DQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCg0Kbm9udm90ZXJzX2RhdGEgfD4NCiAgZ3JvdXBfYnkoUTJfNCl8Pg0KICBzdW1tYXJpc2UoDQogICAgbnVtYmVyX29mX3Jlc3BvbmRlbnRzID0gbigpKQ0KYGBgDQpUaGlzIHF1ZXN0aW9uIGlzOiAiSW4geW91ciB2aWV3LCBob3cgaW1wb3J0YW50IGlzIGRpc3BsYXlpbmcgdGhlIEFtZXJpY2FuIGZsYWcgaW4gYmVpbmcgYSBnb29kIEFtZXJpY2FuPyIgVGhlIHJlc3VsdHMgb2YgdGhpcyBjb2RlIG1lYW5zIDE5NjYgYW5zd2VyZWQgInZlcnkgaW1wb3J0YW50IiwgMTYyMyBhbnN3ZXJlZCAic29tZXdoYXQgaW1wb3J0YW50LCIgMTMzMSBhbnN3ZXJlZCAibm90IHNvIGltcG9ydGFudCIgYW5kIDg4MiBhbnN3ZXJlZCAibm90IGF0IGFsbCBpbXBvcnRhbnQuIg0KDQpgYGB7cn0NCmxpYnJhcnkodGlkeXZlcnNlKQ0KDQpub252b3RlcnNfZGF0YSB8Pg0KICBncm91cF9ieShRMl81KXw+DQogIHN1bW1hcmlzZSgNCiAgICBudW1iZXJfb2ZfcmVzcG9uZGVudHMgPSBuKCkpDQpgYGANClRoaXMgcXVlc3Rpb24gaXM6ICJJbiB5b3VyIHZpZXcsIGhvdyBpbXBvcnRhbnQgaXMgcGFydGljaXBhdGluZyBpbiB0aGUgVS5TLiBDZW5zdXMgZXZlcnkgdGVuIHllYXJzIGluIGJlaW5nIGEgZ29vZCBBbWVyaWNhbj8iIFRoZSByZXN1bHRzIG9mIHRoaXMgY29kZSBtZWFucyA0NTEzIGFuc3dlcmVkICJ2ZXJ5IGltcG9ydGFudCIsIDEwMTMgYW5zd2VyZWQgInNvbWV3aGF0IGltcG9ydGFudCwiIDE4NSBhbnN3ZXJlZCAibm90IHNvIGltcG9ydGFudCIgYW5kIDk3IGFuc3dlcmVkICJub3QgYXQgYWxsIGltcG9ydGFudC4iDQoNCmBgYHtyfQ0KbGlicmFyeSh0aWR5dmVyc2UpDQoNCm5vbnZvdGVyc19kYXRhIHw+DQogIGdyb3VwX2J5KFEyXzYpfD4NCiAgc3VtbWFyaXNlKA0KICAgIG51bWJlcl9vZl9yZXNwb25kZW50cyA9IG4oKSkNCmBgYA0KVGhpcyBxdWVzdGlvbiBpczogIkluIHlvdXIgdmlldywgaG93IGltcG9ydGFudCBpcyBrbm93aW5nIHRoZSBQbGVkZ2Ugb2YgQWxsZWdpYW5jZSBpbiBiZWluZyBhIGdvb2QgQW1lcmljYW4/IiBUaGUgcmVzdWx0cyBvZiB0aGlzIGNvZGUgbWVhbnMgMjk1NiBhbnN3ZXJlZCAidmVyeSBpbXBvcnRhbnQiLCAxNDU2IGFuc3dlcmVkICJzb21ld2hhdCBpbXBvcnRhbnQsIiA4NzIgYW5zd2VyZWQgIm5vdCBzbyBpbXBvcnRhbnQiIGFuZCA1MjEgYW5zd2VyZWQgIm5vdCBhdCBhbGwgaW1wb3J0YW50LiINCg0KYGBge3J9DQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCg0Kbm9udm90ZXJzX2RhdGEgfD4NCiAgZ3JvdXBfYnkoUTJfNyl8Pg0KICBzdW1tYXJpc2UoDQogICAgbnVtYmVyX29mX3Jlc3BvbmRlbnRzID0gbigpKQ0KYGBgDQpUaGlzIHF1ZXN0aW9uIGlzOiAiSW4geW91ciB2aWV3LCBob3cgaW1wb3J0YW50IGlzIHN1cHBvcnRpbmcgdGhlIG1pbGl0YXJ5IGluIGJlaW5nIGEgZ29vZCBBbWVyaWNhbj8iIFRoZSByZXN1bHRzIG9mIHRoaXMgY29kZSBtZWFucyAzNjg0IGFuc3dlcmVkICJ2ZXJ5IGltcG9ydGFudCIsIDE0NTQgYW5zd2VyZWQgInNvbWV3aGF0IGltcG9ydGFudCwiIDQ1OSBhbnN3ZXJlZCAibm90IHNvIGltcG9ydGFudCIgYW5kIDE5NSBhbnN3ZXJlZCAibm90IGF0IGFsbCBpbXBvcnRhbnQuIg0KDQpgYGB7cn0NCmxpYnJhcnkodGlkeXZlcnNlKQ0KDQpub252b3RlcnNfZGF0YSB8Pg0KICBncm91cF9ieShRMl84KXw+DQogIHN1bW1hcmlzZSgNCiAgICBudW1iZXJfb2ZfcmVzcG9uZGVudHMgPSBuKCkpDQpgYGANClRoaXMgcXVlc3Rpb24gaXM6ICJJbiB5b3VyIHZpZXcsIGhvdyBpbXBvcnRhbnQgaXMgcmVzcGVjdGluZyB0aGUgb3BpbmlvbiBvZiB0aG9zZSB3aG8gZGlzYWdyZWUgd2l0aCB5b3UgaW4gYmVpbmcgYSBnb29kIEFtZXJpY2FuPyIgVGhlIHJlc3VsdHMgb2YgdGhpcyBjb2RlIG1lYW5zIDM0OTkgYW5zd2VyZWQgInZlcnkgaW1wb3J0YW50IiwgMTkzOCBhbnN3ZXJlZCAic29tZXdoYXQgaW1wb3J0YW50LCIgMjk3IGFuc3dlcmVkICJub3Qgc28gaW1wb3J0YW50IiBhbmQgNzYgYW5zd2VyZWQgIm5vdCBhdCBhbGwgaW1wb3J0YW50LiINCg0KYGBge3J9DQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCg0Kbm9udm90ZXJzX2RhdGEgfD4NCiAgZ3JvdXBfYnkoUTJfOSkgfD4NCiAgc3VtbWFyaXNlKA0KICAgIG51bWJlcl9vZl9yZXNwb25kZW50cyA9IG4oKSkNCmBgYA0KVGhpcyBxdWVzdGlvbiBpczogIkluIHlvdXIgdmlldywgaG93IGltcG9ydGFudCBpcyBiZWxpZXZpbmcgaW4gR29kIGluIGJlaW5nIGEgZ29vZCBBbWVyaWNhbj8iIFRoZSByZXN1bHRzIG9mIHRoaXMgY29kZSBtZWFucyAyNzU4IGFuc3dlcmVkICJ2ZXJ5IGltcG9ydGFudCIsIDkzMSBhbnN3ZXJlZCAic29tZXdoYXQgaW1wb3J0YW50LCIgODEwIGFuc3dlcmVkICJub3Qgc28gaW1wb3J0YW50IiBhbmQgMTMwMSBhbnN3ZXJlZCAibm90IGF0IGFsbCBpbXBvcnRhbnQuIg0KDQpgYGB7cn0NCmxpYnJhcnkodGlkeXZlcnNlKQ0KDQpub252b3RlcnNfZGF0YSB8Pg0KICBncm91cF9ieShRMl8xMCl8Pg0KICBzdW1tYXJpc2UoDQogICAgbnVtYmVyX29mX3Jlc3BvbmRlbnRzID0gbigpKQ0KYGBgDQpUaGlzIHF1ZXN0aW9uIGlzOiAiSW4geW91ciB2aWV3LCBob3cgaW1wb3J0YW50IGlzIHByb3Rlc3RpbmcgaWYgeW91IGJlbGlldmUgZ292ZXJubWVudCBhY3Rpb25zIGFyZSB3cm9uZyBpbiBiZWluZyBhIGdvb2QgQW1lcmljYW4/IiBUaGUgcmVzdWx0cyBvZiB0aGlzIGNvZGUgbWVhbnMgMTg1NCBhbnN3ZXJlZCAidmVyeSBpbXBvcnRhbnQiLCAyMzQwIGFuc3dlcmVkICJzb21ld2hhdCBpbXBvcnRhbnQsIiAxMTI3IGFuc3dlcmVkICJub3Qgc28gaW1wb3J0YW50IiBhbmQgNDc3IGFuc3dlcmVkICJub3QgYXQgYWxsIGltcG9ydGFudC4iDQoNClFVRVNUSU9OIDM6DQoNCmBgYHtyfQ0Kbm9udm90ZXJzX2RhdGEgfD4NCiAgZ3JvdXBfYnkoUTNfMSkgfD4NCiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpDQpgYGANCg0KVGhpcyBxdWVzdGlvbiBpczogIkhvdyBtdWNoIGRvIHlvdSBhZ3JlZSBvciBkaXNhZ3JlZSB3aXRoIHRoZSBmb2xsb3dpbmcgc3RhdGVtZW50PyBTeXN0ZW1pYyByYWNpc20gaXMgYSBwcm9ibGVtIGluIHRoZSBVbml0ZWQgU3RhdGVzLiIgVGhlIHJlc3VsdHMgb2YgdGhpcyBjb2RlIG1lYW5zIDI2ODIgYW5zd2VyZWQgc3Ryb25nbHkgYWdyZWUsIDE1OTQgYW5zd2VyZWQgc29tZXdoYXQgYWdyZWUsIDgwMyBhbnN3ZXJlZCBzb21ld2hhdCBkaXNhZ3JlZSBhbmQgNzE4IGFuc3dlcmVkIHN0cm9uZ2x5IGRpc2FncmVlLg0KDQpgYGB7cn0NCm5vbnZvdGVyc19kYXRhIHw+DQogIGdyb3VwX2J5KFEzXzIpIHw+DQogIHN1bW1hcmlzZShudW1iZXJfb2ZfcmVzcG9uZGVudHM9bigpKQ0KYGBgDQoNClRoaXMgcXVlc3Rpb24gaXM6ICJIb3cgbXVjaCBkbyB5b3UgYWdyZWUgb3IgZGlzYWdyZWUgd2l0aCB0aGUgZm9sbG93aW5nIHN0YXRlbWVudD8gU3lzdGVtaWMgcmFjaXNtIGluIHBvbGljaW5nIGlzIGEgYmlnZ2VyIHByb2JsZW0gdGhhbiB2aW9sZW5jZSBhbmQgdmFuZGFsaXNtIGluIHByb3Rlc3RzLiIgVGhlIHJlc3VsdHMgb2YgdGhpcyBjb2RlIG1lYW5zIDE3MDggYW5zd2VyZWQgc3Ryb25nbHkgYWdyZWUsIDE0MDIgYW5zd2VyZWQgc29tZXdoYXQgYWdyZWUsIDEyMzUgYW5zd2VyZWQgc29tZXdoYXQgZGlzYWdyZWUgYW5kIDE0MzggYW5zd2VyZWQgc3Ryb25nbHkgZGlzYWdyZWUuDQoNCmBgYHtyfQ0Kbm9udm90ZXJzX2RhdGEgfD4NCiAgZ3JvdXBfYnkoUTNfMykgfD4NCiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpDQpgYGANCg0KVGhpcyBxdWVzdGlvbiBpczogIkhvdyBtdWNoIGRvIHlvdSBhZ3JlZSBvciBkaXNhZ3JlZSB3aXRoIHRoZSBmb2xsb3dpbmcgc3RhdGVtZW50PyBTb2NpZXR5IGFzIGEgd2hvbGUgaGFzIGJlY29tZSB0b28gc29mdCBhbmQgZmVtaW5pbmUuIiBUaGUgcmVzdWx0cyBvZiB0aGlzIGNvZGUgbWVhbnMgOTkwIGFuc3dlcmVkIHN0cm9uZ2x5IGFncmVlLCAxNjE4IGFuc3dlcmVkIHNvbWV3aGF0IGFncmVlLCAxNTE5IGFuc3dlcmVkIHNvbWV3aGF0IGRpc2FncmVlIGFuZCAxNjU1IGFuc3dlcmVkIHN0cm9uZ2x5IGRpc2FncmVlLg0KDQpgYGB7cn0NCm5vbnZvdGVyc19kYXRhIHw+DQogIGdyb3VwX2J5KFEzXzQpIHw+DQogIHN1bW1hcmlzZShudW1iZXJfb2ZfcmVzcG9uZGVudHM9bigpKQ0KYGBgDQoNClRoaXMgcXVlc3Rpb24gaXM6ICJIb3cgbXVjaCBkbyB5b3UgYWdyZWUgb3IgZGlzYWdyZWUgd2l0aCB0aGUgZm9sbG93aW5nIHN0YXRlbWVudD8gVGhlIG1haW5zdHJlYW0gbWVkaWEgaXMgbW9yZSBpbnRlcmVzdGVkIGluIG1ha2luZyBtb25leSB0aGFuIHRlbGxpbmcgdGhlIHRydXRoLiIgVGhlIHJlc3VsdHMgb2YgdGhpcyBjb2RlIG1lYW5zIDI2MDUgYW5zd2VyZWQgc3Ryb25nbHkgYWdyZWUsIDE4MDAgYW5zd2VyZWQgc29tZXdoYXQgYWdyZWUsIDkwMCBhbnN3ZXJlZCBzb21ld2hhdCBkaXNhZ3JlZSBhbmQgNDk5IGFuc3dlcmVkIHN0cm9uZ2x5IGRpc2FncmVlLg0KDQpgYGB7cn0NCm5vbnZvdGVyc19kYXRhIHw+DQogIGdyb3VwX2J5KFEzXzUpIHw+DQogIHN1bW1hcmlzZShudW1iZXJfb2ZfcmVzcG9uZGVudHM9bigpKQ0KYGBgDQoNClRoaXMgcXVlc3Rpb24gaXM6ICJIb3cgbXVjaCBkbyB5b3UgYWdyZWUgb3IgZGlzYWdyZWUgd2l0aCB0aGUgZm9sbG93aW5nIHN0YXRlbWVudD8gVHJhZGl0aW9uYWwgcGFydGllcyBhbmQgcG9saXRpY2lhbnMgZG9uJ3QgY2FyZSBhYm91dCBwZW9wbGUgbGlrZSBtZS4iIFRoZSByZXN1bHRzIG9mIHRoaXMgY29kZSBtZWFucyAxNTkwIGFuc3dlcmVkIHN0cm9uZ2x5IGFncmVlLCAyNjc4IGFuc3dlcmVkIHNvbWV3aGF0IGFncmVlLCAxMjI5IGFuc3dlcmVkIHNvbWV3aGF0IGRpc2FncmVlIGFuZCAyOTQgYW5zd2VyZWQgc3Ryb25nbHkgZGlzYWdyZWUuDQoNCmBgYHtyfQ0Kbm9udm90ZXJzX2RhdGEgfD4NCiAgZ3JvdXBfYnkoUTNfNikgfD4NCiAgc3VtbWFyaXNlKG51bWJlcl9vZl9yZXNwb25kZW50cz1uKCkpDQpgYGANCg0KVGhpcyBxdWVzdGlvbiBpczogIkhvdyBtdWNoIGRvIHlvdSBhZ3JlZSBvciBkaXNhZ3JlZSB3aXRoIHRoZSBmb2xsb3dpbmcgc3RhdGVtZW50PyBUaGUgd2F5IHBlb3BsZSB0YWxrIG5lZWRzIHRvIGNoYW5nZSB3aXRoIHRoZSB0aW1lcyB0byBiZSBtb3JlIHNlbnNpdGl2ZSB0byBwZW9wbGUgd2l0aCBkaWZmZXJlbnQgYmFja2dyb3VuZHMuIiBUaGUgcmVzdWx0cyBvZiB0aGlzIGNvZGUgbWVhbnMgMTc4MyBhbnN3ZXJlZCBzdHJvbmdseSBhZ3JlZSwgMjM0NSBhbnN3ZXJlZCBzb21ld2hhdCBhZ3JlZSwgMTA3MSBhbnN3ZXJlZCBzb21ld2hhdCBkaXNhZ3JlZSBhbmQgNjAzIGFuc3dlcmVkIHN0cm9uZ2x5IGRpc2FncmVlLg0KDQpRVUVTVElPTiA0Og0KDQpgYGB7cn0NCm5vbnZvdGVyc19kYXRhIHw+DQogIGdyb3VwX2J5KFE0XzEpIHw+DQogIHN1bW1hcmlzZShudW1iZXJfb2ZfcmVzcG9uZGVudHM9bigpKQ0KYGBgDQoNClRoaXMgcXVlc3Rpb24gaXM6ICJIb3cgbXVjaCBvZiBhbiBpbXBhY3QsIGlmIGFueSwgZG8gZWFjaCBvZiB0aGUgZm9sbG93aW5nIGhhdmUgb24geW91ciBsaWZlPyBFbGVjdGVkIG9mZmljaWFscyBpbiBXYXNoaW5ndG9uLCBELkMuIChlLmcuIHRoZSBwcmVzaWRlbnQsIG1lbWJlciBvZiBDb25ncmVzcykuIiBUaGUgcmVzdWx0cyBvZiB0aGlzIGNvZGUgbWVhbnMgMjU5NiBhbnN3ZXJlZCAiYSBzaWduaWZpY2FudCBpbXBhY3QsIiAyMDIzIGFuc3dlcmVkICJzb21ld2hhdCBvZiBhbiBpbXBhY3QsIiA4MzQgYW5zd2VyZWQgImp1c3QgYSBzbGlnaHQgaW1wYWN0IiBhbmQgMzQ0IGFuc3dlcmVkICJubyBpbXBhY3QgYXQgYWxsLiINCg0KYGBge3J9DQpub252b3RlcnNfZGF0YSB8Pg0KICBncm91cF9ieShRNF8yKSB8Pg0KICBzdW1tYXJpc2UobnVtYmVyX29mX3Jlc3BvbmRlbnRzPW4oKSkNCmBgYA0KDQpUaGlzIHF1ZXN0aW9uIGlzOiAiSG93IG11Y2ggb2YgYW4gaW1wYWN0LCBpZiBhbnksIGRvIGVhY2ggb2YgdGhlIGZvbGxvd2luZyBoYXZlIG9uIHlvdXIgbGlmZT8gRWxlY3RlZCBvZmZpY2lhbHMgaW4gbXkgc3RhdGUgKGUuZy4gZ292ZXJub3IsIHN0YXRlIHJlcHJlc2VudGF0aXZlKS4iIFRoZSByZXN1bHRzIG9mIHRoaXMgY29kZSBtZWFucyAyMzQ1IGFuc3dlcmVkICJhIHNpZ25pZmljYW50IGltcGFjdCwiIDIzMTQgYW5zd2VyZWQgInNvbWV3aGF0IG9mIGFuIGltcGFjdCwiIDgxMCBhbnN3ZXJlZCAianVzdCBhIHNsaWdodCBpbXBhY3QiIGFuZCAzMjggYW5zd2VyZWQgIm5vIGltcGFjdCBhdCBhbGwuIg0KDQpgYGB7cn0NCm5vbnZvdGVyc19kYXRhIHw+DQogIGdyb3VwX2J5KFE0XzMpIHw+DQogIHN1bW1hcmlzZShudW1iZXJfb2ZfcmVzcG9uZGVudHM9bigpKQ0KYGBgDQoNClRoaXMgcXVlc3Rpb24gaXM6ICJIb3cgbXVjaCBvZiBhbiBpbXBhY3QsIGlmIGFueSwgZG8gZWFjaCBvZiB0aGUgZm9sbG93aW5nIGhhdmUgb24geW91ciBsaWZlPyBFbGVjdGVkIG9mZmljaWFscyBpbiBteSBjaXR5IG9yIGNvbW11bml0eSAoZS5nLiBtYXlvciwgY2l0eSBjb3VuY2lsKS4iIFRoZSByZXN1bHRzIG9mIHRoaXMgY29kZSBtZWFucyAxODc3IGFuc3dlcmVkICJhIHNpZ25pZmljYW50IGltcGFjdCwiIDIzNTIgYW5zd2VyZWQgInNvbWV3aGF0IG9mIGFuIGltcGFjdCwiIDExNTUgYW5zd2VyZWQgImp1c3QgYSBzbGlnaHQgaW1wYWN0IiBhbmQgNDE5IGFuc3dlcmVkICJubyBpbXBhY3QgYXQgYWxsLiINCg0KYGBge3J9DQpub252b3RlcnNfZGF0YSB8Pg0KICBncm91cF9ieShRNF80KSB8Pg0KICBzdW1tYXJpc2UobnVtYmVyX29mX3Jlc3BvbmRlbnRzPW4oKSkNCmBgYA0KDQpUaGlzIHF1ZXN0aW9uIGlzOiAiSG93IG11Y2ggb2YgYW4gaW1wYWN0LCBpZiBhbnksIGRvIGVhY2ggb2YgdGhlIGZvbGxvd2luZyBoYXZlIG9uIHlvdXIgbGlmZT8gVGhlIG5ld3MgbWVkaWEuIiBUaGUgcmVzdWx0cyBvZiB0aGlzIGNvZGUgbWVhbnMgMTA5MCBhbnN3ZXJlZCAiYSBzaWduaWZpY2FudCBpbXBhY3QsIiAyMDQ4IGFuc3dlcmVkICJzb21ld2hhdCBvZiBhbiBpbXBhY3QsIiAxNTkzIGFuc3dlcmVkICJqdXN0IGEgc2xpZ2h0IGltcGFjdCIgYW5kIDEwNjcgYW5zd2VyZWQgIm5vIGltcGFjdCBhdCBhbGwuIg0KDQpgYGB7cn0NCm5vbnZvdGVyc19kYXRhIHw+DQogIGdyb3VwX2J5KFE0XzUpIHw+DQogIHN1bW1hcmlzZShudW1iZXJfb2ZfcmVzcG9uZGVudHM9bigpKQ0KYGBgDQoNClRoaXMgcXVlc3Rpb24gaXM6ICJIb3cgbXVjaCBvZiBhbiBpbXBhY3QsIGlmIGFueSwgZG8gZWFjaCBvZiB0aGUgZm9sbG93aW5nIGhhdmUgb24geW91ciBsaWZlPyBMYXJnZSBmaW5hbmNpYWwgaW5zdGl0dXRpb25zIG9uIFdhbGwgU3RyZWV0LiIgVGhlIHJlc3VsdHMgb2YgdGhpcyBjb2RlIG1lYW5zIDEyMzQgYW5zd2VyZWQgImEgc2lnbmlmaWNhbnQgaW1wYWN0LCIgMjIwMSBhbnN3ZXJlZCAic29tZXdoYXQgb2YgYW4gaW1wYWN0LCIgMTM3MiBhbnN3ZXJlZCAianVzdCBhIHNsaWdodCBpbXBhY3QiIGFuZCA5ODUgYW5zd2VyZWQgIm5vIGltcGFjdCBhdCBhbGwuIg0KDQpgYGB7cn0NCm5vbnZvdGVyc19kYXRhIHw+DQogIGdyb3VwX2J5KFE0XzYpIHw+DQogIHN1bW1hcmlzZShudW1iZXJfb2ZfcmVzcG9uZGVudHM9bigpKQ0KYGBgDQoNClRoaXMgcXVlc3Rpb24gaXM6ICJIb3cgbXVjaCBvZiBhbiBpbXBhY3QsIGlmIGFueSwgZG8gZWFjaCBvZiB0aGUgZm9sbG93aW5nIGhhdmUgb24geW91ciBsaWZlPyBMYXcgZW5mb3JjZW1lbnQgYW5kIHRoZSBsZWdhbCBzeXN0ZW0uIiBUaGUgcmVzdWx0cyBvZiB0aGlzIGNvZGUgbWVhbnMgMTk3MSBhbnN3ZXJlZCAiYSBzaWduaWZpY2FudCBpbXBhY3QsIiAyMTA2IGFuc3dlcmVkICJzb21ld2hhdCBvZiBhbiBpbXBhY3QsIiAxMjEyIGFuc3dlcmVkICJqdXN0IGEgc2xpZ2h0IGltcGFjdCIgYW5kIDUxNCBhbnN3ZXJlZCAibm8gaW1wYWN0IGF0IGFsbC4i</div>
 
 
 

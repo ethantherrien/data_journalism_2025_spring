@@ -12,64 +12,206 @@ nonvoters_data <- read.csv("C:/Users/ethan/Downloads/Reverse Engineering Milesto
 ```
 
 ```{r}
+library(tidyverse)
+```
+QUESTION 1:
+
+```{r}
+library(tidyverse)
+
 nonvoters_data |>
   group_by(Q2_1) |>
   summarise(
-    american_importance = n())
+    number_of_respondents = n())
 ```
+This question is: "In your view, how important is voting in elections in being a good American?" The results of this code means 4758 answered "very important", 738 answered "somewhat important," 145 answered "not so important" and 160 answered "not at all important."
+
 ```{r}
+library(tidyverse)
+
 nonvoters_data |>
   group_by(Q2_2)|>
   summarise(
-    american_importance = n())
+    number_of_respondents = n())
 ```
+This question is: "In your view, how important is serving on a jury in being a good American?" The results of this code means 2811 answered "very important", 2068 answered "somewhat important," 644 answered "not so important" and 277 answered "not at all important."
+
 ```{r}
+library(tidyverse)
+
 nonvoters_data |>
   group_by(Q2_3)|>
   summarise(
-    american_importance = n())
+    number_of_respondents = n())
 ```
+This question is: "In your view, how important is following what happens in government and politics in being a good American?" The results of this code means 2772 answered "very important", 2419 answered "somewhat important," 449 answered "not so important" and 160  answered "not at all important."
+
 ```{r}
+library(tidyverse)
+
 nonvoters_data |>
   group_by(Q2_4)|>
   summarise(
-    american_importance = n())
+    number_of_respondents = n())
 ```
+This question is: "In your view, how important is displaying the American flag in being a good American?" The results of this code means 1966 answered "very important", 1623 answered "somewhat important," 1331 answered "not so important" and 882 answered "not at all important."
+
 ```{r}
+library(tidyverse)
+
 nonvoters_data |>
   group_by(Q2_5)|>
   summarise(
-    american_importance = n())
+    number_of_respondents = n())
 ```
+This question is: "In your view, how important is participating in the U.S. Census every ten years in being a good American?" The results of this code means 4513 answered "very important", 1013 answered "somewhat important," 185 answered "not so important" and 97 answered "not at all important."
+
 ```{r}
+library(tidyverse)
+
 nonvoters_data |>
   group_by(Q2_6)|>
   summarise(
-    american_importance = n())
+    number_of_respondents = n())
 ```
+This question is: "In your view, how important is knowing the Pledge of Allegiance in being a good American?" The results of this code means 2956 answered "very important", 1456 answered "somewhat important," 872 answered "not so important" and 521 answered "not at all important."
+
 ```{r}
+library(tidyverse)
+
 nonvoters_data |>
   group_by(Q2_7)|>
   summarise(
-    american_importance = n())
+    number_of_respondents = n())
 ```
+This question is: "In your view, how important is supporting the military in being a good American?" The results of this code means 3684 answered "very important", 1454 answered "somewhat important," 459 answered "not so important" and 195 answered "not at all important."
+
 ```{r}
+library(tidyverse)
+
 nonvoters_data |>
   group_by(Q2_8)|>
   summarise(
-    american_importance = n())
+    number_of_respondents = n())
 ```
+This question is: "In your view, how important is respecting the opinion of those who disagree with you in being a good American?" The results of this code means 3499 answered "very important", 1938 answered "somewhat important," 297 answered "not so important" and 76 answered "not at all important."
+
 ```{r}
+library(tidyverse)
+
 nonvoters_data |>
   group_by(Q2_9) |>
   summarise(
-    american_importance = n())
+    number_of_respondents = n())
 ```
+This question is: "In your view, how important is believing in God in being a good American?" The results of this code means 2758 answered "very important", 931 answered "somewhat important," 810 answered "not so important" and 1301 answered "not at all important."
+
 ```{r}
+library(tidyverse)
+
 nonvoters_data |>
   group_by(Q2_10)|>
   summarise(
-    american_importance = n())
+    number_of_respondents = n())
+```
+This question is: "In your view, how important is protesting if you believe government actions are wrong in being a good American?" The results of this code means 1854 answered "very important", 2340 answered "somewhat important," 1127 answered "not so important" and 477 answered "not at all important."
+
+QUESTION 3:
+
+```{r}
+nonvoters_data |>
+  group_by(Q3_1) |>
+  summarise(number_of_respondents=n())
 ```
 
-For these 10 blocks of code, we counted the number of times each "importance" answer was answered for each question. For example, Q2_10 corresponds to the original question of "How important do you think protesting if you believe government actions are wrong is to being a good American?" The numbers 1-4 correspond to importance, with 1 being very important, 2 being somewhat important, 3 being not so important and 4 being not at all important. So for CQ_10, the number 1854 means that 1854 people responded "very important" to "How important do you think protesting if you believe government actions are wrong is to being a good American?" This is the same logic for every single row in every single one of these code blocks.
+This question is: "How much do you agree or disagree with the following statement? Systemic racism is a problem in the United States." The results of this code means 2682 answered strongly agree, 1594 answered somewhat agree, 803 answered somewhat disagree and 718 answered strongly disagree.
+
+```{r}
+nonvoters_data |>
+  group_by(Q3_2) |>
+  summarise(number_of_respondents=n())
+```
+
+This question is: "How much do you agree or disagree with the following statement? Systemic racism in policing is a bigger problem than violence and vandalism in protests." The results of this code means 1708 answered strongly agree, 1402 answered somewhat agree, 1235 answered somewhat disagree and 1438 answered strongly disagree.
+
+```{r}
+nonvoters_data |>
+  group_by(Q3_3) |>
+  summarise(number_of_respondents=n())
+```
+
+This question is: "How much do you agree or disagree with the following statement? Society as a whole has become too soft and feminine." The results of this code means 990 answered strongly agree, 1618 answered somewhat agree, 1519 answered somewhat disagree and 1655 answered strongly disagree.
+
+```{r}
+nonvoters_data |>
+  group_by(Q3_4) |>
+  summarise(number_of_respondents=n())
+```
+
+This question is: "How much do you agree or disagree with the following statement? The mainstream media is more interested in making money than telling the truth." The results of this code means 2605 answered strongly agree, 1800 answered somewhat agree, 900 answered somewhat disagree and 499 answered strongly disagree.
+
+```{r}
+nonvoters_data |>
+  group_by(Q3_5) |>
+  summarise(number_of_respondents=n())
+```
+
+This question is: "How much do you agree or disagree with the following statement? Traditional parties and politicians don't care about people like me." The results of this code means 1590 answered strongly agree, 2678 answered somewhat agree, 1229 answered somewhat disagree and 294 answered strongly disagree.
+
+```{r}
+nonvoters_data |>
+  group_by(Q3_6) |>
+  summarise(number_of_respondents=n())
+```
+
+This question is: "How much do you agree or disagree with the following statement? The way people talk needs to change with the times to be more sensitive to people with different backgrounds." The results of this code means 1783 answered strongly agree, 2345 answered somewhat agree, 1071 answered somewhat disagree and 603 answered strongly disagree.
+
+QUESTION 4:
+
+```{r}
+nonvoters_data |>
+  group_by(Q4_1) |>
+  summarise(number_of_respondents=n())
+```
+
+This question is: "How much of an impact, if any, do each of the following have on your life? Elected officials in Washington, D.C. (e.g. the president, member of Congress)." The results of this code means 2596 answered "a significant impact," 2023 answered "somewhat of an impact," 834 answered "just a slight impact" and 344 answered "no impact at all."
+
+```{r}
+nonvoters_data |>
+  group_by(Q4_2) |>
+  summarise(number_of_respondents=n())
+```
+
+This question is: "How much of an impact, if any, do each of the following have on your life? Elected officials in my state (e.g. governor, state representative)." The results of this code means 2345 answered "a significant impact," 2314 answered "somewhat of an impact," 810 answered "just a slight impact" and 328 answered "no impact at all."
+
+```{r}
+nonvoters_data |>
+  group_by(Q4_3) |>
+  summarise(number_of_respondents=n())
+```
+
+This question is: "How much of an impact, if any, do each of the following have on your life? Elected officials in my city or community (e.g. mayor, city council)." The results of this code means 1877 answered "a significant impact," 2352 answered "somewhat of an impact," 1155 answered "just a slight impact" and 419 answered "no impact at all."
+
+```{r}
+nonvoters_data |>
+  group_by(Q4_4) |>
+  summarise(number_of_respondents=n())
+```
+
+This question is: "How much of an impact, if any, do each of the following have on your life? The news media." The results of this code means 1090 answered "a significant impact," 2048 answered "somewhat of an impact," 1593 answered "just a slight impact" and 1067 answered "no impact at all."
+
+```{r}
+nonvoters_data |>
+  group_by(Q4_5) |>
+  summarise(number_of_respondents=n())
+```
+
+This question is: "How much of an impact, if any, do each of the following have on your life? Large financial institutions on Wall Street." The results of this code means 1234 answered "a significant impact," 2201 answered "somewhat of an impact," 1372 answered "just a slight impact" and 985 answered "no impact at all."
+
+```{r}
+nonvoters_data |>
+  group_by(Q4_6) |>
+  summarise(number_of_respondents=n())
+```
+
+This question is: "How much of an impact, if any, do each of the following have on your life? Law enforcement and the legal system." The results of this code means 1971 answered "a significant impact," 2106 answered "somewhat of an impact," 1212 answered "just a slight impact" and 514 answered "no impact at all."
