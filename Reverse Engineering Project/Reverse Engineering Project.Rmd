@@ -8,7 +8,7 @@ This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*.
 
 ```{r}
-nonvoters_data <- read.csv("C:/Users/ethan/Downloads/Reverse Engineering Milestone 2/nonvoters_data.csv")
+nonvoters_data <- read.csv("nonvoters_data.csv")
 ```
 
 ```{r}
