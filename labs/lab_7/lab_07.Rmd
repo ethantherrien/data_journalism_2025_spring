@@ -160,6 +160,60 @@ zipcode_splitters
 
 **A5** The leading zip code (21702) is located in Frederick. The second highest is 21701, which is also in Frederick. Third highest is 21793, which is located in Walkersville, a town to the north of Frederick. The median age for the top zip code (21702) is 38.1 while the lowest is 47.3. To generalize, the median age for the top zip codes after I run this code seems lower than the median age for the lower zip codes. The average age in one of the lower zip codes (21718) is 54.7, which was a surprise.
 
+I used ChatGPT a bit. The prompt I used was: "I have this question in R and i need code for it: Let's find out more about those zip codes from A4. Using tidycensus, get a dataframe of Maryland zip codes and their median ages, then join it to the dataframe you produced in A4. NOTE: you'll need to ensure that the two columns you use for the join are the same datatype. Summarize your findings; how would you describe the zip codes with more non-Cox Republicans compared to those with fewer? Where are those leading zip codes located?"
+
+It gave me this and I spent like an hour cleaning it up and messing with it:
+
+# Install and load the required libraries
+install.packages("tidycensus")
+install.packages("dplyr")
+library(tidycensus)
+library(dplyr)
+
+# Set your Census API key (replace with your actual API key)
+census_api_key("your_api_key_here", install = TRUE, overwrite = TRUE)
+
+# Step 1: Retrieve the median age by zip code for Maryland
+md_zip_median_age <- get_acs(
+  geography = "ZCTA5", 
+  variables = "B01002_001",  # Median age variable
+  state = "MD", 
+  geometry = FALSE, 
+  year = 2021
+)
+
+# Check the first few rows to understand the data
+head(md_zip_median_age)
+
+# Step 2: Ensure the column used for joining has the same datatype
+md_zip_median_age <- md_zip_median_age %>%
+  mutate(GEOID = as.character(GEOID))  # Ensure the GEOID is a character for easy joining
+
+# Assuming you have a dataframe from A4 (let's say it's called df_A4), ensure the join column is also the same datatype
+df_A4 <- df_A4 %>%
+  mutate(zipcode = as.character(zipcode))  # Change to the column name that has the zip code
+
+# Step 3: Perform the join between the two dataframes (A4 and median age data)
+df_joined <- left_join(df_A4, md_zip_median_age, by = c("zipcode" = "GEOID"))
+
+# Step 4: Summarize the findings
+# Example: Summarize the data to find zip codes with more non-Cox Republicans compared to those with fewer
+# Assume "non_cox_republicans" is a column in your df_A4 dataframe
+df_summary <- df_joined %>%
+  mutate(non_cox_republicans_ratio = non_cox_republicans / total_republicans) %>%
+  arrange(desc(non_cox_republicans_ratio))  # Sort in descending order
+
+# View the summary of the zip codes with more non-Cox Republicans
+head(df_summary)
+
+# Step 5: Find the locations of leading zip codes with more non-Cox Republicans
+leading_zip_codes <- df_summary %>%
+  filter(non_cox_republicans_ratio > 0.5)  # Define a threshold (e.g., more than 50% non-Cox Republicans)
+
+# View leading zip codes
+head(leading_zip_codes)
+
+
 ```{r}
 md_zip_plus_age <- get_acs(geography = "zcta",
   variables = c(median_age = "B01002_001"),
