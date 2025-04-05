@@ -1,0 +1,180 @@
+---
+title: "lab_07"
+author: "derek willis"
+date: "2024-08-07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## You will need
+
+-   A Census API key
+
+## Load libraries and establish settings
+
+You'll need to load two packages for this: the tidyverse and tidycensus.
+
+**Task** load these two packages
+
+```{r}
+# Turn off scientific notation
+options(scipen=999)
+
+# Load the tidyverse.
+library(tidyverse)
+library(tidycensus)
+```
+
+## Setup Census API
+
+You'll need your Census API Key:
+
+**Task** set your API Key *only* if you haven't already
+
+```{r echo=FALSE}
+census_api_key("086f5d59ebf490816ec4a5d0f68fefba78178609",install = TRUE,  overwrite=TRUE)
+```
+
+## Load and view ACS variables
+
+You'll also need to load the list of American Community Survey variables from the 2022 5-year estimates so you can identify the codes you need:
+
+**Task** load the variables from the 2022 5-year ACS and save them to a dataframe
+
+```{r}
+acs5 <- load_variables(2022, "acs5", cache = TRUE)
+View(acs5)
+```
+
+## Answer questions
+
+**Q1** What is the Maryland jurisdiction with the lowest median age, according to the ACS 2022 5-year estimates? You will need to find the variable for median age first.
+
+**A1** Baltimore City has the lowest median age, at 36 years old.
+
+```{r}
+maryland <- get_acs(geography = "county",
+  variables = c(median_age = "B01002_001"),
+  state = "MD",
+  year = 2022)
+
+maryland <- maryland |> arrange(desc(estimate))
+
+maryland
+```
+
+**Q2** Which Maryland counties have a median age of at least 50? You can use the dataframe you just made to answer this, but you must write code to display only those counties with a median age of at least 50.
+
+**A2** Of the two counties shown after I run this doe (Talbot and Worcester), Talbot has the higher median age. The median age in Talbot County is 51.4, while being 50.6 in Worcester.
+
+```{r}
+maryland <- get_acs(geography = "county",
+  variables = c(med_age = "B01002_001"),
+  state = "MD",
+  year = 2022)
+
+maryland <- maryland |> 
+  filter(estimate >= 50) |> 
+  arrange(desc(estimate))
+
+maryland
+```
+
+## Ticket-Splitting
+
+Ticket-splitting (voting for candidates from multiple parties) in today's political environment seems like a rarity, but it does happen, even in states like Maryland. For the remaining questions you'll be looking at cast vote records from Frederick County - Maryland's most competitive county - for the 2022 general election. You'll be trying to identify the zip codes where ticket-splitting is happening the most and to learn more about those places. To do that, you'll need to read in two CSV files, join them and then also bring in data from the Census API.
+
+### Setup
+
+Load the two CSV files in the `data` folder: one containing the ballot choices of Frederick voters in five races (governor, comptroller, attorney general and U.S. House) and the other containing information about Frederick's voting locations. You'll need to join them together.
+
+```{r}
+frederick_ballot_choices <- read_csv("frederick_cvr.csv")
+frederick_locations <- read_csv("frederick_precincts.csv")
+
+joined_frederick <- left_join(frederick_ballot_choices, frederick_locations, by = "precinct")
+
+joined_frederick
+```
+
+**Q3** Let's answer some basic questions about ticket-splitting: how many voters voted for different parties in the governor and comptroller's race? How many voted for the same party in both races? What percentage of all voters split their tickets in those races? In how many cases did voters choose the same party in all five contests? What percentage of all voters does that represent?
+
+**A3** 
+1. 11871 people voted for different parties in the governor and comptroller race.
+2. 95221 people voted for the same party in the two races.
+3. 11.1% of voters split their tickets in those races.
+4. 89916 people voted for the same party in all five of the races.
+5. That represents 83.8% of the voting population.
+
+Absolutely needed ChatGPT for this one, but just to fix a few mistakes. My original block of code was close, but it was giving a few N/As in a couple columns so I asked ChatGPT: "I have this question for a coding assignment in R: Let's answer some basic questions about ticket-splitting: how many voters voted for different parties in the governor and comptroller's race? How many voted for the same party in both races? What percentage of all voters split their tickets in those races? In how many cases did voters choose the same party in all five contests? What percentage of all voters does that represent?"
+
+Then asked, "This is my code, but it's not working. Multiple columns are giving me N/As. What can I do to fix it?" I then provided my code and it gave me this.
+
+
+```{r}
+library(dplyr)
+
+basic_questions <- joined_frederick |>
+  summarise(
+    ticket_splitters = sum(governor_lt_governor != comptroller, na.rm = TRUE), 
+    same_party = sum(governor_lt_governor == comptroller, na.rm = TRUE),  
+    same_five = sum(governor_lt_governor == comptroller & 
+                    governor_lt_governor == attorney_general & 
+                    governor_lt_governor == u_s_senator & 
+                    governor_lt_governor == representative_in_congress_6, na.rm = TRUE),  
+    total_voters = n()
+  ) |>
+  mutate(
+    split_percentage = (ticket_splitters / total_voters) * 100,  
+    same_five_percent = (same_five / total_voters) * 100  
+  )
+
+basic_questions
+```
+
+**Q4** Now let's look for the zip codes where voters preferred Republicans in every race *except* the governor's race, where Dan Cox lost to Wes Moore by a wide margin. Write code to generate a dataframe of zip codes with the number of those voters for each of those zip codes, ordering the dataframe so that the zip code with the most ticket-splitters appears first.
+
+**A4** Zip code 21702 has the most voters, with 115. Not sure if anything else is needed here in this answer.
+
+```{r}
+library(dplyr)
+
+zipcode_splitters <- joined_frederick |>
+  filter(
+    governor_lt_governor == "DEM",
+    comptroller == "REP",           
+    attorney_general == "REP",      
+    u_s_senator == "REP",           
+    representative_in_congress_6 == "REP"
+  ) |>
+  count(zipcode) |>
+  arrange(desc(n))
+
+zipcode_splitters
+```
+
+**Q5** Let's find out more about those zip codes from A4. Using tidycensus, get a dataframe of Maryland zip codes and their median ages, then join it to the dataframe you produced in A4. NOTE: you'll need to ensure that the two columns you use for the join are the same datatype. Summarize your findings; how would you describe the zip codes with more non-Cox Republicans compared to those with fewer? Where are those leading zip codes located?
+
+**A5** The leading zip code (21702) is located in Frederick. The second highest is 21701, which is also in Frederick. Third highest is 21793, which is located in Walkersville, a town to the north of Frederick. The median age for the top zip code (21702) is 38.1 while the lowest is 47.3. To generalize, the median age for the top zip codes after I run this code seems lower than the median age for the lower zip codes. The average age in one of the lower zip codes (21718) is 54.7, which was a surprise.
+
+```{r}
+md_zip_plus_age <- get_acs(geography = "zcta",
+  variables = c(median_age = "B01002_001"),
+  year = 2022)
+
+md_zip_plus_age <- md_zip_plus_age |>
+  mutate(zipcode = as.character(GEOID)) |>
+  select(zipcode, median_age = estimate) |>
+  filter(substr(zipcode, 1, 2) == "21")
+
+zipcode_splitters <- zipcode_splitters |>
+  mutate(zipcode = as.character(zipcode))
+
+md_zip_plus_age <- zipcode_splitters |>
+  left_join(md_zip_plus_age, by = "zipcode")
+
+md_zip_plus_age
+```
