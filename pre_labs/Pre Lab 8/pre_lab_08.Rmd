@@ -57,7 +57,7 @@ First, we'll create a dataframe of those top 10, called maryland_top_counties.
 ```{r}
 
 md_voters <- md_voters |> 
-  mutate(UNAF_DIFF = 2024 - 2022)
+  mutate(UNAF_DIFF = UNAF_2024 - UNAF_2022)
 
 maryland_top_counties <- md_voters |>
   arrange(desc(UNAF_DIFF)) |>
@@ -116,7 +116,7 @@ This is a very basic chart. But it's hard to derive much meaning from this chart
 
 ### Task 6: Run the following code
 
-**Task** Run the following code. Explain what you see after running the code in the space below. What has changed from the last codeblock? **Answer** It's now reordering by both county and difference, rather than just county.
+**Task** Run the following code. Explain what you see after running the code in the space below. What has changed from the last codeblock? **Answer** It's now reordering by both county and difference, rather than just county. So it is in ascending order.
 
 ```{r}
 maryland_top_counties |>
