@@ -46,8 +46,6 @@ You'll need to load one data set, a CSV file of campaign expenditures located in
 ```{r}
 # Load the Maryland expenditures data table
 campaign_expenditures <- read_csv("data/md_senate_expenses.csv")
-
-cleaned_senate_expenditures <- read.csv("data/cleaned_senate_expenditures.csv")
 ```
 
 ## Answer questions
@@ -69,6 +67,8 @@ cleaned_senate_expenditures <- read.csv("data/cleaned_senate_expenditures.csv")
 And yes, I changed the name. It has "cleaned" in it to differentiate from the original dataset.
 
 ```{r}
+cleaned_senate_expenditures <- read.csv("data/cleaned_senate_expenditures.csv")
+
 cleaned_senate_expenditures |>
   group_by(candidate, purpose_clean) |>
   summarise(total_amount=sum(amount)) |>
