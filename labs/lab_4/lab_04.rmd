@@ -46,6 +46,8 @@ You'll need to load one data set, a CSV file of campaign expenditures located in
 ```{r}
 # Load the Maryland expenditures data table
 campaign_expenditures <- read_csv("data/md_senate_expenses.csv")
+
+cleaned_senate_expenditures <- read.csv("data/cleaned_senate_expenditures.csv")
 ```
 
 ## Answer questions
