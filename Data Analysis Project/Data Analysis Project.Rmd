@@ -60,10 +60,14 @@ Question 1: Which presidential candidates have spent the most during their campa
 ANSWER: Jon Tester has the most, eight candidates are tied for the least.
 
 ```{r}
+#This is using the cleaned expenditures data set to group by candidate and summarize by sum of total expenditures.
+
 cleaned_expenditures |>
   group_by(candidate_name) |>
   summarise(total = sum(expenditure_amount, na.rm = TRUE)) |>
   arrange(desc(total))
+
+#It then arranges in descending order by total cost.
 ```
 
 Question 2: What are the most common payment purposes for payment in federal campaign finance data? What is the average amount paid per transaction for these top purposes?
@@ -77,6 +81,9 @@ Advertisement Management Services -> average amount $928.37
 Canvassing -> average amount $65,250.19
 
 ```{r}
+
+#This is using the cleaned data dataset to group by donation "purpose" and then summarizing by both the average donation amount using the mean() function and also by the total amount per purpose using the sum() function.
+
 top_purposes <- cleaned_expenditures |>
   filter(!is.na(purpose), purpose != "") |>
   group_by(purpose) |>
@@ -88,34 +95,49 @@ top_purposes <- cleaned_expenditures |>
   arrange(desc(count)) |>
   slice_head(n = 10)
 
+#The slice_head(n=10) function filters the arrange() function to limit it to 10 options.
+
 top_purposes
+
+#These results show that PAC's prioritized advertising and voter outreach (things like media production and phone banking) in order to have the greatest possible impact on the election.
 ```
 
 Question 3: Which candidates receive the most independent support versus opposition, and how does spending differ between supporting and attacking candidates?
 
-ANSWER: Jon Tester received the most independent support versus opposition. Democrats tend to spend more money on elections and their campaigns compared to Republicans.
+ANSWER: Jon Tester had the most money spent in opposition to his campaign. Democrats tend to spend more money on elections and their campaigns compared to Republicans.
 
 ```{r}
+
+#The main priority of this dataset is seeing which candidates had the most money spent in support or in opposition of them.
+
 summary <- cleaned_expenditures |>
   filter(!is.na(candidate_name), support_or_oppose %in% c("S", "O")) |>
   group_by(candidate_name, support_or_oppose) |>
   summarise(total_spent = sum(expenditure_amount, na.rm = TRUE), .groups = "drop")
+
+#We used the cleaned_expenditures dataset and created a new summary dataset with it that grouped by candidate_name and support_or_oppose (which differentiates using an "S" or an "O" lettering. We then summarized by total spent on each using the "sum()" function. 
 
 top_supported <- summary |>
   filter(support_or_oppose == "S")|>
   arrange(desc(total_spent)) |>
   head(5)
 
+#This creates a sub data set from summary that shows the top five total expenditures that were in support of a candidate.
+
 top_opposed <- summary |>
   filter(support_or_oppose == "O") |>
   arrange(desc(total_spent)) |>
   head(5)
+
+#This creates a sub data set from summary that shows the top five total expenditures that were in opposition of a candidate.
 
 purpose_comparison <- cleaned_expenditures |>
   filter(!is.na(purpose), support_or_oppose %in% c("S", "O")) |>
   group_by(candidate_name, support_or_oppose) |>
   summarise(total_spent = sum(expenditure_amount, na.rm = TRUE), .groups = "drop") |>
   arrange(desc(total_spent))
+
+#By sorting the data by support_or_oppose and then arranging by total_spent, we can see that the most money spent was in opposition to Jon Tester in Montana's senate race. This makes sense because it was one of the most expensive senate races in history, and Republicans spent a lot of money to make sure that he lost his seat.
 
 purpose_comparison
 ```
@@ -140,6 +162,9 @@ cleaned_expenditures_2020 <- read.csv("cleaned_2020_expenditures.csv")
 ```
 
 ```{r}
+
+#This is using 2020 data that we plan to join in the next code block. We cleaned this data in OpenRefine and then used the same clean_names() function and column names to rename the columns to something more identifiable and universal.
+
 cleaned_expenditures_2020 <- cleaned_expenditures_2020 |>
   clean_names() |>
   rename(
@@ -170,17 +195,28 @@ cleaned_expenditures_2020 <- cleaned_expenditures_2020 |>
 ```
 
 ```{r}
+
+#We wanted to know which PAC's donated in both the 2020 and 2024 elections to determine which ones had continued engagement across multiple elections. This is using additional data from the FEC website to grab 2020 election expenditure data. We cleaned it in OpenRefine before this.
+
 spenders_2020 <- cleaned_expenditures_2020 |>
   select(spender_name) |>
   distinct()
+
+#This creates a new dataframe called spenders_2020 and then selects the one column spender_name().
 
 spenders_2024 <- cleaned_expenditures |>
   select(spender_name) |>
   distinct()
 
+#This creates a similar dataframe and selects spender_name, but for 2024. We plan to join them together below.
+
 common_spenders <- inner_join(spenders_2020, spenders_2024, by = "spender_name")
 
+#This uses the inner_join function to join the two created dataframes together by the selected column name "spender_name()."
+
 common_spenders
+
+#This new "common_spenders()" dataframe shows every instance of "spender_name()" that appeared in both the 2020 and the 2024 data, telling us which PAC's donated in both elections. 
 ```
 
 Question 5: How are Republicans and Democrats spending their money differently? What are each party’s top spending points?
@@ -188,9 +224,31 @@ Question 5: How are Republicans and Democrats spending their money differently? 
 ANSWER: Democrats spent a lot of money on television ads, radio and media production. Republicans spent a lot of money on data harvesting. The Democrats top spending point was PLACED MEDIA: TV. The Republicans top spending point was Data Harvesting.
 
 ```{r}
+
+#This uses the cleaned expenditures data set and groups by candidate, party and expenditure amount and then summarizes by sum.
+
 cleaned_expenditures |>
   group_by(candidate_party, expenditure_amount, purpose) |>
   summarise(total = sum(expenditure_amount, na.rm = TRUE)) |>
   arrange(desc(total))
+
+#It then arranges by total in descending order. This shows the top spending purposes for both Democrats and Republicans, and shows the total amount spent.
 ```
 
+Final Story Memo:
+
+From this data set, we found a variety of different nuggets that would be interesting for publication. Jon Tester, a former Democrat Montana Senator, spent a lot of money on his recent senate race. It was one of the most expensive races in U.S. Senate election history -- and our data analysis revealed that he spent over $85 million on that election. This is certainly newsworthy; and we could dive in further to analyze what exactly that money was spent on.
+
+We know some details, for sure. Tester had by far the most money spent against him in that election cycle, which makes sense considering how many resources the GOP was directing towards flipping that seat red. From that data analysis, we also concluded that as a general trend, Democrats spent considerably more on average during their campaigns than Republicans did. This encapsulates what we know the recent election was: a strong GOP push to flip vulnerable Democrat seats in red states back to the GOP. Creating a story on Tester's campaign and the financial details that went into its funding would be newsworthy.
+
+We also analyzed the top spending purposes in the 2020 election, and concluded that digital advertising and phone banking were the top purposes, by a considerable bit. This shows a shift from the traditional, door-to-door outreach and knocking on doors in neighborhoods to campaign for candidates to what we see in today's election atmosphere, which is a more digital version. Instead of face-to-face conversations, we see phone calls and Facebook ads. Analyzing these trends would be newsworthy. What makes elections click? What is truly the fuel behind campaigns?
+
+A tertiary portion of the story could be PAC(Political Action Committee) trends. We analyzed which PACs were active in both the 2020 and 2024 elections, and came up with a shortlist after the running the code. This is newsworthy because it showcases continuous support across several years and election cycles, showing which PACs have clear influence and impact in the long-term.
+
+Some pros of this data include how massive the data set is. There are a large variety of stories buried within the data. We didn't find them all, this is essentially a gold mine for newsworthy stories. It was also pretty clearly labeled. Column names needed to be cleaned up a mid, but other than that, it was easy to read.
+
+There was one major con. The data itself was incredibly messy, despite using OpenRefine to cluster it together. There were thousands of entries, and it is impossible to verify if everything was cleaned correctly. Mistakes in clustering were more likely than not to have happened due to the large nature of the data set.
+
+To verify our findings, it wouldn't be too difficult. Data came from fec.gov, which is the official website of the Federal Election Committee. This website and organization is likely to have a lot of credibility.
+
+To finish reporting the story, reaching out to Montana constituents would be useful. To who and for what reason did they donate their money to? Did they donate to the Tester campaign? Did they donate against the Tester campaign? Reaching out to the people themselves would make this story far more interesting, and give it more depth.
